@@ -20,7 +20,7 @@ export class Produto{
     data_ven: Date;
 
     @IsNotEmpty()
-    @Column({nullable: false})
+    @Column({type: 'decimal', precision: 7, scale: 2, nullable: false})
     preco: number;
 
     @ManyToOne(() => Categoria, (categoria) => categoria.produto, {
