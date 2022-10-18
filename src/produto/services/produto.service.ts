@@ -13,7 +13,11 @@ export class ProdutoService {
     ) {}
     
     async findAll(): Promise<Produto[]>{
-        return await this.produtoRepository.find();
+        return await this.produtoRepository.find({
+           relations:{
+            categoria: true
+           }
+        });
     }
 
     async finById(id: number): Promise<Produto>{
