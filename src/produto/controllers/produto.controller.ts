@@ -2,19 +2,31 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { Produto } from "../entities/produto.entity";
 import { ProdutoService } from "../services/produto.service";
 
-
+/**
+ * A classe controller irá controlar a classe Produto e ocorrerá aqui a implementação de métodos que responderão
+ * a requisições de orientação (HTTP Request). 
+ * 
+ * @Controller - Decorador que indicara que a classe é do tipo RestController e será composto por 
+ * URL, Verbo (referenciando qual HTTP será utilizado), RequestBody e como repsosta o controller retornar o código de HTTP Status
+ */
 @Controller('/produto')
 export class ProdutoController{
     constructor (private readonly produtoService: ProdutoService) {}
 
- //Get - Encontrar tudo
+/**
+ * @Get - Responsável pela busca do elemento solicitado pelo usuário, no banco de dados
+*/
     @Get()
     @HttpCode(HttpStatus.OK)
     findAll(): Promise<Produto[]>{
         return this.produtoService.findAll();
     }
 
- //Get - Encontrar por ID
+/**
+ *@Get responsavel por entregar o elemento pelo Id
+ * 
+ * @Param - referenciará o objeto e prometerá através do Promise a classe de refencia; 
+ */
     @Get('/:id')
     @HttpCode(HttpStatus.OK)
     findById(
@@ -24,15 +36,20 @@ export class ProdutoController{
         return this.produtoService.finById(id);
     }
 
- //Get - Encontrar por nome
+/**
+ * @desc - Este @Get está responsavel por entregar o elemento pelo nome
+*/
+
     @Get('produto/:produto')
     @HttpCode(HttpStatus.OK)
     findByNome(
         @Param('produto')produto: string): Promise<Produto[]>{
             return this.produtoService.findByName(produto);
     }
-    
- //Create - Criar
+
+/**
+ * @Post - Irá criar um elemento novo a partir do Json, que enviará para ao banco de dados
+ */
     @Post()
     @HttpCode(HttpStatus.OK)
     create(
@@ -42,7 +59,9 @@ export class ProdutoController{
         return this.produtoService.create(produto);
     }
 
- //Put - Atualizar
+ /** 
+ * @Put - Atualizará um elemento do banco de dados a partir do Json 
+ */
     @Put()
     @HttpCode(HttpStatus.OK)
     update(
@@ -52,7 +71,11 @@ export class ProdutoController{
         return this.produtoService.update(produto);
     }
 
- //Delete - Deletar
+/**
+ * @Delete - Apagará um elemento do banco de dados a partir do id 
+ * 
+ * ParseIntPipe - Pegará o padrão String e transformará em inteiro 
+ */ 
     @Delete('/:id')
     @HttpCode(HttpStatus.NO_CONTENT)
     delete(
