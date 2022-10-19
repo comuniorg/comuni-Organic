@@ -18,8 +18,17 @@ import { ProdutoModule } from './produto/produto.module';
       entities: [Produto, Categoria],
       synchronize: true
     }),
-    ProdutoModule, CategoriaModule],
+/**
+ * @desc as classes CategoriaModule e ProdutoModule são modulos que gerencia os services, controllers e entities.
+ *  Ela é exportada para o app.module.
+ */
+      ProdutoModule, CategoriaModule],
   controllers: [],
   providers: [],
 })
+
+/**
+ * @desc a classe AppModule é um modulo que gerencia os services, controllers e entities.
+ *  Ela é chamada pelo aquivo main e tem a função de chamar outros modulos.
+ */
 export class AppModule {}

@@ -1,9 +1,14 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { ProdutoController } from "./controllers/produto.controller";
+import { ProdutoController } from "./controllers/postagem.controller";
 import { Produto } from "./entities/produto.entity";
 import { ProdutoService } from "./services/produto.service";
 
+/**
+ * @desc
+ * no module são definidas as estrutudas de dados, relacionamentos e dependencias.
+ * as classes entidade, service e controller devem estar registradas no module.
+ */
 @Module({
     controllers: [ProdutoController],
     exports: [TypeOrmModule],
