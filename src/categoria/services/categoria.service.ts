@@ -43,13 +43,13 @@ export class categoriaService{
 
     /**
      * @disc Consulta a categoria por nome
-     * @param categoria Identeificador para consultar a categoria por nome
+     * @param nome Identeificador para consultar a categoria por nome
      * @returns A categoria com o nome do identificador
      */
-    async findByNome(categoria: string): Promise<Categoria[]>{
+    async findByNome(nome: string): Promise<Categoria[]>{
         return await this.categoriaRepository.find({
             where: {
-                categoria: ILike(`%${categoria}%`)
+                categoria: ILike(`%${nome}%`)
             },
             relations: {
                 produto: true
@@ -68,7 +68,7 @@ export class categoriaService{
 
     /**
      * @desc Atualiza o Produto no banco de dados
-     * @param produto.id Identificador para atualizar o produto
+     * @param categoria.id Identificador para atualizar o produto
      * @returns O conteudo atualizado
      * @throws HttpExeption Caso o produto informado não seja encontrado
      */
