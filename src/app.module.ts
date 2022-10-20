@@ -5,7 +5,10 @@ import { Categoria } from './categoria/entities/categoria.entity';
 import { Produto } from './produto/entities/produto.entity';
 import { ProdutoModule } from './produto/produto.module';
 
-
+/**
+ * @desc O module são definidas as estrutudas de dados, relacionamentos e dependencias.
+ * as classes entidade, service e controller devem estar registradas no module.
+ */
 @Module({
   imports: [
     TypeOrmModule.forRoot({
