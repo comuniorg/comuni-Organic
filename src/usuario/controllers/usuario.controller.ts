@@ -4,7 +4,7 @@ import { Body, Controller, Get, HttpCode, HttpStatus, Post, Put, UseGuards } fro
 
 /**
  * 
- * O Usuário controller terá 3 métodos, o de consultar todos os acastro, presente no @GET - protegido 
+ * O Usuário controller terá 3 métodos, o de consultar todos os cadastros, presente no @GET - protegido 
  * pelo @UseGuards, o segundo será o de cadastrar o usuário, no qual utilirá o método @Post e atualizar cadastro 
  * introduzido no método @Put. 
  */
