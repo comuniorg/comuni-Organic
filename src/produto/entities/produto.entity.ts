@@ -1,5 +1,6 @@
 import { IsNotEmpty } from "class-validator";
 import { Categoria } from "src/categoria/entities/categoria.entity";
+import { Usuario } from "src/usuario/entities/usuario.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
@@ -47,4 +48,9 @@ export class Produto{
         onDelete: 'CASCADE'
     })
     categoria: Categoria;
+    
+    @ManyToOne(() => Usuario, (usuario) => usuario.produto, {
+        onDelete: "CASCADE"
+    })
+    usuario: Usuario
 }
