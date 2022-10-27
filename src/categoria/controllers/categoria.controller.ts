@@ -15,7 +15,7 @@ import { categoriaService } from "../services/categoria.service";
  * @Controller - Decorador que indicara que a classe é do tipo RestController e será composto por 
  * URL, Verbo (referenciando qual HTTP será utilizado), RequestBody e como repsosta o controller retornar o código de HTTP Status
  */
-@UserGuards(JwtAuthGuard)
+@UserGuards(JwtAuthGuard) //// verifica se a parte do token esta correta
 @Controller('/categoria')
 export class CategoriaController{
     constructor (private readonly categoriaService: categoriaService) {}
