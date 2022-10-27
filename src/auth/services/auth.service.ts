@@ -1,6 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 
+/**
+ *  indica que a classe é do tipo Service (Classe de Serviço), 
+que pode ser Injetada em outras Classes através da Injeção de Dependências.
+ */
 @Injectable()
 export class AuthService {
     constructor(
@@ -8,7 +12,11 @@ export class AuthService {
         private jwtService: JwtService,
         private bcrypt: Bcrypt
     ) {}
-
+    
+    /**
+     * @disc Verfica e valida a entrada do usuario
+     * @returns Um resultado caso a senha esteja certa
+     */
     async validateUser(usarname: string, password: string): Promise<any> {
         const buscaUsuario = await this.usuarioService.findByUsuario(usarname);
 
@@ -23,6 +31,10 @@ export class AuthService {
         }
         return null;
     }
+    /**
+     * @disc Loga o usuario no sistema
+     * @returns Gera um token para que seja possivel fazer o login
+     */
     async login(usuarioLogin: any) {
         const payload = {
             username: usuarioLogin.usuario,
