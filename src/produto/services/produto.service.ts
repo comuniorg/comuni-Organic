@@ -51,7 +51,7 @@ export class ProdutoService {
      * @param nome Identeificador para consultar o produto por nome
      * @returns O produto com o nome do identificador
      */
-    async findByName(nome: string): Promise<Produto[]>{
+    async findByNome(nome: string): Promise<Produto[]>{
         return await this.produtoRepository.find({
             where:{
                 nome:ILike(`%${nome}%`)

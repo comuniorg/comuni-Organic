@@ -44,7 +44,7 @@ export class ProdutoController{
     @HttpCode(HttpStatus.OK)
     findByNome(
         @Param('produto')produto: string): Promise<Produto[]>{
-            return this.produtoService.findByName(produto);
+            return this.produtoService.findByNome(produto);
     }
 
 /**
