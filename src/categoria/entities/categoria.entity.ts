@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator";
-import { Produto } from "src/produto/entities/produto.entity";
+import { Produto } from "../../produto/entities/produto.entity";
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 /**

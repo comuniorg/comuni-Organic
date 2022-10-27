@@ -3,7 +3,7 @@ import { HttpCode } from "@nestjs/common/decorators/http/http-code.decorator";
 import { Delete, Get, Post, Put } from "@nestjs/common/decorators/http/request-mapping.decorator";
 import { Body, Param } from "@nestjs/common/decorators/http/route-params.decorator";
 import { ParseIntPipe } from "@nestjs/common/pipes/parse-int.pipe";
-import { JwtAuthGuard } from "src/auth/guard/jwt-auth-guard";
+import { JwtAuthGuard } from "../../auth/guard/jwt-auth-guard";
 import { Categoria } from "../entities/categoria.entity";
 import { categoriaService } from "../services/categoria.service";
 import { UseGuards } from "@nestjs/common";
