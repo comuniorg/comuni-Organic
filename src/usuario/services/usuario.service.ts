@@ -69,4 +69,3 @@ export class UsuarioService {
         usuario.senha = await this.bcrypt.criptografarSenha(usuario.senha)
         return await this.usuarioRepository.save(usuario);
     }
-}
