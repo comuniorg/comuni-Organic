@@ -18,7 +18,7 @@ describe('Testes dos Módulos Usuários e Auth (e2e)', () => {
         port: 3306,
         username: 'root',
         password: 'root',
-        database: 'db_blogpessoal_test',
+        database: 'db_organica_test',
         autoLoadEntities: true,
         synchronize: true,
         logging: false,
@@ -33,7 +33,7 @@ describe('Testes dos Módulos Usuários e Auth (e2e)', () => {
 
   it('01 - Deve cadastrar o Usuario', async () => {
     const resposta = await request(app.getHttpServer())
-      .post('usuario/cadastrar')
+      .post('/usuarios/cadastrar')
       .send({
         nome: 'Root',
         usuario: 'root@root.com',
@@ -58,7 +58,7 @@ describe('Testes dos Módulos Usuários e Auth (e2e)', () => {
 
   it('03 - Não deve duplicar o Usuario', async () => {
     request(app.getHttpServer())
-    .post('/usuario/cadastrar')
+    .post('/usuarios/cadastrar')
     .send({
       nome: 'Root',
       usuario: 'root@root.com',
@@ -70,7 +70,7 @@ describe('Testes dos Módulos Usuários e Auth (e2e)', () => {
 
   it('04 - Deve listar todos os Usuarios', async () =>{
     request(app.getHttpServer())
-      .get('/usuario/all')
+      .get('/usuarios/all')
       .set('Authorization', `${token}`)
       .send({})
     expect(HttpStatus.OK)
@@ -78,7 +78,7 @@ describe('Testes dos Módulos Usuários e Auth (e2e)', () => {
 
   it('05 - Deve atualizar o Usuario', async () => {
     request(app.getHttpServer)
-    .put('/usuario/atualizar')
+    .put('/usuarios/atualizar')
     .set('Authorization', `${token}`)
     .send({
       id: usuarioId,
