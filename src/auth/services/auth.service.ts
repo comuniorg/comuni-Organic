@@ -1,5 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
+import { UsuarioService } from "../../usuario/services/usuario.service";
+import { Bcrypt } from "../bcrypt/bcrypt";
 
 /**
  *  indica que a classe é do tipo Service (Classe de Serviço), 
