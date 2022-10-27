@@ -3,6 +3,7 @@ import { HttpCode } from "@nestjs/common/decorators/http/http-code.decorator";
 import { Delete, Get, Post, Put } from "@nestjs/common/decorators/http/request-mapping.decorator";
 import { Body, Param } from "@nestjs/common/decorators/http/route-params.decorator";
 import { ParseIntPipe } from "@nestjs/common/pipes/parse-int.pipe";
+import { JwtAuthGuard } from "src/auth/guard/jwt-auth-guard";
 import { Categoria } from "../entities/categoria.entity";
 import { categoriaService } from "../services/categoria.service";
 
@@ -14,6 +15,7 @@ import { categoriaService } from "../services/categoria.service";
  * @Controller - Decorador que indicara que a classe é do tipo RestController e será composto por 
  * URL, Verbo (referenciando qual HTTP será utilizado), RequestBody e como repsosta o controller retornar o código de HTTP Status
  */
+@UserGuards(JwtAuthGuard)
 @Controller('/categoria')
 export class CategoriaController{
     constructor (private readonly categoriaService: categoriaService) {}
