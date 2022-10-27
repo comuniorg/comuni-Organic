@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator";
-import { Categoria } from "src/categoria/entities/categoria.entity";
+import { Categoria } from "../../categoria/entities/categoria.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
