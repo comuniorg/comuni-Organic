@@ -1,11 +1,3 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, Put, UseGuards } from "@nestjs/common";
-import { HttpStatus } from "@nestjs/common";
-import { UsuarioService } from "../service/usuario.service";
-import { Usuario } from "../entities/usuario.entity";
-import { UseGuards } from "@nestjs/common";
-import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
-
-
 
 /**
  * 
@@ -13,6 +5,11 @@ import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
  * pelo @UseGuards, o segundo será o de cadastrar o usuário, no qual utilirá o método @Post e atualizar cadastro 
  * introduzido no método @Put. 
  */
+
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Put, UseGuards } from "@nestjs/common";
+import { JwtAuthGuard } from "src/auth/guard/jwt-auth-guard";
+import { Usuario } from "../entities/usuario.entity";
+import { UsuarioService } from "../services/usuario.service";
 
 
 @Controller('/usuarios')
