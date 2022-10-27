@@ -24,14 +24,14 @@ export class UsuarioController {
     @UseGuards (JwtAuthGuard)
     @Get('/all')
     @HttpCode (HttpStatus.OK)
-    findAll(): Promise<Usuario[]> {
-        return this.usuarioService.findAll();
+    async findAll(): Promise<Usuario[]> {
+        return await this.usuarioService.findAll();
     }
 
     @Post('/cadastrar')
     @HttpCode(HttpStatus.CREATED)
     async create(@Body() usuario: Usuario): Promise<Usuario>{
-        return this.usuarioService.create(usuario);
+        return await this.usuarioService.create(usuario);
    
     }
 
