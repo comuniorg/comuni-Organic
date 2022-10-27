@@ -40,6 +40,7 @@ export class categoriaService{
         return categoria;
     }
 
+
     /**
      * @disc Consulta a categoria por nome
      * @param nome Identeificador para consultar a categoria por nome
