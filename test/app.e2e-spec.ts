@@ -13,22 +13,27 @@ describe('Testes dos Módulos Usuários e Auth (e2e)', () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot({
-        type: 'mysql',
-        host: 'localhost',
-        port: 3306,
-        username: 'root',
-        password: 'root',
-        database: 'db_organica_test',
-        autoLoadEntities: true,
-        synchronize: true,
-        logging: false,
-        dropSchema: true
+          type: 'mysql',
+          host: 'localhost',
+          port: 3306,
+          username: 'root',
+          password: 'root',
+          database: 'db_organica_test',
+          autoLoadEntities: true,
+          synchronize: true,
+          logging: false,
+          dropSchema: true
         }),
-      AppModule],
+        AppModule
+      ],
     }).compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 
   it('01 - Deve cadastrar o Usuario', async () => {
@@ -38,12 +43,13 @@ describe('Testes dos Módulos Usuários e Auth (e2e)', () => {
         nome: 'Root',
         usuario: 'root@root.com',
         senha: 'rootroot',
-        foto: ''
+        foto: ' '
       });
       expect(HttpStatus.OK)
 
       usuarioId = resposta.body.id
   });
+
   it('02 - Deve autentificar Usuário (login)', async () =>{
     const resposta = await request(app.getHttpServer())
     .post('/auth/logar')
@@ -63,7 +69,7 @@ describe('Testes dos Módulos Usuários e Auth (e2e)', () => {
       nome: 'Root',
       usuario: 'root@root.com',
       senha: 'rootroot',
-      foto: ''
+      foto: ' '
     });
     expect(HttpStatus.BAD_REQUEST);
   });
@@ -74,10 +80,10 @@ describe('Testes dos Módulos Usuários e Auth (e2e)', () => {
       .set('Authorization', `${token}`)
       .send({})
     expect(HttpStatus.OK)
-  })
+  });
 
   it('05 - Deve atualizar o Usuario', async () => {
-    request(app.getHttpServer)
+    request(app.getHttpServer())
     .put('/usuarios/atualizar')
     .set('Authorization', `${token}`)
     .send({
@@ -85,11 +91,11 @@ describe('Testes dos Módulos Usuários e Auth (e2e)', () => {
       nome: 'Root Atualizado',
       usuario: 'root@root.com',
       senha: 'rootroot',
-      foto: ''
-  })
-  .then(resposta => {
-    expect('Root Atualizado').toEqual(resposta.body.name)
-  })
-  expect(HttpStatus.OK)
+      foto: ' '
+    })
+    .then(resposta => {
+      expect('Root Atualizado').toEqual(resposta.body.name)
+    })
+    expect(HttpStatus.OK)
   });
 });
