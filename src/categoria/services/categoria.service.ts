@@ -20,7 +20,11 @@ export class categoriaService{
      * @returns todos as categorias que estão no banco de dados
      */
     async findAll(): Promise<Categoria[]>{
-        return await this.categoriaRepository.find();
+        return await this.categoriaRepository.find({
+            relations:{
+                produto: true
+            }
+        });
     }
 
     /**
@@ -32,6 +36,9 @@ export class categoriaService{
         let categoria = await this.categoriaRepository.findOne({
             where:{
                 id
+            },
+            relations:{
+                produto: true
             }
         });
 
