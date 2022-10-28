@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { Bcrypt } from "../auth/bcrypt/bcrypt";
 import { CategoriaController } from "./controllers/categoria.controller";
 import { Categoria } from "./entities/categoria.entity";
 import { categoriaService } from "./services/categoria.service";
@@ -13,7 +14,7 @@ import { categoriaService } from "./services/categoria.service";
     controllers: [CategoriaController],
     exports: [TypeOrmModule],
     imports: [TypeOrmModule.forFeature([Categoria])],
-    providers: [categoriaService],
+    providers: [categoriaService, Bcrypt],
 })
 
 export class CategoriaModule {};
