@@ -7,6 +7,7 @@ import { JwtAuthGuard } from "../../auth/guard/jwt-auth-guard";
 import { Categoria } from "../entities/categoria.entity";
 import { categoriaService } from "../services/categoria.service";
 import { UseGuards } from "@nestjs/common";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 /**
  * A classe controller irá controlar a classe Produto e ocorrerá aqui a implementação de métodos que responderão
@@ -15,8 +16,10 @@ import { UseGuards } from "@nestjs/common";
  * @Controller - Decorador que indicara que a classe é do tipo RestController e será composto por 
  * URL, Verbo (referenciando qual HTTP será utilizado), RequestBody e como repsosta o controller retornar o código de HTTP Status
  */
+@ApiTags('Categoria')
 @UseGuards(JwtAuthGuard) //// verifica se a parte do token esta correta
 @Controller('/categoria')
+@ApiBearerAuth()
 export class CategoriaController{
     constructor (private readonly categoriaService: categoriaService) {}
 

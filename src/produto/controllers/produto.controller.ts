@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth-guard";
 import { Produto } from "../entities/produto.entity";
 import { ProdutoService } from "../services/produto.service";
@@ -10,8 +11,10 @@ import { ProdutoService } from "../services/produto.service";
  * @Controller - Decorador que indicara que a classe é do tipo RestController e será composto por 
  * URL, Verbo (referenciando qual HTTP será utilizado), RequestBody e como repsosta o controller retornar o código de HTTP Status
  */
+@ApiTags('Produto')
 @UseGuards(JwtAuthGuard) // verifica se a parte do token esta correta
 @Controller('/produto')
+@ApiBearerAuth()
 export class ProdutoController{
     constructor (private readonly produtoService: ProdutoService) {}
 

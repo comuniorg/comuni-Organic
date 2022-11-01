@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { CategoriaModule } from './categoria/categoria.module';
-import { Categoria } from './categoria/entities/categoria.entity';
-import { Produto } from './produto/entities/produto.entity';
 import { ProdutoModule } from './produto/produto.module';
-import { Usuario } from './usuario/entities/usuario.entity';
 import { TypeOrmModule } from '@nestjs/typeorm/dist';
 import { UsuarioModule } from './usuario/usuario.module';
 import { AuthModule } from './auth/auth.module';
+import { AppController } from './app.controller';
+import { Categoria } from './categoria/entities/categoria.entity';
+import { Produto } from './produto/entities/produto.entity';
+import { Usuario } from './usuario/entities/usuario.entity';
 
 /**
  * @desc O module são definidas as estrutudas de dados, relacionamentos e dependencias.
@@ -43,7 +44,7 @@ import { AuthModule } from './auth/auth.module';
       UsuarioModule,
       AuthModule
     ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 

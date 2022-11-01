@@ -18,7 +18,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
   .setTitle('Comunidade Organica')
-  .setDescription('Comunidade Orgnanica')
+  .setDescription(' Projeto Comunidade Orgnanica')
   .setContact('Comunidade Organica', 'https://github.com/comuniorg', 'comuni.organacia@gmail.com')
   .setVersion('1.0')
   .addBearerAuth()
