@@ -13,8 +13,8 @@ import { AuthModule } from './auth/auth.module';
  * as classes entidade, service e controller devem estar registradas no module.
  */
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
+    imports: [
+   /* TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
@@ -23,7 +23,17 @@ import { AuthModule } from './auth/auth.module';
       database: 'db_organica',
       entities: [Produto, Categoria, Usuario],
       synchronize: true
-    }),
+    }), */
+
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      url:  process.env.DATABASE_URL,
+      logging: false,
+      dropSchema: false,
+      ssl: { rejectUnauthorized: false },
+      synchronize: true,
+      autoLoadEntities: true
+    }), 
 /**
  * @desc as classes CategoriaModule e ProdutoModule são modulos que gerencia os services, controllers e entities.
  *  Ela é exportada para o app.module.
