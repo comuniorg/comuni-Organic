@@ -11,7 +11,7 @@ function Rodape(){
           <Grid item container xs={6} justifyContent="space-evenly">
             <Grid item>
               <a href="#">
-                <img src={github} alt="Discord"/>
+                <img src={github} alt="Github"/>
               </a>
             </Grid>
             <Grid>

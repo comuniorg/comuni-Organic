@@ -1,11 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Home } from "./componentes/home/Home";
+import { Home } from "./pages/home/Home";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './componentes/estaticos/navbar/Navbar';
 import { Rodape } from './componentes/estaticos/rodape/Rodape';
-import { About } from './componentes/about/About';
+import { Sobre } from './pages/sobre/Sobre';
+import { Produtos } from './pages/produtos/Produtos';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/home' element={<Home/>} />
-        <Route path='/about' element={<About/>} />
+        <Route path='/sobre' element={<Sobre/>} />
+        <Route path='/produtos' element={<Produtos/>} />
       </Routes>
       <Rodape/>
     </Router>

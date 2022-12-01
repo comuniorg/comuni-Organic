@@ -1,7 +1,7 @@
 import React from 'react';
-import './About.css';
+import './Sobre.css';
 
-function About(){
+function Sobre(){
   return(
     <>
       <h1>About</h1>
@@ -9,4 +9,4 @@ function About(){
   );
 }
 
-export { About };
+export { Sobre };
