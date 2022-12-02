@@ -7,6 +7,10 @@ import Navbar from './componentes/estaticos/navbar/Navbar';
 import { Rodape } from './componentes/estaticos/rodape/Rodape';
 import { Sobre } from './pages/sobre/Sobre';
 import { Produtos } from './pages/produtos/Produtos';
+import CadastrarUsuario from './pages/cadastrarusuario/CadastrarUsuario';
+
+
+
 
 function App() {
   return (
@@ -17,6 +21,7 @@ function App() {
         <Route path='/home' element={<Home/>} />
         <Route path='/sobre' element={<Sobre/>} />
         <Route path='/produtos' element={<Produtos/>} />
+        <Route path="/cadastrarusuario" element={<CadastrarUsuario/>} />
       </Routes>
       <Rodape/>
     </Router>
