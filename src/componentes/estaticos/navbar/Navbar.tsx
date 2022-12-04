@@ -198,6 +198,12 @@ export default function Navbar() {
               <p> Sobre </p>
             </Link>
           </IconButton>
+          
+          <IconButton>
+            <Link to="/login">
+              <p> Logout </p>
+            </Link>
+          </IconButton>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}

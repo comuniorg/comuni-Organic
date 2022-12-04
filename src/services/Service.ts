@@ -1,10 +1,15 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: 'https://db-organica-tgxd.onrender.com/'
-})
+    baseURL: 'https://db-organica-tgxd.onrender.com'
+});
 
-export const cadastroUsuario = async(url: string, dados: {nome: string, usuario: string, senha: string}, setDado: any) => {
-    const resposta = await api.post(url,dados)
+export const cadastroUsuario = async(url: any, dados: any, setDado: any) => {
+    const resposta = await api.post(url, dados)
     setDado(resposta.data)
+}
+
+export const login = async(url: any, dados: any, setDado: any) => {
+    const resposta = await api.post(url, dados)
+    setDado(resposta.data.token)
 }

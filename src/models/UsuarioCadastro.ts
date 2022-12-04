@@ -1,9 +1,8 @@
-interface Cadastro {
+interface CadastroCadastro {
     id: number,
     nome: string,
     usuario: string,
     senha: string,
-    confirmarSenha: string
 }
 
-export default Cadastro;
+export default CadastroCadastro;
