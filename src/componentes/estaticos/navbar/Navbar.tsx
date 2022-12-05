@@ -15,7 +15,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import "./Navbar.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -84,6 +84,9 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function Navbar() {
+
+  let navigate = useNavigate();
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -165,6 +168,11 @@ export default function Navbar() {
     </Menu>
   );
 
+  function logout(){
+    localStorage.removeItem('token');
+    navigate('/login');
+  }
+
   return (
     <div className={classes.grow}>
       <AppBar position="static">
@@ -199,10 +207,8 @@ export default function Navbar() {
             </Link>
           </IconButton>
           
-          <IconButton>
-            <Link to="/login">
-              <p> Logout </p>
-            </Link>
+          <IconButton onClick={logout}>
+            <p> Logout </p>
           </IconButton>
         </Toolbar>
       </AppBar>
