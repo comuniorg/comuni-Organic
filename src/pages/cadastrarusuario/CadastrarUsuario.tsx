@@ -3,7 +3,6 @@ import { Grid, Typography, Button, TextField } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import './CadastrarUsuario.css';
-import Usuario from '../../models/UsuarioLogin';
 import { cadastroUsuario } from '../../services/Service';
 import UsuarioLogin from '../../models/UsuarioLogin';
 
@@ -11,7 +10,7 @@ function CadastrarUsuario() {
 
   let navigate = useNavigate();
 
-  const [confirmarSenha, setConfirmarSenha] = useState<string>('');
+  const [confirmarSenha, setConfirmarSenha] = useState<string>("");
 
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
     {
@@ -19,7 +18,7 @@ function CadastrarUsuario() {
       nome: '',
       usuario: '',
       senha: '',
-      token: '',
+      foto: ''
     }
   )
 
@@ -29,7 +28,7 @@ function CadastrarUsuario() {
       nome: '',
       usuario: '',
       senha: '',
-      token: '',
+      foto: '',
     }
   )
 
@@ -67,11 +66,19 @@ function CadastrarUsuario() {
       <Grid item xs={12} sm={9} md={6} alignItems='center'>
         <Box paddingX={10}>
           <form onSubmit={onSubmit}>
+            
             <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos2'>Cadastrar</Typography>
+            
             <TextField value={usuarioLogin.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='nome' label='nome' variant='outlined' name='nome' margin='normal' fullWidth />
+            
             <TextField value={usuarioLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth />
+            
+            <TextField value={usuarioLogin.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='foto' label='foto' variant='outlined' name='foto' margin='normal' fullWidth />
+            
             <TextField value={usuarioLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
+            
             <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth />
+
             <Box marginTop={2} textAlign='center'>
               <Link to='/login' className='text-decorator-none'>
                 <Button variant='contained' color='secondary' className='btnCancelar'>

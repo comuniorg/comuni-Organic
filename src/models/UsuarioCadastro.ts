@@ -3,6 +3,7 @@ interface CadastroCadastro {
     nome: string,
     usuario: string,
     senha: string,
+    foto: string,
 }
 
 export default CadastroCadastro;
