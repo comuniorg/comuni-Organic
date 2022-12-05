@@ -48,8 +48,8 @@ function Login() {
 
   return (
     <>
-      <Grid container direction='row' justifyContent='center' alignItems='center'>
-        <Grid alignItems='center' xs={12} sm={9} md={6}>
+      <Grid container direction='row' justifyContent='center' className='alignItems-center1'>
+        <Grid item className='alignItems-center1' xs={12} sm={9} md={6}>
           <Box paddingX={10} sx={{ my: 10 }}>
             <form onSubmit={onSubmit}>
               <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos1'>Entrar</Typography>

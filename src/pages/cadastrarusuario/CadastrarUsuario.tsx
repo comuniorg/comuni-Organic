@@ -62,8 +62,8 @@ function CadastrarUsuario() {
   }
 
   return (
-    <Grid container direction='row' justifyContent='center' alignItems='center'>
-      <Grid item xs={12} sm={9} md={6} alignItems='center'>
+    <Grid container direction='row' justifyContent='center' className='alignItems-center2'>
+      <Grid item xs={12} sm={9} md={6} className='alignItems-center2'>
         <Box paddingX={10}>
           <form onSubmit={onSubmit}>
             
