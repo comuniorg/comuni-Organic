@@ -1,5 +1,5 @@
 import { Grid } from "@material-ui/core";
-import React from "react";
+import React from 'react';
 import github from '../../../assets/images/github.svg';
 import discord from '../../../assets/images/discord.svg';
 import "./Rodape.css";
