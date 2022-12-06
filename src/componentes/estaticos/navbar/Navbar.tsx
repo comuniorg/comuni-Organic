@@ -13,6 +13,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import "./Navbar.css";
 import { Link, useNavigate } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -81,8 +82,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function Navbar() {
-
-  let navigate = useNavigate();
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -165,8 +164,14 @@ export default function Navbar() {
     </Menu>
   );
 
-  function logout(){
-    localStorage.removeItem('token');
+
+  let navigate = useNavigate();
+
+  const [token, setToken] = useLocalStorage('token');
+
+  function goLogout(){
+    setToken('');
+    alert('usuário deslogado!');
     navigate('/login');
   }
 
@@ -204,7 +209,7 @@ export default function Navbar() {
             </Link>
           </IconButton>
           
-          <IconButton onClick={logout}>
+          <IconButton onClick={goLogout}>
             <p> Logout </p>
           </IconButton>
         </Toolbar>
