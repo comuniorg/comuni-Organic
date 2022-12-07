@@ -1,6 +1,6 @@
 <h1>🥗 Comunidade Orgânica</h1>
 
-<img src="https://i.imgur.com/SfZp8Xg.png" alt="co_banner"/>
+<img src="https://i.imgur.com/6CMF4xd.png" alt="co_banner"/>
 
 ## Descrição
 
