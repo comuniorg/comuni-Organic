@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './componentes/estaticos/navbar/Navbar';
 import { Rodape } from './componentes/estaticos/rodape/Rodape';
 import { Sobre } from './pages/sobre/Sobre';
-import { Produtos } from './pages/produtos/Produtos';
 import { Login } from './pages/login/Login';
 import CadastrarUsuario from './pages/cadastrarusuario/CadastrarUsuario';
+import { ListaProdutos } from './componentes/produtos/listaprodutos/ListaProdutos';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path='/login' element={<Login/>} />
         <Route path='/home' element={<Home/>} />
         <Route path='/sobre' element={<Sobre/>} />
-        <Route path='/produtos' element={<Produtos/>} />
+        <Route path='/produtos' element={<ListaProdutos/>} />
         <Route path="/cadastrarusuario" element={<CadastrarUsuario/>} />
       </Routes>
       <Rodape/>
