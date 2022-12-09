@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -37,58 +37,60 @@ function ListaProdutos() {
 
   return (
     <>
-      {
-        produtos.map(produto => (
-          <Box m={2} >
-            <Card variant="outlined">
-              <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Produtos
-                </Typography>
-                
-                <Typography variant="h5" component="h2">
-                  {produto.nome}
-                </Typography>
+      <Grid container>
+        {
+          produtos.map(produto => (
+            <Grid item xs={6} sm={4} md={3}>
+              <Box m={2}>
+                <Card variant="outlined">
+                  <CardContent>
+                    <img src={produto.nome} alt="foto" style={{width: '400px'}}/>
 
-                <Typography variant="body2" component="p">
-                  {produto.data_ven}
-                </Typography>
+                    <Typography variant="h5" component="h2">
+                      {produto.nome}
+                    </Typography>
 
-                <Typography variant="body2" component="p">
-                  {produto.preco}
-                </Typography>
+                    <Typography variant="body2" component="p">
+                      Data de vencimento: {produto.data_ven}
+                    </Typography>
 
-                <Typography variant="body2" component="p">
-                  {produto.categoria?.categoria}
-                </Typography>
+                    <Typography variant="body2" component="p">
+                      R$: {produto.preco}
+                    </Typography>
 
-                <Typography variant="body2" component="p">
-                  {produto.categoria?.localidade}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Box display="flex" justifyContent="center" mb={1.5}>
+                    <Typography variant="body2" component="p">
+                      Categoria: {produto.categoria?.categoria}
+                    </Typography>
 
-                  <Link to={`/formularioProduto/${produto.id}`} className="text-decorator-none" >
-                    <Box mx={1}>
-                      <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                        atualizar
-                      </Button>
+                    <Typography variant="body2" component="p">
+                      Localidade: {produto.categoria?.localidade}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Box display="flex" justifyContent="center" mb={1.5}>
+
+                      <Link to={`/formularioProduto/${produto.id}`} className="text-decorator-none" >
+                        <Box mx={1}>
+                          <Button variant="contained" className="marginLeft" size='small' color="primary" >
+                            atualizar
+                          </Button>
+                        </Box>
+                      </Link>
+                      <Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none">
+                        <Box mx={1}>
+                          <Button variant="contained" size='small' color="secondary">
+                            deletar
+                          </Button>
+                        </Box>
+                      </Link>
                     </Box>
-                  </Link>
-                  <Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none">
-                    <Box mx={1}>
-                      <Button variant="contained" size='small' color="secondary">
-                        deletar
-                      </Button>
-                    </Box>
-                  </Link>
-                </Box>
-              </CardActions>
-            </Card>
-          </Box>
-        ))
-      }
+                  </CardActions>
+                </Card>
+              </Box>
+            </Grid>
+          ))
+        }
+      </Grid>
     </>
   );
 }
