@@ -4,7 +4,7 @@ interface Produto{
   id: number,
   nome: string,
   quantidade: number,
-  data_ven: number,
+  foto: string,
   preco: number,
   categoria?: Categoria | null
 }

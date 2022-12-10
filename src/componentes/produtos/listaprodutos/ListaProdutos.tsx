@@ -43,28 +43,26 @@ function ListaProdutos() {
             <Grid item xs={6} sm={4} md={3}>
               <Box m={2}>
                 <Card variant="outlined">
-                  <CardContent>
-                    <img src={produto.nome} alt="foto" style={{width: '400px'}}/>
+                  <CardContent className='flexbox' style={{minHeight: '450px'}}>
+                    <img src={produto.foto} alt="foto" style={{width: '300px'}}/>
 
-                    <Typography variant="h5" component="h2">
-                      {produto.nome}
-                    </Typography>
+                    <Box>
+                      <Typography variant="h5" component="h2">
+                        {produto.nome}
+                      </Typography>
 
-                    <Typography variant="body2" component="p">
-                      Data de vencimento: {produto.data_ven}
-                    </Typography>
+                      <Typography variant="body2" component="p">
+                        R$: {produto.preco}
+                      </Typography>
 
-                    <Typography variant="body2" component="p">
-                      R$: {produto.preco}
-                    </Typography>
+                      <Typography variant="body2" component="p">
+                        Categoria: {produto.categoria?.categoria}
+                      </Typography>
 
-                    <Typography variant="body2" component="p">
-                      Categoria: {produto.categoria?.categoria}
-                    </Typography>
-
-                    <Typography variant="body2" component="p">
-                      Localidade: {produto.categoria?.localidade}
-                    </Typography>
+                      <Typography variant="body2" component="p">
+                        Localidade: {produto.categoria?.localidade}
+                      </Typography>
+                    </Box>
                   </CardContent>
                   <CardActions>
                     <Box display="flex" justifyContent="center" mb={1.5}>
