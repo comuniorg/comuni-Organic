@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './CadastrarUsuario.css';
 import { cadastroUsuario } from '../../services/Service';
 import UsuarioCadastro from '../../models/UsuarioCadastro';
+import { toast } from 'react-toastify';
 
 function CadastrarUsuario() {
 
@@ -52,10 +53,28 @@ function CadastrarUsuario() {
 
     if(confirmarSenha == usuarioCadastro.senha){
       cadastroUsuario(`/usuarios/cadastrar`, usuarioCadastro, setUsuarioResult)
-      alert('usuario cadastrado com sucesso')
+      toast.success('Usuário cadastrado com sucesso', {
+				position: 'top-right', // position? topo direita
+				autoClose: 2000, // Fechar automaticamente? após 2 segundos
+				hideProgressBar: false, // não mostrar o progresso? mostrar
+				closeOnClick: true, // fechar após o click? sim
+				pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+				draggable: false, // permitir mover a notificação do local? não
+				theme: 'light', // tema? light
+				progress: undefined // 
+			});
     }
     else{
-      alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+      toast.error('Dados inconsistentes. Favor verificar as informações de cadastro', {
+        position: 'top-right', // position? topo direita
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
     }
   }
 

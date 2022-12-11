@@ -13,7 +13,10 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import "./Navbar.css";
 import { Link, useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
+import { useDispatch, useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { addToken } from '../../../store/tokens/actions';
+import { toast } from 'react-toastify';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -167,11 +170,23 @@ export default function Navbar() {
 
   let navigate = useNavigate();
 
-  const [token, setToken] = useLocalStorage('token');
+  const dispatch = useDispatch();
+  const token = useSelector<TokenState, TokenState['tokens']>(
+    (state) => state.tokens
+  )
 
   function goLogout(){
-    setToken('');
-    alert('usuário deslogado!');
+    dispatch(addToken(''))
+    toast.info('Usuário deslogado', {
+      position: 'top-right', // position? topo direita
+      autoClose: 2000, // Fechar automaticamente? após 2 segundos
+      hideProgressBar: false, // não mostrar o progresso? mostrar
+      closeOnClick: true, // fechar após o click? sim
+      pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+      draggable: false, // permitir mover a notificação do local? não
+      theme: 'light', // tema? light
+      progress: undefined // 
+    });
     navigate('/login');
   }
 
