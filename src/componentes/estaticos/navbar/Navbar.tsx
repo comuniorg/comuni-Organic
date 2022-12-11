@@ -190,47 +190,61 @@ export default function Navbar() {
     navigate('/login');
   }
 
+  let navbarComponents;
+  
+  if(token != ''){
+    navbarComponents = <div className={classes.grow}>
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="open drawer"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography className={classes.title} variant="h6" noWrap>
+          Comunidade organica
+        </Typography>
+
+        <IconButton>
+          <Link to="/home" className='text-decorator-none'>
+            <p> Home </p>
+          </Link>
+        </IconButton>
+
+        <IconButton>
+          <Link to="/produtos" className='text-decorator-none'>
+            <p> Produtos </p>
+          </Link>
+        </IconButton>
+        
+        <IconButton>
+          <Link to="/cadastroproduto" className='text-decorator-none'>
+            <p> Cadastrar produto </p>
+          </Link>
+        </IconButton>
+
+        <IconButton>
+          <Link to="/sobre" className='text-decorator-none'>
+            <p> Sobre </p>
+          </Link>
+        </IconButton>
+        
+        <IconButton onClick={goLogout}>
+          <p> Logout </p>
+        </IconButton>
+      </Toolbar>
+    </AppBar>
+    {renderMobileMenu}
+    {renderMenu}
+  </div>
+  }
+
   return (
-    <div className={classes.grow}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Comunidade organica
-          </Typography>
-
-          <IconButton>
-            <Link to="/home">
-              <p> Home </p>
-            </Link>
-          </IconButton>
-
-          <IconButton>
-            <Link to="/produtos">
-              <p> Produtos </p>
-            </Link>
-          </IconButton>
-
-          <IconButton>
-            <Link to="/sobre">
-              <p> Sobre </p>
-            </Link>
-          </IconButton>
-          
-          <IconButton onClick={goLogout}>
-            <p> Logout </p>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
+    <>
+      {navbarComponents}
+    </>
   );
 }

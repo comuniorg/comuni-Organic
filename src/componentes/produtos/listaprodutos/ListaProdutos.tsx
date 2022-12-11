@@ -71,6 +71,10 @@ function ListaProdutos() {
                       </Typography>
 
                       <Typography variant="body2" component="p">
+                        Quantidade: {produto.quantidade}
+                      </Typography>
+
+                      <Typography variant="body2" component="p">
                         Categoria: {produto.categoria?.categoria}
                       </Typography>
 
@@ -81,11 +85,10 @@ function ListaProdutos() {
                   </CardContent>
                   <CardActions>
                     <Box display="flex" justifyContent="center" mb={1.5}>
-
-                      <Link to={`/formularioProduto/${produto.id}`} className="text-decorator-none" >
+                      <Link to={`/formularioProduto/${produto.id}`} className="text-decorator-none">
                         <Box mx={1}>
                           <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                            atualizar
+                            Comprar
                           </Button>
                         </Box>
                       </Link>

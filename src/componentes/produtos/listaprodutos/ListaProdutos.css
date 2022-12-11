@@ -7,3 +7,7 @@
 img{
     align-self: center;
 }
+
+.text-decorator-none{
+    text-decoration: none !important;
+}

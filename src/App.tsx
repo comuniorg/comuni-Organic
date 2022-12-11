@@ -12,6 +12,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import CadastroProduto from './componentes/produtos/cadastroproduto/CadastroProduto';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path='/sobre' element={<Sobre/>} />
             <Route path='/produtos' element={<ListaProdutos/>} />
             <Route path="/cadastrarusuario" element={<CadastrarUsuario/>} />
+            <Route path="/cadastroproduto" element={<CadastroProduto/>} />
           </Routes>
         </div>
         <Rodape/>
