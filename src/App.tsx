@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import CadastroProduto from './componentes/produtos/cadastroproduto/CadastroProduto';
+import DeletarProduto from './componentes/produtos/deletarproduto/DeletarProduto';
 
 function App() {
   return (
@@ -28,7 +29,9 @@ function App() {
             <Route path='/sobre' element={<Sobre/>} />
             <Route path='/produtos' element={<ListaProdutos/>} />
             <Route path="/cadastrarusuario" element={<CadastrarUsuario/>} />
-            <Route path="/cadastroproduto" element={<CadastroProduto/>} />
+            <Route path="/formularioproduto" element={<CadastroProduto/>} />
+            <Route path="/formularioproduto/:id" element={<CadastroProduto/>} />
+            <Route path="/deletarproduto/:id" element={<DeletarProduto/>} />
           </Routes>
         </div>
         <Rodape/>

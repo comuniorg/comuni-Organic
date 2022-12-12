@@ -221,7 +221,7 @@ export default function Navbar() {
         </IconButton>
         
         <IconButton>
-          <Link to="/cadastroproduto" className='text-decorator-none'>
+          <Link to="/formularioproduto" className='text-decorator-none'>
             <p> Cadastrar produto </p>
           </Link>
         </IconButton>
