@@ -3,19 +3,18 @@ import { alpha, makeStyles, Theme, createStyles } from '@material-ui/core/styles
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import "./Navbar.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import SearchIcon from '@material-ui/icons/Search';
 import SDrawer from '../drawer/Drawer';
+import { InputBase } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,6 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     searching: {
       marginRight: theme.spacing(2),
+      color: '#BC6C25',
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -46,11 +46,10 @@ const useStyles = makeStyles((theme: Theme) =>
       '&:hover': {
         backgroundColor: alpha(theme.palette.common.white, 0.25),
       },
-      marginRight: theme.spacing(3),
       marginLeft: 0,
       width: '100%',
       [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
+        marginLeft: theme.spacing(1),
         width: 'auto',
       },
     },
@@ -189,9 +188,19 @@ export default function Navbar() {
     <>
       <AppBar className={classes.grow} position="static">
         <Toolbar className={classes.toolbar}>
-          <IconButton className={classes.searching} aria-label="search" color="inherit">
-            <SearchIcon />
-          </IconButton>
+        <div className={classes.searching}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </div>
           <SDrawer />
         </Toolbar>
       </AppBar>
