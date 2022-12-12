@@ -93,7 +93,7 @@ function CadastroProduto() {
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    if (id !== undefined) {
+    if (id !== undefined && produto.nome != '' && produto.quantidade > 0 && produto.foto && produto.preco > 0) {
       put(`/produto`, produto, setProduto, {
         headers: {
           'Authorization': token
@@ -110,7 +110,7 @@ function CadastroProduto() {
 				progress: undefined // 
 			});
     }
-    else {
+    else if(produto.nome != '' && produto.quantidade > 0 && produto.foto && produto.preco > 0){
       post(`/produto`, produto, setProduto, {
         headers: {
           'Authorization': token
