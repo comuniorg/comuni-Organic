@@ -189,18 +189,16 @@ export default function Navbar() {
       <AppBar className={classes.grow} position="static">
         <Toolbar className={classes.toolbar}>
         <div className={classes.searching}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
+            <SearchIcon className={classes.searchIcon} />
             <InputBase
-              placeholder="Search…"
+              placeholder="Busca..."
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+        </div>
           <SDrawer />
         </Toolbar>
       </AppBar>
