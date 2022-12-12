@@ -2,8 +2,7 @@ import axios from 'axios';
 import UsuarioLogin from '../models/UsuarioLogin';
 
 export const api = axios.create({
-	//baseURL: 'https://db-organica-tgxd.onrender.com'
-	baseURL: 'http://localhost:4000'
+	baseURL: 'https://db-organica-tgxd.onrender.com'
 });
 
 export const cadastroUsuario = async (url: string, dados: {nome: string, usuario: string, senha: string}, setDado: React.Dispatch<React.SetStateAction<UsuarioLogin>>) => {
