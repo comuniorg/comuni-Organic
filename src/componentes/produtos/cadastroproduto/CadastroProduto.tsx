@@ -93,7 +93,7 @@ function CadastroProduto() {
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    if (id !== undefined && produto.nome != '' && produto.quantidade > 0 && produto.foto && produto.preco > 0) {
+    if (id !== undefined && produto.quantidade > 0 && produto.preco > 0) {
       put(`/produto`, produto, setProduto, {
         headers: {
           'Authorization': token
@@ -110,7 +110,7 @@ function CadastroProduto() {
 				progress: undefined // 
 			});
     }
-    else if(produto.nome != '' && produto.quantidade > 0 && produto.foto && produto.preco > 0){
+    else if(produto.quantidade > 0 && produto.preco > 0){
       post(`/produto`, produto, setProduto, {
         headers: {
           'Authorization': token
@@ -127,6 +127,18 @@ function CadastroProduto() {
 				progress: undefined // 
 			});
     }
+    else{
+      toast.error('Você precisa preencher os campos', {
+        position: 'top-right', // position? topo direita
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
+    }
     back()
   }
 
@@ -140,19 +152,20 @@ function CadastroProduto() {
         <form onSubmit={onSubmit}>
           <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro</Typography>
 
-          <TextField value={produto.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="nome" label="nome" variant="outlined" name="nome" margin="normal" fullWidth />
+          <TextField value={produto.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="nome" label="nome" variant="outlined" name="nome" margin="normal" fullWidth required/>
 
-          <TextField value={produto.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="quantidade" label="quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth />
+          <TextField value={produto.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="quantidade" label="quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth/>
 
-          <TextField value={produto.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="foto" label="foto" name="foto" variant="outlined" margin="normal" fullWidth />
+          <TextField value={produto.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="foto" label="foto" name="foto" variant="outlined" margin="normal" fullWidth required/>
 
-          <TextField value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="preco" label="preco" name="preco" variant="outlined" margin="normal" fullWidth />
+          <TextField value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="preco" label="preco" name="preco" variant="outlined" margin="normal" fullWidth/>
 
           <FormControl >
             <InputLabel id="demo-simple-select-helper-label"></InputLabel>
               <Select
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
+                required
                 onChange={(e) => buscaId(`/categoria/${e.target.value}`, setCategoria, {
                   headers: {
                     'Authorization': token
