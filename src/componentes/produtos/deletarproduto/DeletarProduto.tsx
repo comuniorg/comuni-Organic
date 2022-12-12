@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useLocalStorage from 'react-use-localstorage';
 import Produto from '../../../models/Produto';
 import { buscaId, deleteId } from '../../../services/Service';
@@ -24,7 +25,16 @@ function DeletarProduto() {
 
   useEffect(() => {
     if (token == '') {
-      alert('você precisa estar logado')
+      toast.error('Você precisa estar logado', {
+        position: 'top-right', // position? topo direita
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
       navigate('/login')
     }
   }, [token])
@@ -50,7 +60,16 @@ function DeletarProduto() {
         'Authorization': token
       }
     });
-    alert('Postagem deletado com sucesso');
+    toast.success('Produto deletado com sucesso', {
+      position: 'top-right', // position? topo direita
+      autoClose: 2000, // Fechar automaticamente? após 2 segundos
+      hideProgressBar: false, // não mostrar o progresso? mostrar
+      closeOnClick: true, // fechar após o click? sim
+      pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+      draggable: false, // permitir mover a notificação do local? não
+      theme: 'light', // tema? light
+      progress: undefined // 
+    });
   }
   function nao() {
     navigate('/produtos');
