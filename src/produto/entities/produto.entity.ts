@@ -39,7 +39,7 @@ export class Produto{
     @ApiProperty()
     @IsNotEmpty()
     @Column({nullable: false})
-    data_ven: Date;
+    foto: string;
 
     @ApiProperty()
     @IsNotEmpty()
