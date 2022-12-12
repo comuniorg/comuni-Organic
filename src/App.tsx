@@ -5,24 +5,38 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './componentes/estaticos/navbar/Navbar';
 import { Rodape } from './componentes/estaticos/rodape/Rodape';
 import { Sobre } from './pages/sobre/Sobre';
-import { Produtos } from './pages/produtos/Produtos';
 import { Login } from './pages/login/Login';
 import CadastrarUsuario from './pages/cadastrarusuario/CadastrarUsuario';
+import { ListaProdutos } from './componentes/produtos/listaprodutos/ListaProdutos';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import CadastroProduto from './componentes/produtos/cadastroproduto/CadastroProduto';
+import DeletarProduto from './componentes/produtos/deletarproduto/DeletarProduto';
 
 function App() {
   return (
-    <Router>
-      <Navbar/>
-      <Routes>
-        <Route path='/' element={<Login/>} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/home' element={<Home/>} />
-        <Route path='/sobre' element={<Sobre/>} />
-        <Route path='/produtos' element={<Produtos/>} />
-        <Route path="/cadastrarusuario" element={<CadastrarUsuario/>} />
-      </Routes>
-      <Rodape/>
-    </Router>
+    <Provider store={store}>
+      <ToastContainer />
+      <Router>
+        <Navbar/>
+        <div style={{minHeight: '100vh'}}>
+          <Routes>
+            <Route path='/' element={<Login/>} />
+            <Route path='/login' element={<Login/>} />
+            <Route path='/home' element={<Home/>} />
+            <Route path='/sobre' element={<Sobre/>} />
+            <Route path='/produtos' element={<ListaProdutos/>} />
+            <Route path="/cadastrarusuario" element={<CadastrarUsuario/>} />
+            <Route path="/formularioproduto" element={<CadastroProduto/>} />
+            <Route path="/formularioproduto/:id" element={<CadastroProduto/>} />
+            <Route path="/deletarproduto/:id" element={<DeletarProduto/>} />
+          </Routes>
+        </div>
+        <Rodape/>
+      </Router>
+    </Provider>
   );
 }
 

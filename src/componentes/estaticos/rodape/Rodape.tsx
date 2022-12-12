@@ -7,7 +7,7 @@ import "./Rodape.css";
 function Rodape(){
     return(
       <>
-        <Grid container direction="row" justifyContent="space-evenly">
+        <Grid container direction="row" justifyContent="space-evenly" style={{paddingTop: '30px', paddingBottom: '30px'}} color='primary'>
           <Grid item container xs={6} justifyContent="space-evenly">
             <Grid item>
               <a href="#">
