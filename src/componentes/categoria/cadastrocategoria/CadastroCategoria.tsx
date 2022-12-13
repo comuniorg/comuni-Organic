@@ -48,7 +48,7 @@ function CadastroCategoria() {
   async function findById(id: string) {
     await buscaId(`/categoria/${id}`, setCategoria, {
       headers: {
-        'Authorization': token
+        Authorization: token
       }
     })
   }
@@ -66,7 +66,7 @@ function CadastroCategoria() {
     if (id !== undefined) {
       put(`/categoria`, categoria, setCategoria, {
         headers: {
-          'Authorization': token
+          Authorization: token
         }
       });
       toast.success('Produto atualizado com sucesso', {
@@ -83,7 +83,7 @@ function CadastroCategoria() {
     else{
       post(`/categoria`, categoria, setCategoria, {
         headers: {
-          'Authorization': token
+          Authorization: token
         }
       });
       toast.success('Produto cadastrado com sucesso', {
