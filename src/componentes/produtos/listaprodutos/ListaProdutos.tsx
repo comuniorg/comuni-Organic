@@ -55,7 +55,7 @@ function ListaProdutos() {
       <Grid container>
         {
           produtos.map(produto => (
-            <Grid item xs={6} sm={4} md={3}>
+            <Grid key={produto.id} item xs={6} sm={4} md={3}>
               <Box m={2}>
                 <Card variant="outlined">
                   <CardContent className='flexbox' style={{minHeight: '450px'}}>

@@ -1,10 +1,9 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
+import { Container, Typography, TextField, Button, InputLabel, MenuItem, FormControl, FormHelperText, Select } from "@material-ui/core"
 import './CadastroProduto.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { busca, buscaId, post, put } from '../../../services/Service';
 import Produto from '../../../models/Produto';
-import { Select} from '@mui/material';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
@@ -161,11 +160,10 @@ function CadastroProduto() {
           <TextField value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="preco" label="preco" name="preco" variant="outlined" margin="normal" fullWidth/>
 
           <FormControl >
-            <InputLabel id="demo-simple-select-helper-label"></InputLabel>
+            <InputLabel id="demo-simple-select-helper-label">Categoria</InputLabel>
               <Select
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
-                required
                 onChange={(e) => buscaId(`/categoria/${e.target.value}`, setCategoria, {
                   headers: {
                     'Authorization': token
@@ -173,8 +171,8 @@ function CadastroProduto() {
                 })}
               >
                 {
-                  categorias.map(categoria => (
-                    <MenuItem value={categoria.id}>
+                  categorias.map((categoria, index) => (
+                    <MenuItem key={categoria.id} value={categoria.id}>
                       {categoria.categoria + ' - ' + categoria.localidade}
                     </MenuItem>
                   ))

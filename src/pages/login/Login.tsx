@@ -77,8 +77,8 @@ function Login() {
           <Box paddingX={10} sx={{ my: 10 }}>
             <form onSubmit={onSubmit}>
               <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos1'>Entrar</Typography>
-              <TextField value={usuarioLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth required/>
-              <TextField value={usuarioLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth required/>
+              <TextField value={usuarioLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='usuario' variant='outlined' name='usuario' margin='normal' fullWidth required/>
+              <TextField value={usuarioLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth required/>
               <Box marginTop={2} textAlign='center'>
                 <Button type='submit' variant='contained' color='primary'>
                   Logar
