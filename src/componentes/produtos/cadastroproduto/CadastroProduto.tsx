@@ -69,7 +69,7 @@ function CadastroProduto() {
   async function getCategorias(){
     await busca(`/categoria`, setCategorias, {
       headers: {
-        'Authorization': token
+        Authorization: token
       }
     })
   }
@@ -77,7 +77,7 @@ function CadastroProduto() {
   async function findById(id: string) {
     await buscaId(`/produto/${id}`, setProduto, {
       headers: {
-        'Authorization': token
+        Authorization: token
       }
     })
   }
@@ -96,7 +96,7 @@ function CadastroProduto() {
     if (id !== undefined && produto.quantidade > 0 && produto.preco > 0) {
       put(`/produto`, produto, setProduto, {
         headers: {
-          'Authorization': token
+          Authorization: token
         }
       });
       toast.success('Produto atualizado com sucesso', {
@@ -113,7 +113,7 @@ function CadastroProduto() {
     else if(produto.quantidade > 0 && produto.preco > 0){
       post(`/produto`, produto, setProduto, {
         headers: {
-          'Authorization': token
+          Authorization: token
         }
       });
       toast.success('Produto cadastrado com sucesso', {
@@ -168,7 +168,7 @@ function CadastroProduto() {
                 required
                 onChange={(e) => buscaId(`/categoria/${e.target.value}`, setCategoria, {
                   headers: {
-                    'Authorization': token
+                    Authorization: token
                   }
                 })}
               >

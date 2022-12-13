@@ -48,7 +48,7 @@ function DeletarProduto() {
   async function findById(id: string) {
     buscaId(`/produto/${id}`, setProduto, {
       headers: {
-        'Authorization': token
+        Authorization: token
       }
     })
   }
@@ -57,7 +57,7 @@ function DeletarProduto() {
     navigate('/produtos');
     deleteId(`/produto/${id}`, {
       headers: {
-        'Authorization': token
+        Authorization: token
       }
     });
     toast.success('Produto deletado com sucesso', {
