@@ -4,12 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const useStyles = makeStyles({
   list: {
@@ -17,6 +16,26 @@ const useStyles = makeStyles({
   },
   fullList: {
     width: 'auto',
+    backgroundColor: '#FEFAE0',
+    color: '#BC6C25',
+  },
+  icons: {
+    color: '#BC6C25',
+    padding: '10px 20px',
+    '&:hover': {
+      backgroundColor: '#DDA15E',
+    },
+  },
+  typeIcons: {
+    marginRight: '10px',
+  },
+  menu: {
+    color: '#BC6C25',
+  },
+  items: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'left',
   },
 });
 
@@ -52,22 +71,10 @@ export default function SDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+      <List className={classes.items}>
+        <ListItem className={classes.icons}><HomeIcon className={classes.typeIcons}/>Home</ListItem>
+        <ListItem className={classes.icons}><AddShoppingCartIcon className={classes.typeIcons}/>Produtos</ListItem>
+        <ListItem className={classes.icons}><AddCircleIcon className={classes.typeIcons}/>Cadastrar Produto</ListItem>
       </List>
     </div>
   );
@@ -76,7 +83,7 @@ export default function SDrawer() {
     <div>
       {(['right'] as Anchor[]).map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Button onClick={toggleDrawer(anchor, true)}><MenuIcon className={classes.menu}/></Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
@@ -88,5 +95,5 @@ export default function SDrawer() {
         </React.Fragment>
       ))}
     </div>
-  );
+  );  
 }

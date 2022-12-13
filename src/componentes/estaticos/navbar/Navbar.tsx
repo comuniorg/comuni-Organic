@@ -39,28 +39,11 @@ const useStyles = makeStyles((theme: Theme) =>
         display: 'block',
       },
     },
-    search: {
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: alpha(theme.palette.common.white, 0.15),
-      '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-      },
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-      },
-    },
     searchIcon: {
-      padding: theme.spacing(0, 2),
-      height: '100%',
+      //padding: theme.spacing(0, 2),
+      height: '58%',
       position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      color: '#BC6C25',
     },
     inputRoot: {
       color: 'inherit',
@@ -188,17 +171,17 @@ export default function Navbar() {
     <>
       <AppBar className={classes.grow} position="static">
         <Toolbar className={classes.toolbar}>
-        <div className={classes.searching}>
-            <SearchIcon className={classes.searchIcon} />
-            <InputBase
-              placeholder="Busca..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-        </div>
+          <div className={classes.searching}>
+              <SearchIcon className={classes.searchIcon} />
+              <InputBase
+                placeholder="Busca..."
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
+          </div>
           <SDrawer />
         </Toolbar>
       </AppBar>
