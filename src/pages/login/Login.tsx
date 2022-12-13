@@ -72,7 +72,7 @@ function Login() {
                       <TextField className='opacidade' value={usuarioLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth />
                     </Grid>
                   </Grid>
-                  <Grid container alignItems='center' spacing={1}>
+                  <Grid container alignItems='center' spacing={2}>
                     <Grid item xs={1}>
                       <NoEncryption />
                     </Grid>
@@ -80,22 +80,22 @@ function Login() {
                       <TextField value={usuarioLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
                     </Grid>
                   </Grid>
-                  <Box marginTop={2} textAlign='center'>
-                    <Button type='submit' variant='contained' color='primary'>
+                  <Box marginTop={2} textAlign='center' >
+                    <Button id='botao_login' type='submit' variant='contained' >
                       Logar
                     </Button>
                   </Box>
-                </form>
-                <Box marginTop={2}>
-                  <Box marginRight={1}>
-                    <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
+                  <Box marginTop={2}>
+                    <Box marginRight={1}>
+                      <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
+                    </Box>
+                    <Typography variant='subtitle1' gutterBottom align='center'>
+                      <Link to="/cadastrarusuario">
+                        Cadastre-se
+                      </Link>
+                    </Typography>
                   </Box>
-                  <Typography variant='subtitle1' gutterBottom align='center' className='textos1'>
-                    <Link to="/cadastrarusuario">
-                      Cadastre-se
-                    </Link>
-                  </Typography>
-                </Box>
+                </form>             
               </Grid>
             </Grid>
           </Box>

@@ -5,6 +5,7 @@
 .logo{
   background-color: black;
   background: rgb(96, 108, 56)
+  
 }
 
 .imagem{
@@ -14,5 +15,12 @@
    min-height: 100vh;
    background-size: cover;
    background-position: center;
+
    
 }
+
+#botao_login{
+  background-color: #283618;
+  
+}
+
