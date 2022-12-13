@@ -39,7 +39,7 @@ function ListaProdutos() {
   async function getProduto() {
     await busca("/produto", setProdutos, {
       headers: {
-        'Authorization': token
+        Authorization: token
       }
     })
   }
