@@ -9,6 +9,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import PeopleIcon from '@material-ui/icons/People';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   list: {
@@ -19,11 +22,15 @@ const useStyles = makeStyles({
     backgroundColor: '#FEFAE0',
     color: '#BC6C25',
   },
+  link: {
+    textDecoration: 'none',
+  },
   icons: {
     color: '#BC6C25',
     padding: '10px 20px',
     '&:hover': {
       backgroundColor: '#DDA15E',
+      color: '#FFF',
     },
   },
   typeIcons: {
@@ -72,9 +79,21 @@ export default function SDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className={classes.items}>
-        <ListItem className={classes.icons}><HomeIcon className={classes.typeIcons}/>Home</ListItem>
-        <ListItem className={classes.icons}><AddShoppingCartIcon className={classes.typeIcons}/>Produtos</ListItem>
-        <ListItem className={classes.icons}><AddCircleIcon className={classes.typeIcons}/>Cadastrar Produto</ListItem>
+        <Link to='/home' className={classes.link}>
+          <ListItem className={classes.icons}><HomeIcon className={classes.typeIcons}/>Home</ListItem>
+        </Link>
+        <Link to='/produtos' className={classes.link}>
+          <ListItem className={classes.icons}><AddShoppingCartIcon className={classes.typeIcons}/>Produtos</ListItem>
+        </Link>
+        <Link to='/' className={classes.link}>
+          <ListItem className={classes.icons}><AddCircleIcon className={classes.typeIcons}/>Cadastrar Produto</ListItem>
+        </Link>
+        <Link to='/sobre' className={classes.link}>
+          <ListItem className={classes.icons}><PeopleIcon className={classes.typeIcons}/>Sobre Nós</ListItem>
+        </Link>
+        <Link to='/'className={classes.link}>
+          <ListItem className={classes.icons}><ExitToAppIcon className={classes.typeIcons}/>Logout</ListItem>
+        </Link>
       </List>
     </div>
   );

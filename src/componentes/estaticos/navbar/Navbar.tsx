@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     searchIcon: {
       //padding: theme.spacing(0, 2),
-      height: '58%',
+      height: '52%',
       position: 'absolute',
       color: '#BC6C25',
     },
