@@ -227,6 +227,18 @@ export default function Navbar() {
         </IconButton>
 
         <IconButton>
+          <Link to="/categorias" className='text-decorator-none'>
+            <p> Categorias </p>
+          </Link>
+        </IconButton>
+        
+        <IconButton>
+          <Link to="/formulariocategoria" className='text-decorator-none'>
+            <p> Cadastrar categoria </p>
+          </Link>
+        </IconButton>
+
+        <IconButton>
           <Link to="/sobre" className='text-decorator-none'>
             <p> Sobre </p>
           </Link>
