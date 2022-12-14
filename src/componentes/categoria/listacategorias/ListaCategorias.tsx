@@ -52,7 +52,7 @@ function ListaCategorias() {
       <Grid container>
         {
           categoria.map(categoria => (
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item key={categoria.id} xs={12} sm={6} md={3}>
               <Box m={2} >
                 <Card variant="outlined">
                   <CardContent>
