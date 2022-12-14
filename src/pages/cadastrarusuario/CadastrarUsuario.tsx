@@ -4,15 +4,14 @@ import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import './CadastrarUsuario.css';
 import { cadastroUsuario } from '../../services/Service';
-import UsuarioLogin from '../../models/UsuarioLogin';
+import UsuarioCadastro from '../../models/UsuarioCadastro';
+import { toast } from 'react-toastify';
 
 function CadastrarUsuario() {
 
   let navigate = useNavigate();
-
   const [confirmarSenha, setConfirmarSenha] = useState<string>("");
-
-  const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
+  const [usuarioCadastro, setUsuarioCadastro] = useState<UsuarioCadastro>(
     {
       id: 0,
       nome: '',
@@ -22,7 +21,7 @@ function CadastrarUsuario() {
     }
   )
 
-  const [usuarioResult, setUsuarioResult] = useState<UsuarioLogin>(
+  const [usuarioResult, setUsuarioResult] = useState<UsuarioCadastro>(
     {
       id: 0,
       nome: '',
@@ -43,8 +42,8 @@ function CadastrarUsuario() {
   }
 
   function updateModel(e: ChangeEvent<HTMLInputElement>){
-    setUsuarioLogin({
-      ...usuarioLogin,
+    setUsuarioCadastro({
+      ...usuarioCadastro,
       [e.target.name]: e.target.value
     })
   }
@@ -52,12 +51,30 @@ function CadastrarUsuario() {
   async function onSubmit(e: ChangeEvent<HTMLFormElement>){
     e.preventDefault();
 
-    if(confirmarSenha == usuarioLogin.senha){
-      cadastroUsuario(`/usuarios/cadastrar`, usuarioLogin, setUsuarioResult)
-      alert('usuario cadastrado com sucesso')
+    if(confirmarSenha == usuarioCadastro.senha){
+      cadastroUsuario(`/usuarios/cadastrar`, usuarioCadastro, setUsuarioResult)
+      toast.success('Usuário cadastrado com sucesso', {
+				position: 'top-right', // position? topo direita
+				autoClose: 2000, // Fechar automaticamente? após 2 segundos
+				hideProgressBar: false, // não mostrar o progresso? mostrar
+				closeOnClick: true, // fechar após o click? sim
+				pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+				draggable: false, // permitir mover a notificação do local? não
+				theme: 'light', // tema? light
+				progress: undefined // 
+			});
     }
     else{
-      alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+      toast.error('Dados inconsistentes. Favor verificar as informações de cadastro', {
+        position: 'top-right', // position? topo direita
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
     }
   }
 
@@ -69,15 +86,15 @@ function CadastrarUsuario() {
             
             <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos2'>Cadastrar</Typography>
             
-            <TextField value={usuarioLogin.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='nome' label='nome' variant='outlined' name='nome' margin='normal' fullWidth />
+            <TextField value={usuarioCadastro.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='nome' label='nome' variant='outlined' name='nome' margin='normal' fullWidth required/>
             
-            <TextField value={usuarioLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth />
+            <TextField value={usuarioCadastro.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth required/>
             
-            <TextField value={usuarioLogin.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='foto' label='foto' variant='outlined' name='foto' margin='normal' fullWidth />
+            <TextField value={usuarioCadastro.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='foto' label='foto' variant='outlined' name='foto' margin='normal' fullWidth/>
             
-            <TextField value={usuarioLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
+            <TextField value={usuarioCadastro.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth required/>
             
-            <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth />
+            <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth required/>
 
             <Box marginTop={2} textAlign='center'>
               <Link to='/login' className='text-decorator-none'>

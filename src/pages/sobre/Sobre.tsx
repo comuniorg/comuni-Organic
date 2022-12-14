@@ -9,11 +9,31 @@ import Maycon from './imagens/Maycon.png';
 import Hugo from './imagens/Hugo.png';
 import Jean from './imagens/Jean.png';
 
+function Sobre(){
 
+  const token = useSelector<TokenState, TokenState['tokens']>(
+    (state) => state.tokens
+  )
+  
+  let navigate = useNavigate();
 
-function Sobre() {
-
-  return (
+  useEffect(() => {
+    if (token == "") {
+      toast.error('Você precisa estar logado', {
+        position: 'top-right', // position? topo direita
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
+      navigate("/login")
+    }
+  }, [token])
+  
+  return(
     <>
       <h1></h1>
       <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>

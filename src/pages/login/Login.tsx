@@ -4,9 +4,10 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/material';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { login } from '../../services/Service';
+import { addToken } from '../../store/tokens/actions';
+import { useDispatch } from 'react-redux';
 import './Login.css';
 import GroupIcon from '@mui/icons-material/Group';
 import { NoEncryption } from '@material-ui/icons';
@@ -17,7 +18,10 @@ function Login() {
 
   const classes = styles();
   let navigate = useNavigate();
-  const [token, setToken] = useLocalStorage('token');
+
+  const dispatch = useDispatch();
+  const [token, setToken] = useState('');
+
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
     {
       id: 0,
@@ -37,7 +41,8 @@ function Login() {
   }
 
   useEffect(() => {
-    if (token != '') {
+    if(token != ''){
+      dispatch(addToken(token))
       navigate('/home');
     }
   })
@@ -45,11 +50,29 @@ function Login() {
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    try {
-      await login(`/auth/logar`, usuarioLogin, setToken) // setTokin está salvando o tokin no localstorage
-      alert('usuario logado com sucesso!');
-    } catch (error) {
-      alert('Dados do usuário inconsistentes. Erro ao logar!');
+    try{
+      await login(`/auth/logar`, usuarioLogin, setToken) // setTokin está salvando o tokin no Redux
+      toast.success('Usuário logado com sucesso', {
+				position: 'top-right', // position? topo direita
+				autoClose: 2000, // Fechar automaticamente? após 2 segundos
+				hideProgressBar: false, // não mostrar o progresso? mostrar
+				closeOnClick: true, // fechar após o click? sim
+				pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+				draggable: false, // permitir mover a notificação do local? não
+				theme: 'light', // tema? light
+				progress: undefined // 
+			});
+    }catch(error){
+      toast.error('Dados do usuário inconsistentes. Erro ao logar', {
+        position: 'top-right', // position? topo direita
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
     }
   }
 
