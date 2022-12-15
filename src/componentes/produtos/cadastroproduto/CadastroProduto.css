@@ -38,7 +38,7 @@
     stroke-linejoin: round;
     stroke: white;
     stroke-width: 2;
-    tran.fin: translateX(-5px);
+    transform: translateX(-5px);
     transition: all 0.3s ease;
    }
    
@@ -48,9 +48,9 @@
    }
    
    .fin:hover svg {
-    tran.fin: translateX(0);
+    transform: translateX(0);
    }
    
    .fin:active {
-    tran.fin: scale(0.95);
+    transform: scale(0.95);
    }
