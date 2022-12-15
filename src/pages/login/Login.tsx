@@ -13,6 +13,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import { NoEncryption } from '@material-ui/icons';
 import { styles } from './styles';
 import comuLogo from '../../assets/images/logo.real.png';
+import { toast } from 'react-toastify';
 
 function Login() {
 
@@ -104,9 +105,13 @@ function Login() {
                     </Grid>
                   </Grid>
                   <Box marginTop={2} textAlign='center' >
-                    <Button id='botao_login' type='submit' variant='contained' >
-                      Logar
-                    </Button>
+                    <button className="cta">
+                      <span>Logar</span>
+                      <svg viewBox="0 0 13 10" height="10px" width="15px">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                      </svg>
+                    </button>
                   </Box>
                   <Box marginTop={2}>
                     <Box marginRight={1}>

@@ -98,14 +98,22 @@ function CadastrarUsuario() {
 
             <Box marginTop={2} textAlign='center'>
               <Link to='/login' className='text-decorator-none'>
-                <Button variant='contained' color='secondary' className='btnCancelar'>
-                  Cancelar
-                </Button>
+                <button className="rata">
+                  <span>Cancelar</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                      <path d="M1,5 L11,5"></path>
+                      <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                    </button>
               </Link>
 
-              <Button type='submit' variant='contained' color='primary'>
-                Cadastrar
-              </Button>
+              <button className="cata">
+                 <span>cadastrar</span>
+                  <svg viewBox="0 0 13 10" height="10px" width="15px">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+               </button>
             </Box>
           </form>
         </Box>
