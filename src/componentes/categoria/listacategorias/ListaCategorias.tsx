@@ -71,16 +71,24 @@ function ListaCategorias() {
                     <Box display="flex" justifyContent="center" mb={1.5} >
                       <Link to={`/formulariocategoria/${categoria.id}`} className="text-decorator-none">
                         <Box mx={1}>
-                          <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                            atualizar
-                          </Button>
+                        <button className="lia">
+                            <span>Atualizar</span>
+                              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                              </svg>
+                          </button>
                         </Box>
                       </Link>
                       <Link to={`/deletarcategoria/${categoria.id}`} className="text-decorator-none">
                         <Box mx={1}>
-                          <Button variant="contained" size='small' color="secondary">
-                            deletar
-                          </Button>
+                        <button className="raa">
+                            <span>Deletar</span>
+                              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                              </svg>
+                          </button>
                         </Box>
                       </Link>
                     </Box>

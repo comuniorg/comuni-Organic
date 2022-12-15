@@ -78,7 +78,8 @@ function DeletarProduto() {
   return (
     <>
       <Grid container xs={12} sm={6} md={4} lg={3} style={{margin: '20px'}}>
-        <Card variant="outlined" >
+      <Box m={2} >
+        <Card variant="outlined"  className='back'>
           <CardContent>
             <Box justifyContent="center">
               <Typography color="textSecondary" gutterBottom>
@@ -122,14 +123,22 @@ function DeletarProduto() {
           <CardActions>
             <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
               <Box mx={2}>
-                <Button onClick={sim} variant="contained" className="marginLeft" size='large' color="primary">
-                  Sim
-                </Button>
+              <button className="aacta">
+               <span>sim</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                     <path d="M1,5 L11,5"></path>
+                   <polyline points="8 1 12 5 8 9"></polyline>
+                 </svg>
+                </button>
               </Box>
               <Box mx={2}>
-                <Button onClick={nao} variant="contained" size='large' color="secondary">
-                  Não
-                </Button>
+              <button className="acta">
+               <span>não</span>
+                 <svg viewBox="0 0 13 10" height="10px" width="15px">
+                     <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </button>
               </Box>
             </Box>
           </CardActions>

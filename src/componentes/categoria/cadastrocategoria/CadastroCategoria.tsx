@@ -115,9 +115,13 @@ function CadastroCategoria() {
           <TextField value={categoria.localidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="localidade" label="localidade" name="localidade" variant="outlined" margin="normal" fullWidth required/>
 
           <FormControl >
-            <Button type="submit" variant="contained" color="primary">
-              Finalizar
-            </Button>
+            <button  className="form">
+              <span>Cadastrar</span>
+              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </button>
           </FormControl>
         </form>
       </Container>
