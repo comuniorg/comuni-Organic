@@ -7,6 +7,7 @@ import UsuarioLogin from '../models/UsuarioLogin';
 export const api = axios.create({
 	 //baseURL: 'http://localhost:4000',
 	baseURL: 'https://db-organica-tgxd.onrender.com'
+	//baseURL: 'http://localhost:4000'
 });
 
 
@@ -23,6 +24,11 @@ export const login = async (url: string, dados: { usuario: string, senha: string
 		const resposta = await api.post(url, dados)
 		setDado(resposta.data.token)
 
+}
+
+export const salvarEmail = async (url: string, dados: {usuario: string, senha: string}, setDado: React.Dispatch<string>) => {
+	const resposta = await api.post(url, dados)
+	setDado(resposta.data.usuario)
 }
 
 export const busca = async (url: string, setDado: React.Dispatch<React.SetStateAction<Categoria[]>> | React.Dispatch<React.SetStateAction<Produto[]>>, header: { headers: { Authorization: string } }) => {

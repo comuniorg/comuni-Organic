@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
@@ -77,6 +77,7 @@ function DeletarProduto() {
 
   return (
     <>
+      <Grid container xs={12} sm={6} md={4} lg={3} style={{margin: '20px'}}>
       <Box m={2} >
         <Card variant="outlined"  className='back'>
           <CardContent>
@@ -84,17 +85,38 @@ function DeletarProduto() {
               <Typography color="textSecondary" gutterBottom>
                 Deseja deletar o Produto:
               </Typography>
+              <CardMedia
+                component="img"
+                height="300"
+                image={produto?.foto}
+                alt="green iguana"
+              />
+              <Typography variant="body2" component="p">
+                Vendedor: {produto?.usuario?.nome}
+              </Typography>
 
-              <Typography color="textSecondary" >
+              <Typography variant="body2" component="p">
+                Contato: {produto?.usuario?.usuario}
+              </Typography>
+
+              <Typography variant="h5" component="h2">
                 {produto?.nome}
               </Typography>
 
-              <Typography color="textSecondary" >
-                <img src={produto?.foto} alt="Maça" />
+              <Typography variant="body2" component="p">
+                R$: {produto?.preco}
               </Typography>
 
-              <Typography color="textSecondary" >
-                {produto?.preco}
+              <Typography variant="body2" component="p">
+                Quantidade: {produto?.quantidade}
+              </Typography>
+
+              <Typography variant="body2" component="p">
+                Categoria: {produto?.categoria?.categoria}
+              </Typography>
+
+              <Typography variant="body2" component="p">
+                Localidade: {produto?.categoria?.localidade}
               </Typography>
             </Box>
           </CardContent>
@@ -121,7 +143,7 @@ function DeletarProduto() {
             </Box>
           </CardActions>
         </Card>
-      </Box>
+      </Grid>
     </>
   );
 }

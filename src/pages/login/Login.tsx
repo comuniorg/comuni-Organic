@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UsuarioLogin from '../../models/UsuarioLogin';
-import { login } from '../../services/Service';
+import { login, salvarEmail } from '../../services/Service';
 import { addToken } from '../../store/tokens/actions';
 import { useDispatch } from 'react-redux';
 import './Login.css';
@@ -14,6 +14,7 @@ import { NoEncryption } from '@material-ui/icons';
 import { styles } from './styles';
 import comuLogo from '../../assets/images/logo.real.png';
 import { toast } from 'react-toastify';
+import useLocalStorage from 'react-use-localstorage';
 
 function Login() {
 
@@ -22,6 +23,8 @@ function Login() {
 
   const dispatch = useDispatch();
   const [token, setToken] = useState('');
+
+  const [email, setEmail] = useLocalStorage('email');
 
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
     {
@@ -48,11 +51,16 @@ function Login() {
     }
   })
 
-  async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+  async function usuarioEmail(){
+    await salvarEmail(`/auth/logar`, usuarioLogin, setEmail)
+  }
+
+  async function onSubmit(e: ChangeEvent<HTMLFormElement>){
     e.preventDefault();
 
     try{
       await login(`/auth/logar`, usuarioLogin, setToken) // setTokin está salvando o tokin no Redux
+      usuarioEmail();
       toast.success('Usuário logado com sucesso', {
 				position: 'top-right', // position? topo direita
 				autoClose: 2000, // Fechar automaticamente? após 2 segundos

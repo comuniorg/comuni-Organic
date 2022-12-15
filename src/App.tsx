@@ -17,6 +17,7 @@ import DeletarProduto from './componentes/produtos/deletarproduto/DeletarProduto
 import CadastroCategoria from './componentes/categoria/cadastrocategoria/CadastroCategoria';
 import ListaCategorias from './componentes/categoria/listacategorias/ListaCategorias';
 import DeletarCategoria from './componentes/categoria/deletarcategoria/DeletarCategoria';
+import { NotFound } from './pages/notfound/NotFound';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/formulariocategoria/:id" element={<CadastroCategoria/>} />
             <Route path="/deletarproduto/:id" element={<DeletarProduto/>} />
             <Route path="/deletarcategoria/:id" element={<DeletarCategoria/>} />
+            <Route path='*' element={<NotFound/>} />
           </Routes>
         </div>
         <Rodape/>
