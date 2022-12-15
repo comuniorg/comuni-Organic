@@ -41,6 +41,10 @@
     transform: translateX(-5px);
     transition: all 0.3s ease;
    }
+
+   .lia:hover{
+    cursor: pointer;
+   }
    
    .lia:hover:before {
     width: 100%;
@@ -110,4 +114,8 @@
    
    .raa:active {
     transform: scale(0.95);
+   }
+
+   .raa:hover{
+    cursor: pointer;
    }

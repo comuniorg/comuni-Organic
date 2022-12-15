@@ -27,6 +27,10 @@
     background: none;
    }
    
+   .cata:hover{
+    cursor: pointer;
+   }
+
    .cata:before {
     content: "";
     position: absolute;
@@ -97,6 +101,10 @@
     transition: all 0.3s ease;
    }
    
+   .rata:hover{
+    cursor: pointer;
+   }
+
    .rata span {
     position: relative;
     font-family: "Ubuntu", sans-serif;

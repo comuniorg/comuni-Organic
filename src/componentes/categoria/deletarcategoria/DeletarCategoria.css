@@ -10,6 +10,10 @@
     border: none;
     background: none;
    }
+
+   .aacta:hover{
+    cursor: pointer;
+   }
    
    .aacta:before {
     content: "";
@@ -101,6 +105,10 @@
     stroke-width: 2;
     transform: translateX(-5px);
     transition: all 0.3s ease;
+   }
+
+   .acta:hover{
+    cursor: pointer;
    }
    
    .acta:hover:before {
