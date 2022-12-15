@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, InputLabel, MenuItem, FormControl, FormHelperText, Select } from "@material-ui/core"
+import { Typography, TextField, Button, InputLabel, MenuItem, FormControl, FormHelperText, Select, Grid } from "@material-ui/core"
 import './CadastroProduto.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { busca, buscaId, post, put } from '../../../services/Service';
@@ -8,17 +8,58 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 import Categoria from '../../../models/Categoria';
+import UsuarioLogin from '../../../models/UsuarioLogin';
+import useLocalStorage from 'react-use-localstorage';
+import { Box } from '@mui/material';
+import comuLogo from '../../../assets/images/logo.real.png';
+import { styles } from './styles';
 
 function CadastroProduto() {
 
+  const classes = styles();
   let navigate = useNavigate();
 
   const { id } = useParams<{ id: string }>();
   const [categorias, setCategorias] = useState<Categoria[]>([]);
-  
+  const [usuarios, setUsuarios] = useState<UsuarioLogin[]>([]);
+  const [usuario, setUsuario] = useState<UsuarioLogin>({
+    id: 0,
+    nome: '',
+    usuario: '',
+    senha: '',
+    foto: '',
+    token: null
+  });
+
+  const [email, setEmail] = useLocalStorage('email');
+
+  useEffect(() => {
+    if (!usuarios.length) {
+      getUsuarios();
+    } else if (!usuario.usuario) {
+      for (let i = 0; i < usuarios.length; i++) {
+        if (usuarios[i].usuario == email) {
+          setUsuario(usuarios[i])
+          break;
+        }
+      }
+    }
+  });
+  useEffect(() => {
+    getUsuarios();
+  }, [email])
+
   const token = useSelector<TokenState, TokenState['tokens']>(
-		(state) => state.tokens
-	)
+    (state) => state.tokens
+  )
+
+  async function getUsuarios() {
+    await busca('/usuarios/all', setUsuarios, {
+      headers: {
+        Authorization: token
+      }
+    })
+  }
 
   const [categoria, setCategoria] = useState<Categoria>({
     id: 0,
@@ -29,7 +70,8 @@ function CadastroProduto() {
   useEffect(() => {
     setProduto({
       ...produto,
-      categoria: categoria
+      categoria: categoria,
+      usuario: usuario
     })
   }, [categoria])
 
@@ -39,7 +81,8 @@ function CadastroProduto() {
     quantidade: 0,
     foto: '',
     preco: 0,
-    categoria: {id: 0, categoria: '', localidade: ''}
+    categoria: { id: 0, categoria: '', localidade: '' },
+    usuario: { id: 0, nome: '', usuario: '', senha: '', foto: '', token: null, }
   })
 
   useEffect(() => {
@@ -65,7 +108,7 @@ function CadastroProduto() {
     }
   }, [id])
 
-  async function getCategorias(){
+  async function getCategorias() {
     await busca(`/categoria`, setCategorias, {
       headers: {
         Authorization: token
@@ -85,7 +128,8 @@ function CadastroProduto() {
     setProduto({
       ...produto,
       [e.target.name]: e.target.value,
-      categoria: categoria
+      categoria: categoria,
+      usuario: usuario
     })
   }
 
@@ -99,34 +143,34 @@ function CadastroProduto() {
         }
       });
       toast.success('Produto atualizado com sucesso', {
-				position: 'top-right', // position? topo direita
-				autoClose: 2000, // Fechar automaticamente? após 2 segundos
-				hideProgressBar: false, // não mostrar o progresso? mostrar
-				closeOnClick: true, // fechar após o click? sim
-				pauseOnHover: false, // pausar quando o usuário mover o mouse? não
-				draggable: false, // permitir mover a notificação do local? não
-				theme: 'light', // tema? light
-				progress: undefined // 
-			});
+        position: 'top-right', // position? topo direita
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
     }
-    else if(produto.quantidade > 0 && produto.preco > 0){
+    else if (produto.quantidade > 0 && produto.preco > 0) {
       post(`/produto`, produto, setProduto, {
         headers: {
           Authorization: token
         }
       });
       toast.success('Produto cadastrado com sucesso', {
-				position: 'top-right', // position? topo direita
-				autoClose: 2000, // Fechar automaticamente? após 2 segundos
-				hideProgressBar: false, // não mostrar o progresso? mostrar
-				closeOnClick: true, // fechar após o click? sim
-				pauseOnHover: false, // pausar quando o usuário mover o mouse? não
-				draggable: false, // permitir mover a notificação do local? não
-				theme: 'light', // tema? light
-				progress: undefined // 
-			});
+        position: 'top-right', // position? topo direita
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
     }
-    else{
+    else {
       toast.error('Você precisa preencher os campos', {
         position: 'top-right', // position? topo direita
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
@@ -147,44 +191,74 @@ function CadastroProduto() {
 
   return (
     <>
-      <Container maxWidth="sm" className="topo">
-        <form onSubmit={onSubmit}>
-          <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro</Typography>
+      <Grid container direction='row' justifyContent='center' className='form-produtos'>
+        <Grid item xs={12} >
+          <Box className={classes.box}>
+            <Grid container alignItems='center' justifyContent='center'>
+              <Grid item xs={12} sm={12} md={9} lg={4} xl={4}>
+                <form onSubmit={onSubmit} className={classes.form} >
+                  <Typography variant='h3' className='cadastro-produto' color='textPrimary' align='center' >
+                    <p>Cadastrar Produto</p>
+                  </Typography>
+                  <Grid container alignItems='center' justifyContent='center'>
+                    <Grid item xs={10}>
+                      <TextField value={produto.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="nome" label="Nome" variant="outlined" name="nome" margin="normal" fullWidth required />
+                    </Grid>
+                  </Grid>
+                  <Grid container alignItems='center' justifyContent='center'>
+                    <Grid item xs={10}>
+                      <TextField value={produto.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="quantidade" label="Quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth />
+                    </Grid>
+                  </Grid>
+                  <Grid container alignItems='center' justifyContent='center'>
+                    <Grid item xs={10}>
+                      <TextField value={produto.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="foto" label="Foto (Insira o link)" name="foto" variant="outlined" margin="normal" fullWidth required />
+                    </Grid>
+                  </Grid>
+                  <Grid container alignItems='center' justifyContent='center'>
+                    <Grid item xs={10}>
+                      <TextField value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="preco" label="Preço" name="preco" variant="outlined" margin="normal" fullWidth />
+                    </Grid>
+                  </Grid>
 
-          <TextField value={produto.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="nome" label="nome" variant="outlined" name="nome" margin="normal" fullWidth required/>
-
-          <TextField value={produto.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="quantidade" label="quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth/>
-
-          <TextField value={produto.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="foto" label="foto" name="foto" variant="outlined" margin="normal" fullWidth required/>
-
-          <TextField value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="preco" label="preco" name="preco" variant="outlined" margin="normal" fullWidth/>
-
-          <FormControl >
-            <InputLabel id="demo-simple-select-helper-label">Categoria</InputLabel>
-              <Select
-                labelId="demo-simple-select-helper-label"
-                id="demo-simple-select-helper"
-                onChange={(e) => buscaId(`/categoria/${e.target.value}`, setCategoria, {
-                  headers: {
-                    Authorization: token
-                  }
-                })}
-              >
-                {
-                  categorias.map((categoria, index) => (
-                    <MenuItem key={categoria.id} value={categoria.id}>
-                      {categoria.categoria + ' - ' + categoria.localidade}
-                    </MenuItem>
-                  ))
-                }
-              </Select>
-            <FormHelperText>Escolha o tipo e a localidade do produto</FormHelperText>
-            <Button type="submit" variant="contained" color="primary">
-              Finalizar
-            </Button>
-          </FormControl>
-        </form>
-      </Container>
+                  <Grid container alignItems='center' justifyContent='center'>
+                    <Grid item xs={10}>
+                      <FormControl>
+                        <InputLabel id="demo-simple-select-helper-label" >Categoria</InputLabel>
+                        <Select
+                          labelId="demo-simple-select-helper-label"
+                          id="demo-simple-select-helper"
+                          onChange={(e) => buscaId(`/categoria/${e.target.value}`, setCategoria, {
+                            headers: {
+                              Authorization: token
+                            }
+                          })}
+                        >
+                          {
+                            categorias.map((categoria, index) => (
+                              <MenuItem key={categoria.id} value={categoria.id}>
+                                {categoria.categoria + ' - ' + categoria.localidade}
+                              </MenuItem>
+                            ))
+                          }
+                        </Select>
+                        <FormHelperText>Escolha o tipo e a localidade do produto</FormHelperText>
+                        <button className="fin">
+                          <span>Finalizar</span>
+                          <svg viewBox="0 0 13 10" height="10px" width="15px">
+                            <path d="M1,5 L11,5"></path>
+                            <polyline points="8 1 12 5 8 9"></polyline>
+                          </svg>
+                        </button>
+                      </FormControl>
+                    </Grid>
+                  </Grid>
+                </form>
+              </Grid>
+            </Grid>
+          </Box>
+        </Grid >
+      </Grid >
     </>
   )
 }

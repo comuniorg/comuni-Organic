@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UsuarioLogin from '../../models/UsuarioLogin';
-import { login } from '../../services/Service';
+import { login, salvarEmail } from '../../services/Service';
 import { addToken } from '../../store/tokens/actions';
 import { useDispatch } from 'react-redux';
 import './Login.css';
@@ -14,6 +14,7 @@ import { NoEncryption } from '@material-ui/icons';
 import { styles } from './styles';
 import comuLogo from '../../assets/images/logo.real.png';
 import { toast } from 'react-toastify';
+import useLocalStorage from 'react-use-localstorage';
 
 function Login() {
 
@@ -22,6 +23,8 @@ function Login() {
 
   const dispatch = useDispatch();
   const [token, setToken] = useState('');
+
+  const [email, setEmail] = useLocalStorage('email');
 
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
     {
@@ -48,11 +51,16 @@ function Login() {
     }
   })
 
-  async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+  async function usuarioEmail(){
+    await salvarEmail(`/auth/logar`, usuarioLogin, setEmail)
+  }
+
+  async function onSubmit(e: ChangeEvent<HTMLFormElement>){
     e.preventDefault();
 
     try{
       await login(`/auth/logar`, usuarioLogin, setToken) // setTokin está salvando o tokin no Redux
+      usuarioEmail();
       toast.success('Usuário logado com sucesso', {
 				position: 'top-right', // position? topo direita
 				autoClose: 2000, // Fechar automaticamente? após 2 segundos
@@ -88,7 +96,7 @@ function Login() {
                   <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' >
                     <img className={classes.imagemLogo} src={comuLogo} alt="" />
                   </Typography>
-                  <Grid container alignItems='center' spacing={1}>
+                  <Grid container className='alignItems-center1' spacing={1}>
                     <Grid item xs={1}>
                       <GroupIcon />
                     </Grid>
@@ -96,7 +104,7 @@ function Login() {
                       <TextField className='opacidade' value={usuarioLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth />
                     </Grid>
                   </Grid>
-                  <Grid container alignItems='center' spacing={2}>
+                  <Grid container className='alignItems-center1' spacing={2}>
                     <Grid item xs={1}>
                       <NoEncryption />
                     </Grid>
@@ -105,9 +113,13 @@ function Login() {
                     </Grid>
                   </Grid>
                   <Box marginTop={2} textAlign='center' >
-                    <Button id='botao_login' type='submit' variant='contained' >
-                      Logar
-                    </Button>
+                    <button className="cta">
+                      <span>Logar</span>
+                      <svg viewBox="0 0 13 10" height="10px" width="15px">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                      </svg>
+                    </button>
                   </Box>
                   <Box marginTop={2}>
                     <Box marginRight={1}>

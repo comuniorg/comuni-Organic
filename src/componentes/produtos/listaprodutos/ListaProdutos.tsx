@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -52,51 +52,69 @@ function ListaProdutos() {
 
   return (
     <>
-      <Grid container>
+      <Grid container className='back'>
         {
           produtos.map(produto => (
             <Grid key={produto.id} item xs={6} sm={4} md={3}>
               <Box m={2}>
                 <Card variant="outlined">
-                  <CardContent className='flexbox' style={{minHeight: '450px'}}>
-                    <img src={produto.foto} alt="foto" style={{width: '300px'}}/>
+                  <CardMedia
+                    component="img"
+                    height="300"
+                    image={produto.foto}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography variant="body2" component="p">
+                      Vendedor: {produto.usuario?.nome}
+                    </Typography>
+                    
+                    <Typography variant="body2" component="p">
+                      Contato: {produto.usuario?.usuario}
+                    </Typography>
+                    
+                    <Typography variant="h5" component="h2">
+                      {produto.nome}
+                    </Typography>
 
-                    <Box>
-                      <Typography variant="h5" component="h2">
-                        {produto.nome}
-                      </Typography>
+                    <Typography variant="body2" component="p">
+                      R$: {produto.preco}
+                    </Typography>
 
-                      <Typography variant="body2" component="p">
-                        R$: {produto.preco}
-                      </Typography>
+                    <Typography variant="body2" component="p">
+                      Quantidade: {produto.quantidade}
+                    </Typography>
 
-                      <Typography variant="body2" component="p">
-                        Quantidade: {produto.quantidade}
-                      </Typography>
+                    <Typography variant="body2" component="p">
+                      Categoria: {produto.categoria?.categoria}
+                    </Typography>
 
-                      <Typography variant="body2" component="p">
-                        Categoria: {produto.categoria?.categoria}
-                      </Typography>
-
-                      <Typography variant="body2" component="p">
-                        Localidade: {produto.categoria?.localidade}
-                      </Typography>
-                    </Box>
+                    <Typography variant="body2" component="p">
+                      Localidade: {produto.categoria?.localidade}
+                    </Typography>
                   </CardContent>
-                  <CardActions>
+                  <CardActions>                    
                     <Box display="flex" justifyContent="center" mb={1.5}>
                       <Link to={`/formularioproduto/${produto.id}`} className="text-decorator-none">
                         <Box mx={1}>
-                          <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                            Alterar
-                          </Button>
+                          <button className="jata">
+                            <span>Alterar</span>
+                              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                              </svg>
+                          </button>
                         </Box>
                       </Link>
                       <Link to={`/deletarproduto/${produto.id}`} className="text-decorator-none">
                         <Box mx={1}>
-                          <Button variant="contained" size='small' color="secondary">
-                            deletar
-                          </Button>
+                          <button className="rara">
+                            <span>Deletar</span>
+                              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                              </svg>
+                          </button>
                         </Box>
                       </Link>
                     </Box>

@@ -11,3 +11,125 @@ img{
 .text-decorator-none{
     text-decoration: none !important;
 }
+
+.jata:hover{
+    cursor: pointer;
+   }
+
+.jata {
+    position: relative;
+    margin: auto;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+   }
+   
+   .jata:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: #283618;
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+   }
+   
+   .jata span {
+    position: relative;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: white;
+   }
+   
+   .jata svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: white;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+   }
+   
+   .jata:hover:before {
+    width: 100%;
+    background: #91a54f;
+   }
+   
+   .jata:hover svg {
+    transform: translateX(0);
+   }
+   
+   .jata:active {
+    transform: scale(0.95);
+   }
+
+   .rara {
+    position: relative;
+    margin: auto;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+   }
+   
+   .rara:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: #5e2b2b;
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+   }
+
+   .rara:hover{
+    cursor: pointer;
+   }
+   
+   .rara span {
+    position: relative;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: white;
+   }
+   
+   .rara svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: white;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+   }
+   
+   .rara:hover:before {
+    width: 100%;
+    background: #ff1a1a;
+   }
+   
+   .rara:hover svg {
+    transform: translateX(0);
+   }
+   
+   .rara:active {
+    transform: scale(0.95);
+   }

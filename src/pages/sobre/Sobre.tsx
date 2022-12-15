@@ -31,31 +31,31 @@ function Sobre(){
         </Grid>
         <Grid item container xs={12} >
               <a href='https://www.linkedin.com/in/caroline-barcelos-valente-42091a15a/' target='_blank'>
-              <img src={Carol} alt="" width='180px' />
+              <img src={Carol} alt="" width='179' />
               </a>
 
               <a href='https://www.linkedin.com/in/danielcorrea5/' target='_blank'>
-              <img src={Daniel} alt="" width='180px'/>
+              <img src={Daniel} alt="" width='179'/>
               </a>
 
               <a href='https://www.linkedin.com/in/maycon-silva-4673ba234/' target='_blank'>
-              <img src={Maycon} alt="" width='180px' />
+              <img src={Maycon} alt="" width='179' />
               </a>
 
               <a href='https://www.linkedin.com/in/nicole-moreira-da-silva-4aa171234/' target='_blank'>
-              <img src={Nicole} alt="" width='180px' />
+              <img src={Nicole} alt="" width='179' />
               </a>
 
               <a href='https://www.linkedin.com/in/murilo-nascimento-0388b4249/' target='_blank'>
-              <img src={Murilo} alt="" width='180px'/>
+              <img src={Murilo} alt="" width='179'/>
               </a>
 
               <a href='https://www.linkedin.com/in/hugo-ramos-84a76924a/' target='_blank'>
-              <img src={Hugo} alt="" width='180px'/>
+              <img src={Hugo} alt="" width='179'/>
               </a>
               
               <a href='https://www.linkedin.com/in/jeangs/' target='_blank'>
-              <img src={Jean} alt="" width='180px'/>
+              <img src={Jean} alt="" width='179'/>
               </a>
             </Grid>
       </Grid>
