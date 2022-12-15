@@ -13,6 +13,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import { NoEncryption } from '@material-ui/icons';
 import { styles } from './styles';
 import comuLogo from '../../assets/images/logo.real.png';
+import { toast } from 'react-toastify';
 
 function Login() {
 
@@ -87,7 +88,7 @@ function Login() {
                   <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' >
                     <img className={classes.imagemLogo} src={comuLogo} alt="" />
                   </Typography>
-                  <Grid container alignItems='center' spacing={1}>
+                  <Grid container className='alignItems-center1' spacing={1}>
                     <Grid item xs={1}>
                       <GroupIcon />
                     </Grid>
@@ -95,7 +96,7 @@ function Login() {
                       <TextField className='opacidade' value={usuarioLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth />
                     </Grid>
                   </Grid>
-                  <Grid container alignItems='center' spacing={2}>
+                  <Grid container className='alignItems-center1' spacing={2}>
                     <Grid item xs={1}>
                       <NoEncryption />
                     </Grid>
