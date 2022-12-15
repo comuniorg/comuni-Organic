@@ -20,13 +20,13 @@ function Rodape() {
 
     return (
         <>
-            <Grid container direction="row" justifyContent="center" alignItems="center">
-                <Grid alignItems="center" item xs={12}>
+            <Grid container direction="row" justifyContent="center" className='alignItems-center1'>
+                <Grid className='alignItems-center1' item xs={12}>
                     <Box className='box1'>
-                        <Box paddingTop={1} display="flex" alignItems="center" justifyContent="center">
+                        <Box paddingTop={1} display="flex" className='alignItems-center1' justifyContent="center">
                             <Typography variant="h5" align="center" gutterBottom className={classes.textos}>Acompanhe-nos nas Redes Sociais </Typography>
                         </Box>
-                        <Box display="flex" alignItems="center" justifyContent="center">
+                        <Box display="flex" className='alignItems-center1' justifyContent="center">
                             <a href="https://www.instagram.com/comuni.organica/" target="_blank">
                                 <InstagramIcon className='redes' />
                             </a>
