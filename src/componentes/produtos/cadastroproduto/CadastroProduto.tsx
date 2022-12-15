@@ -33,6 +33,8 @@ function CadastroProduto() {
 
   const [email, setEmail] = useLocalStorage('email');
 
+  const [option, setOption] = useState('');
+
   useEffect(() => {
     if (!usuarios.length) {
       getUsuarios();
@@ -226,17 +228,19 @@ function CadastroProduto() {
                       <FormControl>
                         <InputLabel id="demo-simple-select-helper-label" >Categoria</InputLabel>
                         <Select
+                          value={option}
                           labelId="demo-simple-select-helper-label"
                           id="demo-simple-select-helper"
-                          onChange={(e) => buscaId(`/categoria/${e.target.value}`, setCategoria, {
+                          onChange={(e) => { setOption(e.target.value + '');
+                            buscaId(`/categoria/${e.target.value}`, setCategoria, {
                             headers: {
                               Authorization: token
                             }
-                          })}
+                          })}}
                         >
                           {
                             categorias.map((categoria, index) => (
-                              <MenuItem key={categoria.id} value={categoria.id}>
+                              <MenuItem key={categoria.id}  value={categoria.id}>
                                 {categoria.categoria + ' - ' + categoria.localidade}
                               </MenuItem>
                             ))
