@@ -1,0 +1,13 @@
+.flexbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+img{
+    align-self: center;
+}
+
+.text-decorator-none{
+    text-decoration: none !important;
+}

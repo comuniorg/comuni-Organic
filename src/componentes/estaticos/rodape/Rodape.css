@@ -1,0 +1,28 @@
+.box1 {
+    background-color: #fefae0;
+    height: 120px;
+}
+
+.box2 {
+    background-color: #fefae0;
+    height: 40px;
+}
+
+.redes {
+    font-size: 60px !important;
+    color: #606c38;
+}
+@font-face {
+    font-family: "Raleway";
+    src: local("Raleway"),
+    url("./fontes/Raleway-Regular.ttf") format("truetype");
+}
+
+.textos {
+    color: #606c38;
+    font-family: 'Raleway-Regular';
+}
+
+.alignItems-center1{
+    align-items: center;
+}
