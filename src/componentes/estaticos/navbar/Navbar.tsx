@@ -1,17 +1,19 @@
 import React from 'react';
-import { alpha, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import "./Navbar.css";
+import useLocalStorage from 'react-use-localstorage';
+import SearchIcon from '@material-ui/icons/Search';
+import SDrawer from '../drawer/Drawer';
+import { InputBase, Typography } from '@material-ui/core';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
@@ -22,6 +24,19 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     grow: {
       flexGrow: 1,
+      backgroundColor: '#FEFAE0',
+    },
+    toolbar: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+    logo: {
+      width: '150px',
+      marginTop: '5px',
+    },
+    searching: {
+      marginRight: theme.spacing(2),
+      color: '#BC6C25',
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -32,29 +47,11 @@ const useStyles = makeStyles((theme: Theme) =>
         display: 'block',
       },
     },
-    search: {
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: alpha(theme.palette.common.white, 0.15),
-      '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-      },
-      marginRight: theme.spacing(2),
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
-        width: 'auto',
-      },
-    },
     searchIcon: {
-      padding: theme.spacing(0, 2),
-      height: '100%',
+      //padding: theme.spacing(0, 2),
+      height: '52%',
       position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      color: '#BC6C25',
     },
     inputRoot: {
       color: 'inherit',
@@ -256,7 +253,28 @@ export default function Navbar() {
 
   return (
     <>
-      {navbarComponents}
+      <AppBar className={classes.grow} position="static">
+        <Toolbar className={classes.toolbar}>
+          <Typography>
+            <img src='https://media.discordapp.net/attachments/1025004926046322759/1052920045413605466/20221214_211344_0000.png'
+            className={classes.logo}/>
+          </Typography>
+          <div className={classes.searching}>
+              <SearchIcon className={classes.searchIcon} />
+              <InputBase
+                placeholder="Busca..."
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
+          </div>
+          <SDrawer />
+        </Toolbar>
+      </AppBar>
+      {renderMobileMenu}
+      {renderMenu}
     </>
   );
 }
