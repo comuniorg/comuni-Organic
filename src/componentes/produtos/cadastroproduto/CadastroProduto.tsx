@@ -179,9 +179,13 @@ function CadastroProduto() {
                 }
               </Select>
             <FormHelperText>Escolha o tipo e a localidade do produto</FormHelperText>
-            <Button type="submit" variant="contained" color="primary">
-              Finalizar
-            </Button>
+            <button  className="fin">
+              <span>Finalizar</span>
+              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </button>
           </FormControl>
         </form>
       </Container>
