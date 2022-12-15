@@ -20,6 +20,10 @@
     transition: all 0.3s ease;
    }
    
+   .form:hover{
+    cursor: pointer;
+   }
+
    .form span {
     position: relative;
     font-family: "Ubuntu", sans-serif;

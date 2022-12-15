@@ -12,6 +12,10 @@ img{
     text-decoration: none !important;
 }
 
+.jata:hover{
+    cursor: pointer;
+   }
+
 .jata {
     position: relative;
     margin: auto;
@@ -89,6 +93,10 @@ img{
     width: 45px;
     height: 45px;
     transition: all 0.3s ease;
+   }
+
+   .rara:hover{
+    cursor: pointer;
    }
    
    .rara span {

@@ -42,6 +42,10 @@
     transition: all 0.3s ease;
    }
    
+   .fin:hover{
+    cursor: pointer;
+   }
+   
    .fin:hover:before {
     width: 100%;
     background: #91a54f;

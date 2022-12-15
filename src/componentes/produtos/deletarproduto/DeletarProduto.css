@@ -10,6 +10,10 @@
     border: none;
     background: none;
    }
+
+   .aacta:hover{
+    cursor: pointer;
+   }
    
    .aacta:before {
     content: "";
@@ -79,6 +83,10 @@
     width: 45px;
     height: 45px;
     transition: all 0.3s ease;
+   }
+
+   .acta:hover{
+    cursor: pointer;
    }
    
    .acta span {

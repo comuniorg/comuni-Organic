@@ -79,3 +79,7 @@
  .cta:active {
   transform: scale(0.95);
  }
+
+ .cta:hover{
+  cursor: pointer;
+ }
