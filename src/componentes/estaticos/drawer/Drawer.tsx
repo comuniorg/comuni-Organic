@@ -8,9 +8,12 @@ import ListItem from '@material-ui/core/ListItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import PeopleIcon from '@material-ui/icons/People';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import LoginIcon from '@mui/icons-material/Login';
+import AddIcon from '@mui/icons-material/Add';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import InfoIcon from '@mui/icons-material/Info';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
@@ -79,20 +82,29 @@ export default function SDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className={classes.items}>
-        <Link to='/home' className={classes.link}>
-          <ListItem className={classes.icons}><HomeIcon className={classes.typeIcons}/>Home</ListItem>
+        <Link to='/Home' className={classes.link}>
+          <ListItem className={classes.icons}><HomeIcon className={classes.typeIcons}/>Início</ListItem>
         </Link>
-        <Link to='/produtos' className={classes.link}>
+        <Link to='/Login' className={classes.link}>
+          <ListItem className={classes.icons}><LoginIcon className={classes.typeIcons}/>Entrar</ListItem>
+        </Link>
+        <Link to='/Produtos' className={classes.link}>
           <ListItem className={classes.icons}><AddShoppingCartIcon className={classes.typeIcons}/>Produtos</ListItem>
         </Link>
-        <Link to='/' className={classes.link}>
-          <ListItem className={classes.icons}><AddCircleIcon className={classes.typeIcons}/>Cadastrar Produto</ListItem>
+        <Link to='/CadastroProduto' className={classes.link}>
+          <ListItem className={classes.icons}><AddIcon className={classes.typeIcons}/>Cadastrar Produto</ListItem>
         </Link>
-        <Link to='/sobre' className={classes.link}>
-          <ListItem className={classes.icons}><PeopleIcon className={classes.typeIcons}/>Sobre Nós</ListItem>
+        <Link to='/Categoria' className={classes.link}>
+          <ListItem className={classes.icons}><PlaylistAddIcon className={classes.typeIcons}/>Categoria</ListItem>
+        </Link>
+        <Link to='/CadastroCategoria' className={classes.link}>
+          <ListItem className={classes.icons}><AddIcon className={classes.typeIcons}/>Cadastrar Categoria</ListItem>
+        </Link>
+        <Link to='/Sobre' className={classes.link}>
+          <ListItem className={classes.icons}><InfoIcon className={classes.typeIcons}/>Sobre</ListItem>
         </Link>
         <Link to='/'className={classes.link}>
-          <ListItem className={classes.icons}><ExitToAppIcon className={classes.typeIcons}/>Logout</ListItem>
+          <ListItem className={classes.icons}><ExitToAppIcon className={classes.typeIcons}/>Sair</ListItem>
         </Link>
       </List>
     </div>
