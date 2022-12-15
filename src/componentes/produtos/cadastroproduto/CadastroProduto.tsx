@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, InputLabel, MenuItem, FormControl, FormHelperText, Select, Grid } from "@material-ui/core"
+import { Typography, TextField, Button, InputLabel, MenuItem, FormControl, FormHelperText, Select, Grid } from "@material-ui/core"
 import './CadastroProduto.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { busca, buscaId, post, put } from '../../../services/Service';
@@ -33,12 +33,12 @@ function CadastroProduto() {
 
   const [email, setEmail] = useLocalStorage('email');
 
-  useEffect(() =>{
-    if(!usuarios.length){
+  useEffect(() => {
+    if (!usuarios.length) {
       getUsuarios();
     } else if (!usuario.usuario) {
-      for(let i=0; i<usuarios.length; i++){
-        if(usuarios[i].usuario == email){
+      for (let i = 0; i < usuarios.length; i++) {
+        if (usuarios[i].usuario == email) {
           setUsuario(usuarios[i])
           break;
         }
@@ -48,12 +48,12 @@ function CadastroProduto() {
   useEffect(() => {
     getUsuarios();
   }, [email])
-  
+
   const token = useSelector<TokenState, TokenState['tokens']>(
     (state) => state.tokens
   )
 
-  async function getUsuarios(){
+  async function getUsuarios() {
     await busca('/usuarios/all', setUsuarios, {
       headers: {
         Authorization: token
@@ -81,8 +81,8 @@ function CadastroProduto() {
     quantidade: 0,
     foto: '',
     preco: 0,
-    categoria: {id: 0, categoria: '', localidade: ''},
-    usuario: {id: 0, nome: '', usuario: '', senha: '', foto: '', token: null,}
+    categoria: { id: 0, categoria: '', localidade: '' },
+    usuario: { id: 0, nome: '', usuario: '', senha: '', foto: '', token: null, }
   })
 
   useEffect(() => {
@@ -191,49 +191,6 @@ function CadastroProduto() {
 
   return (
     <>
-      <Container maxWidth="sm" className="topo">
-        <form onSubmit={onSubmit}>
-          <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro</Typography>
-
-          <TextField value={produto.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="nome" label="nome" variant="outlined" name="nome" margin="normal" fullWidth required/>
-
-          <TextField value={produto.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="quantidade" label="quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth/>
-
-          <TextField value={produto.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="foto" label="foto" name="foto" variant="outlined" margin="normal" fullWidth required/>
-
-          <TextField value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="preco" label="preco" name="preco" variant="outlined" margin="normal" fullWidth/>
-
-          <FormControl >
-            <InputLabel id="demo-simple-select-helper-label">Categoria</InputLabel>
-              <Select
-                labelId="demo-simple-select-helper-label"
-                id="demo-simple-select-helper"
-                required
-                onChange={(e) => buscaId(`/categoria/${e.target.value}`, setCategoria, {
-                  headers: {
-                    Authorization: token
-                  }
-                })}
-              >
-                {
-                  categorias.map((categoria) => (
-                    <MenuItem key={categoria.id} value={categoria.id}>
-                      {categoria.categoria + ' - ' + categoria.localidade}
-                    </MenuItem>
-                  ))
-                }
-              </Select>
-            <FormHelperText>Escolha o tipo e a localidade do produto</FormHelperText>
-            <button  className="fin">
-              <span>Finalizar</span>
-              <svg viewBox="0 0 13 10" height="10px" width="15px">
-                <path d="M1,5 L11,5"></path>
-                <polyline points="8 1 12 5 8 9"></polyline>
-              </svg>
-            </button>
-          </FormControl>
-        </form>
-      </Container>
       <Grid container direction='row' justifyContent='center' className='form-produtos'>
         <Grid item xs={12} >
           <Box className={classes.box}>
@@ -286,9 +243,13 @@ function CadastroProduto() {
                           }
                         </Select>
                         <FormHelperText>Escolha o tipo e a localidade do produto</FormHelperText>
-                        <Button id='botao_login' type='submit' variant='contained'>
-                          Finalizar
-                        </Button>
+                        <button className="fin">
+                          <span>Finalizar</span>
+                          <svg viewBox="0 0 13 10" height="10px" width="15px">
+                            <path d="M1,5 L11,5"></path>
+                            <polyline points="8 1 12 5 8 9"></polyline>
+                          </svg>
+                        </button>
                       </FormControl>
                     </Grid>
                   </Grid>
