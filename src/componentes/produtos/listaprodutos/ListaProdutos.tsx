@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, Grid, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -58,48 +58,56 @@ function ListaProdutos() {
             <Grid key={produto.id} item xs={6} sm={4} md={3}>
               <Box m={2}>
                 <Card variant="outlined">
-                  <CardContent className='flexbox' style={{minHeight: '450px'}}>
-                    <img src={produto.foto} alt="foto" style={{width: '300px'}}/>
+                  <CardMedia
+                    component="img"
+                    height="300"
+                    image={produto.foto}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography variant="body2" component="p">
+                      Vendedor: {produto.usuario?.nome}
+                    </Typography>
+                    
+                    <Typography variant="body2" component="p">
+                      Contato: {produto.usuario?.usuario}
+                    </Typography>
+                    
+                    <Typography variant="h5" component="h2">
+                      {produto.nome}
+                    </Typography>
 
-                    <Box>
-                      <Typography variant="h5" component="h2">
-                        {produto.nome}
-                      </Typography>
+                    <Typography variant="body2" component="p">
+                      R$: {produto.preco}
+                    </Typography>
 
-                      <Typography variant="body2" component="p">
-                        R$: {produto.preco}
-                      </Typography>
+                    <Typography variant="body2" component="p">
+                      Quantidade: {produto.quantidade}
+                    </Typography>
 
-                      <Typography variant="body2" component="p">
-                        Quantidade: {produto.quantidade}
-                      </Typography>
+                    <Typography variant="body2" component="p">
+                      Categoria: {produto.categoria?.categoria}
+                    </Typography>
 
-                      <Typography variant="body2" component="p">
-                        Categoria: {produto.categoria?.categoria}
-                      </Typography>
-
-                      <Typography variant="body2" component="p">
-                        Localidade: {produto.categoria?.localidade}
-                      </Typography>
-                    </Box>
+                    <Typography variant="body2" component="p">
+                      Localidade: {produto.categoria?.localidade}
+                    </Typography>
                   </CardContent>
                   <CardActions>
-                    <Box display="flex" justifyContent="center" mb={1.5}>
-                      <Link to={`/formularioproduto/${produto.id}`} className="text-decorator-none">
-                        <Box mx={1}>
-                          <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                            Alterar
-                          </Button>
-                        </Box>
-                      </Link>
-                      <Link to={`/deletarproduto/${produto.id}`} className="text-decorator-none">
-                        <Box mx={1}>
-                          <Button variant="contained" size='small' color="secondary">
-                            deletar
-                          </Button>
-                        </Box>
-                      </Link>
-                    </Box>
+                    <Link to={`/formularioproduto/${produto.id}`} className="text-decorator-none">
+                      <Box mx={1}>
+                        <Button variant="contained" className="marginLeft" size='small' color="primary" >
+                          Alterar
+                        </Button>
+                      </Box>
+                    </Link>
+                    <Link to={`/deletarproduto/${produto.id}`} className="text-decorator-none">
+                      <Box mx={1}>
+                        <Button variant="contained" size='small' color="secondary">
+                          deletar
+                        </Button>
+                      </Box>
+                    </Link>
                   </CardActions>
                 </Card>
               </Box>

@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { addToken } from '../../../store/tokens/actions';
 import { toast } from 'react-toastify';
+import useLocalStorage from 'react-use-localstorage';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -175,8 +176,12 @@ export default function Navbar() {
     (state) => state.tokens
   )
 
+  
+  const [email, setEmail] = useLocalStorage('email');
+  
   function goLogout(){
     dispatch(addToken(''))
+    setEmail('')
     toast.info('Usuário deslogado', {
       position: 'top-right', // position? topo direita
       autoClose: 2000, // Fechar automaticamente? após 2 segundos

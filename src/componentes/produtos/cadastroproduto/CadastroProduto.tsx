@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 import Categoria from '../../../models/Categoria';
+import UsuarioLogin from '../../../models/UsuarioLogin';
+import useLocalStorage from 'react-use-localstorage';
 
 function CadastroProduto() {
 
@@ -15,10 +17,39 @@ function CadastroProduto() {
 
   const { id } = useParams<{ id: string }>();
   const [categorias, setCategorias] = useState<Categoria[]>([]);
+  const [usuarios, setUsuarios] = useState<UsuarioLogin[]>([]);
+  const [usuario, setUsuario] = useState<UsuarioLogin>({
+    id: 0,
+    nome: '',
+    usuario: '',
+    senha: '',
+    foto: '',
+    token: null
+  });
+
+  const [email, setEmail] = useLocalStorage('email');
+
+  useEffect(() =>{
+    getUsuarios();
+    for(let i=0; i<usuarios.length; i++){
+      if(usuarios[i].usuario == email){
+        setUsuario(usuarios[i])
+        break;
+      }
+    }
+  })
   
   const token = useSelector<TokenState, TokenState['tokens']>(
 		(state) => state.tokens
 	)
+
+  async function getUsuarios(){
+    await busca('/usuarios/all', setUsuarios, {
+      headers: {
+        Authorization: token
+      }
+    })
+  }
 
   const [categoria, setCategoria] = useState<Categoria>({
     id: 0,
@@ -29,7 +60,8 @@ function CadastroProduto() {
   useEffect(() => {
     setProduto({
       ...produto,
-      categoria: categoria
+      categoria: categoria,
+      usuario: usuario
     })
   }, [categoria])
 
@@ -39,7 +71,8 @@ function CadastroProduto() {
     quantidade: 0,
     foto: '',
     preco: 0,
-    categoria: {id: 0, categoria: '', localidade: ''}
+    categoria: {id: 0, categoria: '', localidade: ''},
+    usuario: {id: 0, nome: '', usuario: '', senha: '', foto: '', token: null,}
   })
 
   useEffect(() => {
@@ -85,7 +118,8 @@ function CadastroProduto() {
     setProduto({
       ...produto,
       [e.target.name]: e.target.value,
-      categoria: categoria
+      categoria: categoria,
+      usuario: usuario
     })
   }
 
