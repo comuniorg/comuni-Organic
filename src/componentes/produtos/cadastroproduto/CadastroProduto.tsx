@@ -194,34 +194,34 @@ function CadastroProduto() {
       <Grid container direction='row' justifyContent='center' className='form-produtos'>
         <Grid item xs={12} >
           <Box className={classes.box}>
-            <Grid container alignItems='center' justifyContent='center'>
+            <Grid container className='alignItems-center' justifyContent='center'>
               <Grid item xs={12} sm={12} md={9} lg={4} xl={4}>
                 <form onSubmit={onSubmit} className={classes.form} >
                   <Typography variant='h3' className='cadastro-produto' color='textPrimary' align='center' >
                     <p>Cadastrar Produto</p>
                   </Typography>
-                  <Grid container alignItems='center' justifyContent='center'>
+                  <Grid container className='alignItems-center' justifyContent='center'>
                     <Grid item xs={10}>
                       <TextField value={produto.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="nome" label="Nome" variant="outlined" name="nome" margin="normal" fullWidth required />
                     </Grid>
                   </Grid>
-                  <Grid container alignItems='center' justifyContent='center'>
+                  <Grid container className='alignItems-center' justifyContent='center'>
                     <Grid item xs={10}>
                       <TextField value={produto.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="quantidade" label="Quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth />
                     </Grid>
                   </Grid>
-                  <Grid container alignItems='center' justifyContent='center'>
+                  <Grid container className='alignItems-center' justifyContent='center'>
                     <Grid item xs={10}>
                       <TextField value={produto.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="foto" label="Foto (Insira o link)" name="foto" variant="outlined" margin="normal" fullWidth required />
                     </Grid>
                   </Grid>
-                  <Grid container alignItems='center' justifyContent='center'>
+                  <Grid container className='alignItems-center' justifyContent='center'>
                     <Grid item xs={10}>
                       <TextField value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="preco" label="Preço" name="preco" variant="outlined" margin="normal" fullWidth />
                     </Grid>
                   </Grid>
 
-                  <Grid container alignItems='center' justifyContent='center'>
+                  <Grid container className='alignItems-center' justifyContent='center'>
                     <Grid item xs={10}>
                       <FormControl>
                         <InputLabel id="demo-simple-select-helper-label" >Categoria</InputLabel>
