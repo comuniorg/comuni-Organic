@@ -1,0 +1,9 @@
+.backNot{
+  background-color: #FEFAE0;
+  color: #283618;
+  font-size: 30px;
+  min-height: 100vh;
+}
+.text-decorator-none{
+  text-decoration: none !important;
+}

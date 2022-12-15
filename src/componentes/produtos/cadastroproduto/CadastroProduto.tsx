@@ -30,14 +30,21 @@ function CadastroProduto() {
   const [email, setEmail] = useLocalStorage('email');
 
   useEffect(() =>{
-    getUsuarios();
-    for(let i=0; i<usuarios.length; i++){
-      if(usuarios[i].usuario == email){
-        setUsuario(usuarios[i])
-        break;
+    if(!usuarios.length){
+      getUsuarios();
+    } else if (!usuario.usuario) {
+      for(let i=0; i<usuarios.length; i++){
+        if(usuarios[i].usuario == email){
+          setUsuario(usuarios[i])
+          break;
+        }
       }
     }
   })
+
+  useEffect(() => {
+    getUsuarios();
+  }, [email])
   
   const token = useSelector<TokenState, TokenState['tokens']>(
 		(state) => state.tokens
@@ -198,6 +205,7 @@ function CadastroProduto() {
               <Select
                 labelId="demo-simple-select-helper-label"
                 id="demo-simple-select-helper"
+                required
                 onChange={(e) => buscaId(`/categoria/${e.target.value}`, setCategoria, {
                   headers: {
                     Authorization: token
@@ -205,7 +213,7 @@ function CadastroProduto() {
                 })}
               >
                 {
-                  categorias.map((categoria, index) => (
+                  categorias.map((categoria) => (
                     <MenuItem key={categoria.id} value={categoria.id}>
                       {categoria.categoria + ' - ' + categoria.localidade}
                     </MenuItem>
