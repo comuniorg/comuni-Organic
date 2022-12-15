@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
@@ -77,51 +77,74 @@ function DeletarProduto() {
 
   return (
     <>
-      <Box m={2} >
-        <Card variant="outlined"  className='back'>
-          <CardContent>
-            <Box justifyContent="center">
-              <Typography color="textSecondary" gutterBottom>
-                Deseja deletar o Produto:
-              </Typography>
+      <Grid container xs={12} sm={6} md={4} lg={3} style={{ margin: '20px' }}>
+        <Box m={2} >
+          <Card variant="outlined" className='back'>
+            <CardContent>
+              <Box justifyContent="center">
+                <Typography color="textSecondary" gutterBottom>
+                  Deseja deletar o Produto:
+                </Typography>
+                <CardMedia
+                  component="img"
+                  height="300"
+                  image={produto?.foto}
+                  alt="green iguana"
+                />
+                <Typography variant="body2" component="p">
+                  Vendedor: {produto?.usuario?.nome}
+                </Typography>
 
-              <Typography color="textSecondary" >
-                {produto?.nome}
-              </Typography>
+                <Typography variant="body2" component="p">
+                  Contato: {produto?.usuario?.usuario}
+                </Typography>
 
-              <Typography color="textSecondary" >
-                <img src={produto?.foto} alt="Maça" />
-              </Typography>
+                <Typography variant="h5" component="h2">
+                  {produto?.nome}
+                </Typography>
 
-              <Typography color="textSecondary" >
-                {produto?.preco}
-              </Typography>
-            </Box>
-          </CardContent>
-          <CardActions>
-            <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
-              <Box mx={2}>
-              <button className="aacta">
-               <span>sim</span>
-                <svg viewBox="0 0 13 10" height="10px" width="15px">
-                     <path d="M1,5 L11,5"></path>
-                   <polyline points="8 1 12 5 8 9"></polyline>
-                 </svg>
-                </button>
+                <Typography variant="body2" component="p">
+                  R$: {produto?.preco}
+                </Typography>
+
+                <Typography variant="body2" component="p">
+                  Quantidade: {produto?.quantidade}
+                </Typography>
+
+                <Typography variant="body2" component="p">
+                  Categoria: {produto?.categoria?.categoria}
+                </Typography>
+
+                <Typography variant="body2" component="p">
+                  Localidade: {produto?.categoria?.localidade}
+                </Typography>
               </Box>
-              <Box mx={2}>
-              <button className="acta">
-               <span>não</span>
-                 <svg viewBox="0 0 13 10" height="10px" width="15px">
-                     <path d="M1,5 L11,5"></path>
-                    <polyline points="8 1 12 5 8 9"></polyline>
-                  </svg>
-                </button>
+            </CardContent>
+            <CardActions>
+              <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
+                <Box mx={2}>
+                  <button onClick={sim} className="aacta">
+                    <span>sim</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                      <path d="M1,5 L11,5"></path>
+                      <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                  </button>
+                </Box>
+                <Box mx={2}>
+                  <button onClick={nao} className="acta">
+                    <span>não</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                      <path d="M1,5 L11,5"></path>
+                      <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                  </button>
+                </Box>
               </Box>
-            </Box>
-          </CardActions>
-        </Card>
-      </Box>
+            </CardActions>
+          </Card>
+        </Box>
+      </Grid>
     </>
   );
 }

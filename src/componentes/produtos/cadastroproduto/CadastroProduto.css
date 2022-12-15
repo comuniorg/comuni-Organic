@@ -58,6 +58,9 @@
    .fin:active {
     transform: scale(0.95);
    }
+   .fin:hover{
+    cursor: pointer;
+   }
 .imagem{
     background-color: #fefae0;
     background-repeat: no-repeat;

@@ -1,11 +1,13 @@
+import { Grid } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { TokenState } from '../../store/tokens/tokensReducer';
 import "./Home.css";
+import VerdeNovo from './imagens/verdeNovo.png'
 
-function Home(){
+function Home() {
 
   let navigate = useNavigate();
 
@@ -28,11 +30,44 @@ function Home(){
       navigate("/login")
     }
   }, [token])
-  
-  return(
-    <div>
-        <h1>Home</h1>
+
+  return (
+    <div className='ta-center cor-fundo'>
+      <img src={VerdeNovo} alt="" className='w-50' />
+      <Grid container xs={12} spacing={1} justifyContent='center'>
+        <Grid item>
+          <div className="card">
+            <div className="card-img"></div>
+            <div className="card-info">
+              <p className="text-body">Alimentos de Agricultura Familiar</p>
+              <p className="text-title"></p>
+            </div>
+          </div>
+        </Grid>
+        <Grid item>
+          <div className="card">
+            <div className="card_img"></div>
+            <div className="card_info">
+              <p className="text_body">Alimentos Frescos</p>
+              <Link to='/sobre'>
+                <p className="text_title">Saiba Mais</p>
+              </Link>
+            </div>
+          </div>
+        </Grid>
+        <Grid item>
+          <div className="card">
+            <div className="card--img"></div>
+            <div className="card--info">
+              <p className="text--body">Alimentos Orgâncios a Preços Acessíveis</p>
+              <p className="text--title"></p>
+            </div>
+          </div>
+        </Grid>
+      </Grid>
+
     </div>
+
   );
 }
 

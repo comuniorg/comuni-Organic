@@ -5,7 +5,7 @@ import Produto from '../models/Produto';
 import UsuarioLogin from '../models/UsuarioLogin';
 
 export const api = axios.create({
-	 //baseURL: 'http://localhost:4000',
+	//baseURL: 'http://localhost:4000'
 	baseURL: 'https://db-organica-tgxd.onrender.com'
 });
 
@@ -20,12 +20,22 @@ export const cadastroUsuario = async (url: string, dados: { nome: string, usuari
 }
 
 export const login = async (url: string, dados: { usuario: string, senha: string }, setDado: React.Dispatch<string>) => {
-		const resposta = await api.post(url, dados)
-		setDado(resposta.data.token)
+	const resposta = await api.post(url, dados)
+	setDado(resposta.data.token)
 
 }
 
-export const busca = async (url: string, setDado: React.Dispatch<React.SetStateAction<Categoria[]>> | React.Dispatch<React.SetStateAction<Produto[]>>, header: { headers: { Authorization: string } }) => {
+export const salvarEmail = async (url: string, dados: {usuario: string, senha: string}, setDado: React.Dispatch<string>) => {
+	try{
+	const resposta = await api.post(url, dados)
+	setDado(resposta.data.usuario)
+	}catch(error){
+		console.log(`Algo deu errado, tente novamente ` + error)
+	}
+}
+
+export const busca = async (url: string, setDado: React.Dispatch<React.SetStateAction<Categoria[]>> | React.Dispatch<React.SetStateAction<Produto[]>> | 
+	React.Dispatch<React.SetStateAction<UsuarioLogin[]>>, header: { headers: { Authorization: string } }) => {
 	try {
 		if (!header.headers.Authorization) {
 			console.log('Usuário não autorizado, Error 401 - Unauthorized' )

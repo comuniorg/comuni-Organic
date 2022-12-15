@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, InputLabel, MenuItem, FormControl, FormHelperText, Select, Grid } from "@material-ui/core"
+import { Typography, TextField, Button, InputLabel, MenuItem, FormControl, FormHelperText, Select, Grid } from "@material-ui/core"
 import './CadastroProduto.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { busca, buscaId, post, put } from '../../../services/Service';
@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 import Categoria from '../../../models/Categoria';
+import UsuarioLogin from '../../../models/UsuarioLogin';
+import useLocalStorage from 'react-use-localstorage';
 import { Box } from '@mui/material';
 import comuLogo from '../../../assets/images/logo.real.png';
 import { styles } from './styles';
@@ -19,10 +21,45 @@ function CadastroProduto() {
 
   const { id } = useParams<{ id: string }>();
   const [categorias, setCategorias] = useState<Categoria[]>([]);
+  const [usuarios, setUsuarios] = useState<UsuarioLogin[]>([]);
+  const [usuario, setUsuario] = useState<UsuarioLogin>({
+    id: 0,
+    nome: '',
+    usuario: '',
+    senha: '',
+    foto: '',
+    token: null
+  });
+
+  const [email, setEmail] = useLocalStorage('email');
+
+  useEffect(() => {
+    if (!usuarios.length) {
+      getUsuarios();
+    } else if (!usuario.usuario) {
+      for (let i = 0; i < usuarios.length; i++) {
+        if (usuarios[i].usuario == email) {
+          setUsuario(usuarios[i])
+          break;
+        }
+      }
+    }
+  });
+  useEffect(() => {
+    getUsuarios();
+  }, [email])
 
   const token = useSelector<TokenState, TokenState['tokens']>(
     (state) => state.tokens
   )
+
+  async function getUsuarios() {
+    await busca('/usuarios/all', setUsuarios, {
+      headers: {
+        Authorization: token
+      }
+    })
+  }
 
   const [categoria, setCategoria] = useState<Categoria>({
     id: 0,
@@ -33,7 +70,8 @@ function CadastroProduto() {
   useEffect(() => {
     setProduto({
       ...produto,
-      categoria: categoria
+      categoria: categoria,
+      usuario: usuario
     })
   }, [categoria])
 
@@ -43,7 +81,8 @@ function CadastroProduto() {
     quantidade: 0,
     foto: '',
     preco: 0,
-    categoria: { id: 0, categoria: '', localidade: '' }
+    categoria: { id: 0, categoria: '', localidade: '' },
+    usuario: { id: 0, nome: '', usuario: '', senha: '', foto: '', token: null, }
   })
 
   useEffect(() => {
@@ -89,7 +128,8 @@ function CadastroProduto() {
     setProduto({
       ...produto,
       [e.target.name]: e.target.value,
-      categoria: categoria
+      categoria: categoria,
+      usuario: usuario
     })
   }
 
