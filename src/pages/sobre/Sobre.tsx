@@ -14,8 +14,8 @@ function Sobre(){
   return(
     <>
       <h1></h1>
-      <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
-        <Grid alignItems="center" item xs={6}>
+      <Grid container direction="row" justifyContent="center" className='alignItems-center'>
+        <Grid className='alignItems-center' item xs={6}>
           <Box paddingX={20}>
             <Typography variant="h5" gutterBottom color="textPrimary" component="h3" align="center" className='titulo'>Quem Somos?</Typography>
             <Typography variant="h6" gutterBottom color="textPrimary" component="h5" align="center" className='titulo'>Somos um e-commerce criado para facilitar a comunicação e comércio entre Agricultores Familiares e Associações de comunidades carentes do estado do RJ. </Typography>

@@ -69,4 +69,6 @@
     background-size: cover;
     background-position: center;
  }
-
+.alignItems-center{
+    align-items: center !important;
+}
