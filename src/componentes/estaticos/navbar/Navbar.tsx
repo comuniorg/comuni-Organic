@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -10,10 +9,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import "./Navbar.css";
-import useLocalStorage from 'react-use-localstorage';
 import SearchIcon from '@material-ui/icons/Search';
 import SDrawer from '../drawer/Drawer';
-import { InputBase, Typography } from '@material-ui/core';
+import { IconButton, InputBase, Typography } from '@material-ui/core';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
@@ -204,7 +202,6 @@ export default function Navbar() {
           color="inherit"
           aria-label="open drawer"
         >
-          <MenuIcon />
         </IconButton>
         <Typography className={classes.title} variant="h6" noWrap>
           Comunidade organica
