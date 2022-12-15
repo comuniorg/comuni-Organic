@@ -51,10 +51,11 @@ function CadastrarUsuario() {
   async function onSubmit(e: ChangeEvent<HTMLFormElement>){
     e.preventDefault();
 
-    if(confirmarSenha == usuarioCadastro.senha){
+    if(confirmarSenha == usuarioCadastro.senha && (confirmarSenha.length && usuarioCadastro.senha.length >= 8 ) 
+      && usuarioCadastro.usuario.includes('@')){
       cadastroUsuario(`/usuarios/cadastrar`, usuarioCadastro, setUsuarioResult)
       toast.success('Usuário cadastrado com sucesso', {
-				position: 'top-right', // position? topo direita
+				position: 'top-right', // position? topo direitausuario
 				autoClose: 2000, // Fechar automaticamente? após 2 segundos
 				hideProgressBar: false, // não mostrar o progresso? mostrar
 				closeOnClick: true, // fechar após o click? sim

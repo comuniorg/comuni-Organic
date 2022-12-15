@@ -54,3 +54,12 @@
    .fin:active {
     transform: scale(0.95);
    }
+.imagem{
+    background-color: #fefae0;
+    background-repeat: no-repeat;
+    width: 3000vh;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+ }
+
