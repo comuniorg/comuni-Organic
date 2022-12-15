@@ -151,6 +151,48 @@ function CadastroProduto() {
 
   return (
     <>
+      <Container maxWidth="sm" className="topo">
+        <form onSubmit={onSubmit}>
+          <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro</Typography>
+
+          <TextField value={produto.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="nome" label="nome" variant="outlined" name="nome" margin="normal" fullWidth required/>
+
+          <TextField value={produto.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="quantidade" label="quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth/>
+
+          <TextField value={produto.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="foto" label="foto" name="foto" variant="outlined" margin="normal" fullWidth required/>
+
+          <TextField value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="preco" label="preco" name="preco" variant="outlined" margin="normal" fullWidth/>
+
+          <FormControl >
+            <InputLabel id="demo-simple-select-helper-label">Categoria</InputLabel>
+              <Select
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+                onChange={(e) => buscaId(`/categoria/${e.target.value}`, setCategoria, {
+                  headers: {
+                    Authorization: token
+                  }
+                })}
+              >
+                {
+                  categorias.map((categoria, index) => (
+                    <MenuItem key={categoria.id} value={categoria.id}>
+                      {categoria.categoria + ' - ' + categoria.localidade}
+                    </MenuItem>
+                  ))
+                }
+              </Select>
+            <FormHelperText>Escolha o tipo e a localidade do produto</FormHelperText>
+            <button  className="fin">
+              <span>Finalizar</span>
+              <svg viewBox="0 0 13 10" height="10px" width="15px">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </button>
+          </FormControl>
+        </form>
+      </Container>
       <Grid container direction='row' justifyContent='center' className='form-produtos'>
         <Grid item xs={12} >
           <Box className={classes.box}>
