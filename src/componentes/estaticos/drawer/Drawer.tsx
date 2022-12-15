@@ -8,7 +8,6 @@ import ListItem from '@material-ui/core/ListItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LoginIcon from '@mui/icons-material/Login';
 import AddIcon from '@mui/icons-material/Add';
@@ -82,25 +81,25 @@ export default function SDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className={classes.items}>
-        <Link to='/Home' className={classes.link}>
+        <Link to='/home' className={classes.link}>
           <ListItem className={classes.icons}><HomeIcon className={classes.typeIcons}/>Início</ListItem>
         </Link>
-        <Link to='/Login' className={classes.link}>
+        <Link to='/login' className={classes.link}>
           <ListItem className={classes.icons}><LoginIcon className={classes.typeIcons}/>Entrar</ListItem>
         </Link>
-        <Link to='/Produtos' className={classes.link}>
+        <Link to='/produtos' className={classes.link}>
           <ListItem className={classes.icons}><AddShoppingCartIcon className={classes.typeIcons}/>Produtos</ListItem>
         </Link>
-        <Link to='/CadastroProduto' className={classes.link}>
+        <Link to='/formularioproduto' className={classes.link}>
           <ListItem className={classes.icons}><AddIcon className={classes.typeIcons}/>Cadastrar Produto</ListItem>
         </Link>
-        <Link to='/Categoria' className={classes.link}>
+        <Link to='/categorias' className={classes.link}>
           <ListItem className={classes.icons}><PlaylistAddIcon className={classes.typeIcons}/>Categoria</ListItem>
         </Link>
-        <Link to='/CadastroCategoria' className={classes.link}>
+        <Link to='/formulariocategoria' className={classes.link}>
           <ListItem className={classes.icons}><AddIcon className={classes.typeIcons}/>Cadastrar Categoria</ListItem>
         </Link>
-        <Link to='/Sobre' className={classes.link}>
+        <Link to='/sobre' className={classes.link}>
           <ListItem className={classes.icons}><InfoIcon className={classes.typeIcons}/>Sobre</ListItem>
         </Link>
         <Link to='/'className={classes.link}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { alpha, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import SearchIcon from '@material-ui/icons/Search';
 import SDrawer from '../drawer/Drawer';
-import { InputBase } from '@material-ui/core';
+import { InputBase, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,7 +24,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     toolbar: {
       display: 'flex',
-      justifyContent: 'flex-end',
+      justifyContent: 'space-between',
+    },
+    logo: {
+      width: '150px',
+      marginTop: '5px',
     },
     searching: {
       marginRight: theme.spacing(2),
@@ -171,6 +175,10 @@ export default function Navbar() {
     <>
       <AppBar className={classes.grow} position="static">
         <Toolbar className={classes.toolbar}>
+          <Typography>
+            <img src='https://media.discordapp.net/attachments/1025004926046322759/1052920045413605466/20221214_211344_0000.png'
+            className={classes.logo}/>
+          </Typography>
           <div className={classes.searching}>
               <SearchIcon className={classes.searchIcon} />
               <InputBase
