@@ -6,9 +6,12 @@ import './CadastrarUsuario.css';
 import { cadastroUsuario } from '../../services/Service';
 import UsuarioCadastro from '../../models/UsuarioCadastro';
 import { toast } from 'react-toastify';
+import loogo from '../../assets/images/loogo.png';
+import { styles } from './style';
 
 function CadastrarUsuario() {
 
+  const classes = styles();
   let navigate = useNavigate();
   const [confirmarSenha, setConfirmarSenha] = useState<string>("");
   const [usuarioCadastro, setUsuarioCadastro] = useState<UsuarioCadastro>(
@@ -80,12 +83,15 @@ function CadastrarUsuario() {
   }
 
   return (
-    <Grid container direction='row' justifyContent='center' className='alignItems-center2'>
-      <Grid item xs={12} sm={9} md={6} className='alignItems-center2'>
-        <Box paddingX={10}>
-          <form onSubmit={onSubmit}>
-            
-            <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos2'>Cadastrar</Typography>
+    <Grid container direction='row' justifyContent='flex-start' className={classes.Gridpai1}>
+      <Grid container item xs={12} sm={6} md={4}  >
+        <Box  className={classes.box}>
+          <form onSubmit={onSubmit} className={classes.form} >
+
+            <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center'>
+              <img className={classes.imagemlogo} src={loogo} alt='Imagemlogo' />
+            </Typography>
+
             
             <TextField value={usuarioCadastro.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='nome' label='nome' variant='outlined' name='nome' margin='normal' fullWidth required/>
             
