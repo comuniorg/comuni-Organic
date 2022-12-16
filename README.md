@@ -18,7 +18,7 @@ Front end do projeto Comunidade Orgânica, utilizando React como framework e tec
 ### Para rodar o servidor:
 
 ```bash
- $ yarn install
+ $ yarn start
  ```
 
 O aplicativo irá ser rodado em modo de desenvolvedor.\
