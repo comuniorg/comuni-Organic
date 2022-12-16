@@ -1,4 +1,4 @@
-h1>🥗 Comunidade Orgânica</h1>
+<h1>🥗 Comunidade Orgânica</h1>
 
 <img src="https://i.imgur.com/6CMF4xd.png" alt="co_banner"/>
 
