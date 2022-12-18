@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, FormControl } from "@material-ui/core"
+import { Container, Typography, TextField, Button, FormControl, makeStyles } from "@material-ui/core"
 import { useNavigate, useParams } from 'react-router-dom';
 import { buscaId, post, put } from '../../../services/Service';
 import { useSelector } from 'react-redux';
@@ -8,7 +8,18 @@ import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 import './CadastroCategoria.css';
 
+const useStyles = makeStyles({
+  div:{
+    backgroundColor: '#C6E5B1',
+    minHeight: '746px'
+  },
+  pdTop: {
+    paddingTop: '50px'
+  }
+})
+
 function CadastroCategoria() {
+  const classes = useStyles();
 
   let navigate = useNavigate();
 
@@ -26,7 +37,7 @@ function CadastroCategoria() {
   useEffect(() => {
     if (token == '') {
       toast.error('Você precisa estar logado', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -70,7 +81,7 @@ function CadastroCategoria() {
         }
       });
       toast.success('Produto atualizado com sucesso', {
-				position: 'top-right', // position? topo direita
+				position: 'bottom-left', // position? baixo esquerda
 				autoClose: 2000, // Fechar automaticamente? após 2 segundos
 				hideProgressBar: false, // não mostrar o progresso? mostrar
 				closeOnClick: true, // fechar após o click? sim
@@ -87,7 +98,7 @@ function CadastroCategoria() {
         }
       });
       toast.success('Produto cadastrado com sucesso', {
-				position: 'top-right', // position? topo direita
+				position: 'bottom-left', // position? baixo esquerda
 				autoClose: 2000, // Fechar automaticamente? após 2 segundos
 				hideProgressBar: false, // não mostrar o progresso? mostrar
 				closeOnClick: true, // fechar após o click? sim
@@ -104,11 +115,20 @@ function CadastroCategoria() {
     navigate('/categorias');
   }
 
+  let condicaoCategoria;
+
+  if(id !== undefined){
+    condicaoCategoria = 'alterar';
+  }
+  else{
+    condicaoCategoria = 'cadastrar';
+  }
+
   return (
-    <>
-      <Container maxWidth="sm" className="topo">
+    <div className={classes.div}>
+      <Container maxWidth="sm" className={classes.pdTop}>
         <form onSubmit={onSubmit}>
-          <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro</Typography>
+          <Typography variant="h3" color="textSecondary" component="h1" align="center" >{condicaoCategoria} categoria</Typography>
 
           <TextField value={categoria.categoria} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="categoria" label="categoria" name="categoria" variant="outlined" margin="normal" fullWidth required/>
 
@@ -116,7 +136,7 @@ function CadastroCategoria() {
 
           <FormControl >
             <button  className="form">
-              <span>Cadastrar</span>
+              <span>{condicaoCategoria}</span>
               <svg viewBox="0 0 13 10" height="10px" width="15px">
                 <path d="M1,5 L11,5"></path>
                 <polyline points="8 1 12 5 8 9"></polyline>
@@ -125,7 +145,7 @@ function CadastroCategoria() {
           </FormControl>
         </form>
       </Container>
-    </>
+    </div>
   )
 }
 export default CadastroCategoria;
