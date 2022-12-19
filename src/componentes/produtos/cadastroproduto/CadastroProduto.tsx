@@ -90,7 +90,7 @@ function CadastroProduto() {
   useEffect(() => {
     if (token == '') {
       toast.error('Você precisa estar logado', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -104,7 +104,6 @@ function CadastroProduto() {
   }, [token])
 
   useEffect(() => {
-    getCategorias()
     if (id != undefined) {
       findById(id)
     }
@@ -145,7 +144,7 @@ function CadastroProduto() {
         }
       });
       toast.success('Produto atualizado com sucesso', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -162,7 +161,7 @@ function CadastroProduto() {
         }
       });
       toast.success('Produto cadastrado com sucesso', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -174,7 +173,7 @@ function CadastroProduto() {
     }
     else {
       toast.error('Você precisa preencher os campos', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -191,6 +190,15 @@ function CadastroProduto() {
     navigate('/Produtos');
   }
 
+  let condicaoProduto;
+
+  if(id !== undefined){
+    condicaoProduto = 'alterar';
+  }
+  else{
+    condicaoProduto = 'cadastrar';
+  }
+
   return (
     <>
       <Grid container direction='row' justifyContent='center' className='form-produtos'>
@@ -200,7 +208,7 @@ function CadastroProduto() {
               <Grid item xs={12} sm={12} md={9} lg={4} xl={4}>
                 <form onSubmit={onSubmit} className={classes.form} >
                   <Typography variant='h3' className='cadastro-produto' color='textPrimary' align='center' >
-                    <p>Cadastrar Produto</p>
+                    <p>{condicaoProduto} produto</p>
                   </Typography>
                   <Grid container className='alignItems-center' justifyContent='center'>
                     <Grid item xs={10}>
@@ -231,6 +239,7 @@ function CadastroProduto() {
                           value={option}
                           labelId="demo-simple-select-helper-label"
                           id="demo-simple-select-helper"
+                          required
                           onChange={(e) => { setOption(e.target.value + '');
                             buscaId(`/categoria/${e.target.value}`, setCategoria, {
                             headers: {
@@ -248,7 +257,7 @@ function CadastroProduto() {
                         </Select>
                         <FormHelperText>Escolha o tipo e a localidade do produto</FormHelperText>
                           <button  className="fin">
-                            <span>Finalizar</span>
+                            <span>{condicaoProduto}</span>
                             <svg viewBox="0 0 13 10" height="10px" width="15px">
                               <path d="M1,5 L11,5"></path>
                               <polyline points="8 1 12 5 8 9"></polyline>

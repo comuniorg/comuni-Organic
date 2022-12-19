@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography, makeStyles } from '@material-ui/core';
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -9,7 +9,15 @@ import { busca } from '../../../services/Service';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import './ListaProdutos.css';
 
+const useStyle = makeStyles({
+  div: {
+    backgroundColor: '#C6E5B1',
+    minHeight: '746px'
+  }
+})
+
 function ListaProdutos() {
+  const classes = useStyle();
 
   const [produtos, setProdutos] = useState<Produto[]>([])
 
@@ -22,7 +30,7 @@ function ListaProdutos() {
   useEffect(() => {
     if (token == "") {
       toast.error('Você precisa estar logado', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -52,7 +60,7 @@ function ListaProdutos() {
 
   return (
     <>
-      <Grid container className='back'>
+      <Grid container className={classes.div}>
         {
           produtos.map(produto => (
             <Grid key={produto.id} item xs={6} sm={4} md={3}>

@@ -13,9 +13,8 @@ function Sobre(){
 
   return(
     <>
-      <h1></h1>
-      <Grid container direction="row" justifyContent="center" className='alignItems-center'>
-        <Grid className='alignItems-center' item xs={6}>
+      <Grid container justifyContent="center" className='alignItems-center'>
+        <Grid item xs={10} md={8} lg={6} className='alignItems-center'>
           <Box paddingX={20}>
             <Typography variant="h5" gutterBottom color="textPrimary" component="h3" align="center" className='titulo'>Quem Somos?</Typography>
             <Typography variant="h6" gutterBottom color="textPrimary" component="h5" align="center" className='titulo'>Somos um e-commerce criado para facilitar a comunicação e comércio entre Agricultores Familiares e Associações de comunidades carentes do estado do RJ. </Typography>
@@ -29,35 +28,35 @@ function Sobre(){
             <br />
           </Box>
         </Grid>
-        <Grid item container xs={12} >
-              <a href='https://www.linkedin.com/in/caroline-barcelos-valente-42091a15a/' target='_blank'>
-              <img src={Carol} alt="" width='179' />
-              </a>
+        <Grid item>
+          <a href='https://www.linkedin.com/in/caroline-barcelos-valente-42091a15a/' target='_blank'>
+            <img src={Carol} alt="" width='179' />
+          </a>
 
-              <a href='https://www.linkedin.com/in/danielcorrea5/' target='_blank'>
-              <img src={Daniel} alt="" width='179'/>
-              </a>
+          <a href='https://www.linkedin.com/in/danielcorrea5/' target='_blank'>
+            <img src={Daniel} alt="" width='179'/>
+          </a>
 
-              <a href='https://www.linkedin.com/in/maycon-silva-4673ba234/' target='_blank'>
-              <img src={Maycon} alt="" width='179' />
-              </a>
+          <a href='https://www.linkedin.com/in/maycon-silva-4673ba234/' target='_blank'>
+            <img src={Maycon} alt="" width='179' />
+          </a>
 
-              <a href='https://www.linkedin.com/in/nicole-moreira-da-silva-4aa171234/' target='_blank'>
-              <img src={Nicole} alt="" width='179' />
-              </a>
+          <a href='https://www.linkedin.com/in/nicole-moreira-da-silva-4aa171234/' target='_blank'>
+            <img src={Nicole} alt="" width='179' />
+          </a>
 
-              <a href='https://www.linkedin.com/in/murilo-nascimento-0388b4249/' target='_blank'>
-              <img src={Murilo} alt="" width='179'/>
-              </a>
+          <a href='https://www.linkedin.com/in/murilo-nascimento-0388b4249/' target='_blank'>
+            <img src={Murilo} alt="" width='179'/>
+          </a>
 
-              <a href='https://www.linkedin.com/in/hugo-ramos-84a76924a/' target='_blank'>
-              <img src={Hugo} alt="" width='179'/>
-              </a>
-              
-              <a href='https://www.linkedin.com/in/jeangs/' target='_blank'>
-              <img src={Jean} alt="" width='179'/>
-              </a>
-            </Grid>
+          <a href='https://www.linkedin.com/in/hugo-ramos-84a76924a/' target='_blank'>
+            <img src={Hugo} alt="" width='179'/>
+          </a>
+          
+          <a href='https://www.linkedin.com/in/jeangs/' target='_blank'>
+            <img src={Jean} alt="" width='179'/>
+          </a>
+        </Grid>
       </Grid>
     </>
   )

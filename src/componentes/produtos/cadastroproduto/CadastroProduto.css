@@ -61,14 +61,3 @@
    .fin:hover{
     cursor: pointer;
    }
-.imagem{
-    background-color: #fefae0;
-    background-repeat: no-repeat;
-    width: 3000vh;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
- }
-.alignItems-center{
-    align-items: center !important;
-}

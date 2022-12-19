@@ -62,7 +62,7 @@ function Login() {
       await login(`/auth/logar`, usuarioLogin, setToken) // setTokin está salvando o tokin no Redux
       usuarioEmail();
       toast.success('Usuário logado com sucesso', {
-				position: 'top-right', // position? topo direita
+				position: 'bottom-left', // position? baixo esquerda
 				autoClose: 2000, // Fechar automaticamente? após 2 segundos
 				hideProgressBar: false, // não mostrar o progresso? mostrar
 				closeOnClick: true, // fechar após o click? sim
@@ -73,7 +73,7 @@ function Login() {
 			});
     }catch(error){
       toast.error('Dados do usuário inconsistentes. Erro ao logar', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim

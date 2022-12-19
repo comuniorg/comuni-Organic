@@ -12,12 +12,6 @@ import "./Navbar.css";
 import SearchIcon from '@material-ui/icons/Search';
 import SDrawer from '../drawer/Drawer';
 import { IconButton, InputBase, Typography } from '@material-ui/core';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/tokensReducer';
-import { addToken } from '../../../store/tokens/actions';
-import { toast } from 'react-toastify';
-import useLocalStorage from 'react-use-localstorage';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -102,10 +96,6 @@ export default function Navbar() {
     handleMobileMenuClose();
   };
 
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -162,96 +152,6 @@ export default function Navbar() {
       </MenuItem>
     </Menu>
   );
-
-
-  let navigate = useNavigate();
-
-  const dispatch = useDispatch();
-  const token = useSelector<TokenState, TokenState['tokens']>(
-    (state) => state.tokens
-  )
-
-  
-  const [email, setEmail] = useLocalStorage('email');
-  
-  function goLogout(){
-    dispatch(addToken(''))
-    setEmail('')
-    toast.info('Usuário deslogado', {
-      position: 'top-right', // position? topo direita
-      autoClose: 2000, // Fechar automaticamente? após 2 segundos
-      hideProgressBar: false, // não mostrar o progresso? mostrar
-      closeOnClick: true, // fechar após o click? sim
-      pauseOnHover: false, // pausar quando o usuário mover o mouse? não
-      draggable: false, // permitir mover a notificação do local? não
-      theme: 'light', // tema? light
-      progress: undefined // 
-    });
-    navigate('/login');
-  }
-
-  let navbarComponents;
-  
-  if(token != ''){
-    navbarComponents = <div className={classes.grow}>
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton
-          edge="start"
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="open drawer"
-        >
-        </IconButton>
-        <Typography className={classes.title} variant="h6" noWrap>
-          Comunidade organica
-        </Typography>
-
-        <IconButton>
-          <Link to="/home" className='text-decorator-none'>
-            <p> Home </p>
-          </Link>
-        </IconButton>
-
-        <IconButton>
-          <Link to="/produtos" className='text-decorator-none'>
-            <p> Produtos </p>
-          </Link>
-        </IconButton>
-        
-        <IconButton>
-          <Link to="/formularioproduto" className='text-decorator-none'>
-            <p> Cadastrar produto </p>
-          </Link>
-        </IconButton>
-
-        <IconButton>
-          <Link to="/categorias" className='text-decorator-none'>
-            <p> Categorias </p>
-          </Link>
-        </IconButton>
-        
-        <IconButton>
-          <Link to="/formulariocategoria" className='text-decorator-none'>
-            <p> Cadastrar categoria </p>
-          </Link>
-        </IconButton>
-
-        <IconButton>
-          <Link to="/sobre" className='text-decorator-none'>
-            <p> Sobre </p>
-          </Link>
-        </IconButton>
-        
-        <IconButton onClick={goLogout}>
-          <p> Logout </p>
-        </IconButton>
-      </Toolbar>
-    </AppBar>
-    {renderMobileMenu}
-    {renderMenu}
-  </div>
-  }
 
   return (
     <>
