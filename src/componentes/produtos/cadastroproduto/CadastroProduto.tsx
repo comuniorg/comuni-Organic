@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Typography, TextField, Button, InputLabel, MenuItem, FormControl, FormHelperText, Select, Grid } from "@material-ui/core"
+import { Typography, TextField, InputLabel, MenuItem, FormControl, FormHelperText, Select, Grid } from "@material-ui/core"
 import './CadastroProduto.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { busca, buscaId, post, put } from '../../../services/Service';
@@ -11,7 +11,6 @@ import Categoria from '../../../models/Categoria';
 import UsuarioLogin from '../../../models/UsuarioLogin';
 import useLocalStorage from 'react-use-localstorage';
 import { Box } from '@mui/material';
-import comuLogo from '../../../assets/images/logo.real.png';
 import { styles } from './styles';
 
 function CadastroProduto() {
