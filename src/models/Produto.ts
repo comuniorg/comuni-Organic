@@ -7,8 +7,8 @@ interface Produto{
   quantidade: number,
   foto: string,
   preco: number,
-  categoria?: Categoria | null,
-  usuario?: UsuarioLogin | null
+  categoria: Categoria | null,
+  usuario: UsuarioLogin | null
 }
 
 export default Produto;
