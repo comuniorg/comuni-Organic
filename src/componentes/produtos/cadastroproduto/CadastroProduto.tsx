@@ -90,7 +90,7 @@ function CadastroProduto() {
   useEffect(() => {
     if (token == '') {
       toast.error('Você precisa estar logado', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -145,15 +145,15 @@ function CadastroProduto() {
         }
       });
       toast.success('Produto atualizado com sucesso', {
-        position: 'top-right', // position? topo direita
-        autoClose: 2000, // Fechar automaticamente? após 2 segundos
-        hideProgressBar: false, // não mostrar o progresso? mostrar
-        closeOnClick: true, // fechar após o click? sim
-        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
-        draggable: false, // permitir mover a notificação do local? não
-        theme: 'light', // tema? light
-        progress: undefined // 
-      });
+				position: 'bottom-left', // position? baixo esquerda
+				autoClose: 2000, // Fechar automaticamente? após 2 segundos
+				hideProgressBar: false, // não mostrar o progresso? mostrar
+				closeOnClick: true, // fechar após o click? sim
+				pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+				draggable: false, // permitir mover a notificação do local? não
+				theme: 'light', // tema? light
+				progress: undefined // 
+			});
     }
     else if (produto.quantidade > 0 && produto.preco > 0) {
       post(`/produto`, produto, setProduto, {
@@ -162,7 +162,7 @@ function CadastroProduto() {
         }
       });
       toast.success('Produto cadastrado com sucesso', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? topo direita
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -174,7 +174,7 @@ function CadastroProduto() {
     }
     else {
       toast.error('Você precisa preencher os campos', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? topo direita
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
