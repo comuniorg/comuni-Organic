@@ -115,20 +115,11 @@ function CadastroCategoria() {
     navigate('/categorias');
   }
 
-  let condicaoCategoria;
-
-  if(id !== undefined){
-    condicaoCategoria = 'alterar';
-  }
-  else{
-    condicaoCategoria = 'cadastrar';
-  }
-
   return (
     <div className={classes.div}>
       <Container maxWidth="sm" className={classes.pdTop}>
         <form onSubmit={onSubmit}>
-          <Typography variant="h3" color="textSecondary" component="h1" align="center" >{condicaoCategoria} categoria</Typography>
+          <Typography variant="h3" color="textSecondary" component="h1" align="center" > {(id !== undefined)? 'alterar' : 'cadastrar'} categoria</Typography>
 
           <TextField value={categoria.categoria} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="categoria" label="categoria" name="categoria" variant="outlined" margin="normal" fullWidth required/>
 
@@ -136,7 +127,7 @@ function CadastroCategoria() {
 
           <FormControl >
             <button  className="form">
-              <span>{condicaoCategoria}</span>
+              <span>{(id !== undefined)? 'alterar' : 'cadastrar'}</span>
               <svg viewBox="0 0 13 10" height="10px" width="15px">
                 <path d="M1,5 L11,5"></path>
                 <polyline points="8 1 12 5 8 9"></polyline>

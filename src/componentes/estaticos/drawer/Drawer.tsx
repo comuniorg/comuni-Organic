@@ -101,22 +101,6 @@ export default function SDrawer() {
     navigate('/login');
   }
 
-  let entrar = <></>;
-  let sair = <></>;
-
-  if(token != ''){
-    sair =  <ListItem onClick={goLogout} className={classes.icons}>
-              <ExitToAppIcon className={classes.typeIcons}/>Sair
-            </ListItem>
-  }
-  else{
-    entrar =  <Link to='/'  className={classes.link}>
-                <ListItem className={classes.icons}>
-                  <LoginIcon className={classes.typeIcons}/>Entrar
-                </ListItem>
-              </Link>
-  }
-
   const list = (anchor: Anchor) => (
     <div
       className={clsx(classes.list, {
@@ -127,7 +111,13 @@ export default function SDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List className={classes.items} style={{minHeight: 'calc(100vh - 16px)'}}>
-        {entrar}
+        {(token == '') &&
+          <Link to='/'  className={classes.link}>
+            <ListItem className={classes.icons}>
+              <LoginIcon className={classes.typeIcons}/>Entrar
+            </ListItem>
+          </Link>
+        }
         <Link to='/home' className={classes.link}>
           <ListItem className={classes.icons}><HomeIcon className={classes.typeIcons}/>Início</ListItem>
         </Link>
@@ -146,7 +136,11 @@ export default function SDrawer() {
         <Link to='/sobre' className={classes.link}>
           <ListItem className={classes.icons}><InfoIcon className={classes.typeIcons}/>Sobre</ListItem>
         </Link>
-        {sair}
+        {(token != '') &&
+          <ListItem onClick={goLogout} className={classes.icons}>
+            <ExitToAppIcon className={classes.typeIcons}/>Sair
+          </ListItem>
+        }
       </List>
     </div>
   );
