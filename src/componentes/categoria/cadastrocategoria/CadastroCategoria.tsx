@@ -116,7 +116,7 @@ function CadastroCategoria() {
   }
 
   return (
-    <div className={classes.div}>
+    <div className={classes.div} style={{minHeight: 'calc(100vh - 148px)' }}>
       <Container maxWidth="sm" className={classes.pdTop}>
         <form onSubmit={onSubmit}>
           <Typography variant="h3" color="textSecondary" component="h1" align="center" > {(id !== undefined)? 'alterar' : 'cadastrar'} categoria</Typography>

@@ -103,7 +103,7 @@ function ListaProdutos() {
 
   return (
     <>
-      <Grid container className={classes.div}>
+      <Grid container className={classes.div} style={{minHeight: 'calc(100vh - 148px)' }}>
         {
           produtos.map(produto => (
             <Grid key={produto.id} item xs={6} sm={4} md={3}>
