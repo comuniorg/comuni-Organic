@@ -29,8 +29,8 @@
     height: var(--size);
     border-radius: 50%;
     transform: translateY(-50%);
-    background: url('./imagens/agricultor1.jpg');
-    background-size: 100%;
+    background: url('./imagens/agricultora.jpg');
+    background-size: cover;
     position: relative;
     transition: all .3s ease-in-out;
    }
@@ -80,6 +80,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10%;
    }
    
    .card_info {
@@ -88,6 +89,7 @@
     align-items: center;
     gap: 2em;
     padding: 0 1rem;
+
    }
    
    .card_img {
@@ -97,7 +99,7 @@
     border-radius: 50%;
     transform: translateY(-50%);
     background: url('./imagens/alimentoFresco.jpg');
-    background-size: 100%;
+    background-size: cover;
     position: relative;
     transition: all .3s ease-in-out;
    }
@@ -166,7 +168,7 @@
     border-radius: 50%;
     transform: translateY(-50%);
     background: url('./imagens/feira.jpg');
-    background-size: 100%;
+    background-size: cover;
     position: relative;
     transition: all .3s ease-in-out;
    }
@@ -207,7 +209,7 @@
    }
 
    .w-50 {
-    width: 80%;
+    width: 100%;
    }
 
    .ta-center {
