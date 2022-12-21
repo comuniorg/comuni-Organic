@@ -103,7 +103,7 @@ function CadastrarUsuario() {
             
             <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth required/>
 
-            <Box marginTop={2} textAlign='center'>
+            <Box marginTop={2} display='flex' justifyContent='space-between'>
               <Link to='/login' className='text-decorator-none'>
                 <button className="rata">
                   <span>Cancelar</span>
