@@ -92,7 +92,6 @@ function CadastrarUsuario() {
               <img className={classes.imagemlogo} src={loogo} alt='Imagemlogo' />
             </Typography>
 
-            
             <TextField value={usuarioCadastro.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='nome' label='nome' variant='outlined' name='nome' margin='normal' fullWidth required/>
             
             <TextField value={usuarioCadastro.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal' fullWidth required/>
