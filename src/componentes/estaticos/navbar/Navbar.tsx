@@ -161,17 +161,6 @@ export default function Navbar() {
             <img src='https://media.discordapp.net/attachments/1025004926046322759/1052920045413605466/20221214_211344_0000.png'
             className={classes.logo}/>
           </Typography>
-          <div className={classes.searching}>
-              <SearchIcon className={classes.searchIcon} />
-              <InputBase
-                placeholder="Busca..."
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-          </div>
           <SDrawer />
         </Toolbar>
       </AppBar>

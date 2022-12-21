@@ -32,9 +32,9 @@ function Home() {
   }, [token])
 
   return (
-    <div className='ta-center cor-fundo'>
+    <div className='ta-center cor-fundo' style={{minHeight: 'calc(100vh - 148px)' }}>
       <img src={VerdeNovo} alt="" className='w-50' />
-      <Grid container spacing={1} justifyContent='center'>
+      <Grid container xs={12} spacing={1} justifyContent='center'>
         <Grid item>
           <div className="card">
             <div className="card-img"></div>

@@ -137,7 +137,7 @@ export default function SDrawer() {
           <ListItem className={classes.icons}><InfoIcon className={classes.typeIcons}/>Sobre</ListItem>
         </Link>
         {(token != '') &&
-          <ListItem onClick={goLogout} className={classes.icons}>
+          <ListItem onClick={goLogout} className={classes.icons} style={{cursor: 'pointer'}}>
             <ExitToAppIcon className={classes.typeIcons}/>Sair
           </ListItem>
         }

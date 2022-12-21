@@ -83,7 +83,7 @@ function CadastrarUsuario() {
   }
 
   return (
-    <Grid container direction='row' justifyContent='flex-start' className={classes.Gridpai1}>
+    <Grid container direction='row' justifyContent='flex-start' className={classes.Gridpai1} style={{minHeight: 'calc(100vh - 148px)' }}>
       <Grid container item xs={12} sm={6} md={4}  >
         <Box  className={classes.box}>
           <form onSubmit={onSubmit} className={classes.form} >
@@ -103,8 +103,8 @@ function CadastrarUsuario() {
             
             <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth required/>
 
-            <Box marginTop={2} textAlign='center'>
-              <Link to='/login' className='text-decorator-none'>
+            <Box marginTop={2} display='flex' justifyContent='space-around' alignItems='center'>
+              <Link to='/login'>
                 <button className="rata">
                   <span>Cancelar</span>
                     <svg viewBox="0 0 13 10" height="10px" width="15px">
@@ -115,12 +115,12 @@ function CadastrarUsuario() {
               </Link>
 
               <button className="cata">
-                 <span>cadastrar</span>
-                  <svg viewBox="0 0 13 10" height="10px" width="15px">
-                    <path d="M1,5 L11,5"></path>
-                    <polyline points="8 1 12 5 8 9"></polyline>
-                  </svg>
-               </button>
+                <span>cadastrar</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                  <path d="M1,5 L11,5"></path>
+                  <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+              </button>
             </Box>
           </form>
         </Box>
