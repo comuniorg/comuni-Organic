@@ -137,6 +137,7 @@ function CadastroCategoria() {
         </form>
       </Container>
     </div>
+    
   )
 }
 export default CadastroCategoria;
