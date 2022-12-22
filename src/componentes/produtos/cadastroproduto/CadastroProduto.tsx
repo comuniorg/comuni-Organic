@@ -11,6 +11,7 @@ import Categoria from '../../../models/Categoria';
 import UsuarioLogin from '../../../models/UsuarioLogin';
 import useLocalStorage from 'react-use-localstorage';
 import { Box } from '@mui/material';
+import comuLogo from '../../../assets/images/comu-logo.png';
 import { styles } from './styles';
 
 function CadastroProduto() {
@@ -192,18 +193,21 @@ function CadastroProduto() {
 
   return (
     <>
-      <Grid container direction='row' justifyContent='center' className='form-produtos'>
+      <Grid container direction='row' justifyContent='flex-end' className='form-produtos'>
         <Grid item xs={12} >
           <Box className={classes.box}>
-            <Grid container className='alignItems-center' justifyContent='center'>
-              <Grid item xs={12} sm={12} md={9} lg={4} xl={4}>
-                <form onSubmit={onSubmit} className={classes.form} >
+            <Grid container className='alignItems-center imagemCad' justifyContent='flex-end'>
+              <Grid item xs={12} sm={12} md={9} lg={5} xl={5}>
+                <form onSubmit={onSubmit} className={classes.form}>
+          
                   <Typography variant='h3' className='cadastro-produto' color='textPrimary' align='center' >
-                    <p>{(id != undefined)? 'alterar' : 'cadastrar'} Produto</p>
+
+                    <p></p>
+                    <img src={comuLogo} alt="" className={classes.imagemLogo}/>
                   </Typography>
                   <Grid container className='alignItems-center' justifyContent='center'>
                     <Grid item xs={10}>
-                      <TextField value={produto.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="nome" label="Nome" variant="outlined" name="nome" margin="normal" fullWidth required />
+                      <TextField value={produto.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="nome" label="Nome do Produto" variant="outlined" name="nome" margin="normal" fullWidth required />
                     </Grid>
                   </Grid>
                   <Grid container className='alignItems-center' justifyContent='center'>
