@@ -81,7 +81,7 @@ function ListaCategorias() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Box display="flex" justifyContent="center" mb={1.5} >
+                    <Box display='flex' justifyContent='space-around' alignItems='center' style={{width: '100%'}} mb={1.5}>
                       <Link to={`/formulariocategoria/${categoria.id}`} className="text-decorator-none">
                         <Box mx={1}>
                         <button className="lia">

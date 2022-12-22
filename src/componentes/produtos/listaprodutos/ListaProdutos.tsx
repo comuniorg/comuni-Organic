@@ -115,38 +115,38 @@ function ListaProdutos() {
                     image={produto.foto}
                     alt="green iguana"
                   />
-                  <CardContent>
-                    <Typography variant="body2" component="p">
+                  <CardContent>                    
+                    <Typography variant="h4" component="h2">
+                      {produto.nome}
+                    </Typography>
+
+                    <Typography variant="h6" component="p">
+                      R$: {produto.preco}
+                    </Typography>
+
+                    <Typography variant="h6" component="p">
+                      Quantidade: {produto.quantidade}
+                    </Typography>
+
+                    <Typography variant="h6" component="p">
+                      Categoria: {produto.categoria?.categoria}
+                    </Typography>
+
+                    <Typography variant="h6" component="p">
+                      Localidade: {produto.categoria?.localidade}
+                    </Typography>
+
+                    <Typography style={{marginTop: '10px'}} variant="body2" component="p">
                       Vendedor: {produto.usuario?.nome}
                     </Typography>
                     
                     <Typography variant="body2" component="p">
                       Contato: {produto.usuario?.usuario}
                     </Typography>
-                    
-                    <Typography variant="h5" component="h2">
-                      {produto.nome}
-                    </Typography>
-
-                    <Typography variant="body2" component="p">
-                      R$: {produto.preco}
-                    </Typography>
-
-                    <Typography variant="body2" component="p">
-                      Quantidade: {produto.quantidade}
-                    </Typography>
-
-                    <Typography variant="body2" component="p">
-                      Categoria: {produto.categoria?.categoria}
-                    </Typography>
-
-                    <Typography variant="body2" component="p">
-                      Localidade: {produto.categoria?.localidade}
-                    </Typography>
                   </CardContent>
                   <CardActions>                    
                     { (usuario.usuario === produto.usuario?.usuario)?
-                      <Box display="flex" justifyContent="center" mb={1.5}>
+                      <Box display='flex' justifyContent='space-around' alignItems='center' style={{width: '100%'}} mb={1.5}>
                         <Link to={`/formularioproduto/${produto.id}`} className="text-decorator-none">
                           <Box mx={1}>
                             <button className="jata">
