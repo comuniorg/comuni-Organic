@@ -12,7 +12,6 @@ const styles = makeStyles({
     form: {
         display: 'block',
         padding: '4rem',
-        paddingBottom: '2rem',
         border: '1px solid rgba(96,108,56,0.7)',
         borderRadius: 40,
         backgroundColor: 'rgba(96, 108, 56, 0.7)',
@@ -23,11 +22,12 @@ const styles = makeStyles({
         display: 'inline'
     },
     imagemLogo: {
-        width: '90px',
+        width: '90px'
     },
-    textDecoratorNone: {
-        textDecoration: 'none',
-    },
+ 
+
+  
+
 });
 
 export { styles };

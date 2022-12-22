@@ -11,19 +11,15 @@ import './ListaProdutos.css';
 import useLocalStorage from 'react-use-localstorage';
 import UsuarioLogin from '../../../models/UsuarioLogin';
 
-const useStyles = makeStyles({
+const useStyle = makeStyles({
   div: {
     backgroundColor: '#C6E5B1',
-    minHeight: '746px',
-  },
-  card: {
-    backgroundColor: '#fefae0',
-    borderRadius: '20px',
+    minHeight: '746px'
   }
 })
 
 function ListaProdutos() {
-  const classes = useStyles();
+  const classes = useStyle();
 
   const [produtos, setProdutos] = useState<Produto[]>([])
   const [usuarios, setUsuarios] = useState<UsuarioLogin[]>([]);
@@ -103,12 +99,12 @@ function ListaProdutos() {
 
   return (
     <>
-      <Grid container className={classes.div} style={{minHeight: 'calc(100vh - 148px)' }}>
+      <Grid container className={classes.div}>
         {
           produtos.map(produto => (
             <Grid key={produto.id} item xs={6} sm={4} md={3}>
               <Box m={2}>
-                <Card variant="outlined" className={classes.card}>
+                <Card variant="outlined">
                   <CardMedia
                     component="img"
                     height="300"

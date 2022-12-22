@@ -61,7 +61,7 @@ function ListaCategorias() {
   }, [categoria.length])
 
   return (
-    <div className={classes.div} style={{minHeight: 'calc(100vh - 148px)' }}>
+    <div className={classes.div}>
       <Grid container>
         {
           categoria.map(categoria => (
