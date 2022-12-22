@@ -11,22 +11,27 @@
     font-weight: bold !important;
 }
 
+.btnCancelar{
+    margin-right: 20px !important;
+}
+
 .alignItems-center2{
     align-items: center !important;
 }
 .cata {
     position: relative;
+    margin: auto;
     padding: 12px 18px;
     transition: all 0.2s ease;
     border: none;
     background: none;
-}
+   }
    
-.cata:hover{
+   .cata:hover{
     cursor: pointer;
-}
+   }
 
-.cata:before {
+   .cata:before {
     content: "";
     position: absolute;
     top: 0;
@@ -37,18 +42,18 @@
     width: 100%;
     height: 45px;
     transition: all 0.3s ease;
-}
-
-.cata span {
+   }
+   
+   .cata span {
     position: relative;
     font-family: "Ubuntu", sans-serif;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.05em;
     color: white;
-}
-
-.cata svg {
+   }
+   
+   .cata svg {
     position: relative;
     top: 0;
     margin-left: 10px;
@@ -59,31 +64,31 @@
     stroke-width: 2;
     transform: translateX(-5px);
     transition: all 0.3s ease;
-}
-
-.cata:hover:before {
+   }
+   
+   .cata:hover:before {
     width: 100%;
     background: #91a54f;
-}
-
-.cata:hover svg {
+   }
+   
+   .cata:hover svg {
     transform: translateX(0);
-}
-
-.cata:active {
+   }
+   
+   .cata:active {
     transform: scale(0.95);
-}
+   }
 
-.rata {
+   .rata {
     position: relative;
     margin: auto;
     padding: 12px 18px;
     transition: all 0.2s ease;
     border: none;
     background: none;
-}
-
-.rata:before {
+   }
+   
+   .rata:before {
     content: "";
     position: absolute;
     top: 0;
@@ -94,22 +99,22 @@
     width: 100%;
     height: 45px;
     transition: all 0.3s ease;
-}
-
-.rata:hover{
+   }
+   
+   .rata:hover{
     cursor: pointer;
-}
+   }
 
-.rata span {
+   .rata span {
     position: relative;
     font-family: "Ubuntu", sans-serif;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.05em;
     color: white;
-}
-
-.rata svg {
+   }
+   
+   .rata svg {
     position: relative;
     top: 0;
     margin-left: 10px;
@@ -120,17 +125,17 @@
     stroke-width: 2;
     transform: translateX(-5px);
     transition: all 0.3s ease;
-}
-
-.rata:hover:before {
+   }
+   
+   .rata:hover:before {
     width: 100%;
     background: #ff1a1a;
-}
-
-.rata:hover svg {
+   }
+   
+   .rata:hover svg {
     transform: translateX(0);
-}
-
-.rata:active {
+   }
+   
+   .rata:active {
     transform: scale(0.95);
-}
+   }

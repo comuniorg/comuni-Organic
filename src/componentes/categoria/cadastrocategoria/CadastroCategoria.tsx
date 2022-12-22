@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, FormControl, makeStyles } from "@material-ui/core"
+import { Container, Typography, TextField, Button, FormControl, makeStyles, Grid } from "@material-ui/core"
 import { useNavigate, useParams } from 'react-router-dom';
 import { buscaId, post, put } from '../../../services/Service';
 import { useSelector } from 'react-redux';
@@ -7,6 +7,8 @@ import Categoria from '../../../models/Categoria';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 import './CadastroCategoria.css';
+import { useStyles } from './style';
+import loogo from '../../../assets/images/loogo.png'
 
 const useStyles = makeStyles({
   div:{

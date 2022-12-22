@@ -6,7 +6,7 @@ import './NotFound.css';
 function NotFound(){
   return(
     <>
-      <Grid container direction='column' justifyContent='center' className='backNot alignItems-center' style={{minHeight: 'calc(100vh - 148px)' }}>
+      <Grid container direction='column' justifyContent='center' className='backNot alignItems-center'>
         <h1 className='erro'>404</h1>
         <h2>OPS! NÃO ENCONTRAMOS ESSA PÁGINA</h2>
 
