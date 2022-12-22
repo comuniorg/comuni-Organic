@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import Categoria from '../models/Categoria';
 import Produto from '../models/Produto';
 import UsuarioLogin from '../models/UsuarioLogin';
