@@ -61,11 +61,11 @@ function ListaCategorias() {
   }, [categoria.length])
 
   return (
-    <div className={classes.div}>
+    <div className={classes.div} style={{minHeight: 'calc(100vh - 148px)'}}>
       <Grid container>
         {
           categoria.map(categoria => (
-            <Grid item key={categoria.id} xs={12} sm={6} md={4}>
+            <Grid item key={categoria.id} xs={12} sm={6} md={4} lg={3}>
               <Box m={2}>
                 <Card variant="outlined" className={classes.card}>
                   <CardContent>
