@@ -109,7 +109,7 @@ function CadastroCategoria() {
   }
 
   return (
-    <Grid container direction='row' justifyContent='center' className={classes.Gridd}>
+    <Grid container direction='row' justifyContent='center' className={classes.Gridd} xs>
     <div>
       <Container maxWidth="sm">
         <form onSubmit={onSubmit} className={classes.form} >
