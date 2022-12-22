@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardActions, CardContent, Button, Typography, Grid } from '@material-ui/core';
+import { Card, CardActions, CardContent, Button, Typography, Grid, makeStyles, createTheme } from '@material-ui/core';
 import { Box } from '@mui/material';
 import Categoria from '../../../models/Categoria';
 import './ListaCategorias.css';
@@ -10,7 +10,20 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 
+const useStyles = makeStyles({
+  div: {
+    backgroundColor: '#C6E5B1',
+    minHeight: '746px',
+  },
+  card: {
+    backgroundColor: '#fefae0',
+    borderRadius: '20px',
+  }
+})
+
 function ListaCategorias() {
+  const classes = useStyles();
+
   const [categoria, setCategoria] = useState<Categoria[]>([])
   let navigate = useNavigate();
   const token = useSelector<TokenState, TokenState["tokens"]>(
@@ -20,7 +33,7 @@ function ListaCategorias() {
   useEffect(() => {
     if (token == '') {
       toast.error('Você precisa estar logado', {
-        position: "top-right",
+        position: "bottom-left",
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -48,13 +61,13 @@ function ListaCategorias() {
   }, [categoria.length])
 
   return (
-    <>
+    <div className={classes.div}>
       <Grid container>
         {
           categoria.map(categoria => (
             <Grid item key={categoria.id} xs={12} sm={6} md={3}>
-              <Box m={2} >
-                <Card variant="outlined">
+              <Box m={2}>
+                <Card variant="outlined" className={classes.card}>
                   <CardContent>
                     <Typography color="textSecondary" gutterBottom>
                       Categoria
@@ -72,7 +85,7 @@ function ListaCategorias() {
                       <Link to={`/formulariocategoria/${categoria.id}`} className="text-decorator-none">
                         <Box mx={1}>
                         <button className="lia">
-                            <span>Atualizar</span>
+                            <span>Alterar</span>
                               <svg viewBox="0 0 13 10" height="10px" width="15px">
                                 <path d="M1,5 L11,5"></path>
                                 <polyline points="8 1 12 5 8 9"></polyline>
@@ -99,7 +112,7 @@ function ListaCategorias() {
           ))
         }
       </Grid>
-    </>
+    </div>
   );
 }
 

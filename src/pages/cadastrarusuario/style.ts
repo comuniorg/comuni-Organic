@@ -1,7 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import tomate from '../../assets/images/tomate.jpg';
-import loogo from '../../assets/images/loogo.png';
-import { margin } from "@mui/system";
+
 
 
 const styles = makeStyles({

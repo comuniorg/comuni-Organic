@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Typography, TextField, Button, InputLabel, MenuItem, FormControl, FormHelperText, Select, Grid } from "@material-ui/core"
+import { Typography, TextField, InputLabel, MenuItem, FormControl, FormHelperText, Select, Grid } from "@material-ui/core"
 import './CadastroProduto.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { busca, buscaId, post, put } from '../../../services/Service';
@@ -90,7 +90,7 @@ function CadastroProduto() {
   useEffect(() => {
     if (token == '') {
       toast.error('Você precisa estar logado', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -145,15 +145,15 @@ function CadastroProduto() {
         }
       });
       toast.success('Produto atualizado com sucesso', {
-        position: 'top-right', // position? topo direita
-        autoClose: 2000, // Fechar automaticamente? após 2 segundos
-        hideProgressBar: false, // não mostrar o progresso? mostrar
-        closeOnClick: true, // fechar após o click? sim
-        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
-        draggable: false, // permitir mover a notificação do local? não
-        theme: 'light', // tema? light
-        progress: undefined // 
-      });
+				position: 'bottom-left', // position? baixo esquerda
+				autoClose: 2000, // Fechar automaticamente? após 2 segundos
+				hideProgressBar: false, // não mostrar o progresso? mostrar
+				closeOnClick: true, // fechar após o click? sim
+				pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+				draggable: false, // permitir mover a notificação do local? não
+				theme: 'light', // tema? light
+				progress: undefined // 
+			});
     }
     else if (produto.quantidade > 0 && produto.preco > 0) {
       post(`/produto`, produto, setProduto, {
@@ -162,7 +162,7 @@ function CadastroProduto() {
         }
       });
       toast.success('Produto cadastrado com sucesso', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? topo direita
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -174,7 +174,7 @@ function CadastroProduto() {
     }
     else {
       toast.error('Você precisa preencher os campos', {
-        position: 'top-right', // position? topo direita
+        position: 'bottom-left', // position? topo direita
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
         hideProgressBar: false, // não mostrar o progresso? mostrar
         closeOnClick: true, // fechar após o click? sim
@@ -201,6 +201,7 @@ function CadastroProduto() {
                 <form onSubmit={onSubmit} className={classes.form}>
           
                   <Typography variant='h3' className='cadastro-produto' color='textPrimary' align='center' >
+
                     <p></p>
                     <img src={comuLogo} alt="" className={classes.imagemLogo}/>
                   </Typography>
@@ -250,7 +251,7 @@ function CadastroProduto() {
                         </Select>
                         <FormHelperText>Escolha o tipo e a localidade do produto</FormHelperText>
                           <button  className="fin">
-                            <span>Finalizar</span>
+                            <span>{(id != undefined)? 'alterar' : 'cadastrar'}</span>
                             <svg viewBox="0 0 13 10" height="10px" width="15px">
                               <path d="M1,5 L11,5"></path>
                               <polyline points="8 1 12 5 8 9"></polyline>

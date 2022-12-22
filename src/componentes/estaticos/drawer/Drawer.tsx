@@ -13,7 +13,12 @@ import LoginIcon from '@mui/icons-material/Login';
 import AddIcon from '@mui/icons-material/Add';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import InfoIcon from '@mui/icons-material/Info';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { addToken } from '../../../store/tokens/actions';
+import useLocalStorage from 'react-use-localstorage';
+import { useDispatch, useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 const useStyles = makeStyles({
   list: {
@@ -71,6 +76,31 @@ export default function SDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
+  const dispatch = useDispatch();
+  const token = useSelector<TokenState, TokenState['tokens']>(
+    (state) => state.tokens
+  )
+
+  const [email, setEmail] = useLocalStorage('email');
+  
+  const navigate = useNavigate();
+
+  function goLogout(){
+    dispatch(addToken(''))
+    setEmail('')
+    toast.info('Usuário deslogado', {
+      position: 'bottom-left', // position? baixo esquerda
+      autoClose: 2000, // Fechar automaticamente? após 2 segundos
+      hideProgressBar: false, // não mostrar o progresso? mostrar
+      closeOnClick: true, // fechar após o click? sim
+      pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+      draggable: false, // permitir mover a notificação do local? não
+      theme: 'light', // tema? light
+      progress: undefined // 
+    });
+    navigate('/login');
+  }
+
   const list = (anchor: Anchor) => (
     <div
       className={clsx(classes.list, {
@@ -80,12 +110,16 @@ export default function SDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List className={classes.items}>
+      <List className={classes.items} style={{minHeight: 'calc(100vh - 16px)'}}>
+        {(token == '') &&
+          <Link to='/'  className={classes.link}>
+            <ListItem className={classes.icons}>
+              <LoginIcon className={classes.typeIcons}/>Entrar
+            </ListItem>
+          </Link>
+        }
         <Link to='/home' className={classes.link}>
           <ListItem className={classes.icons}><HomeIcon className={classes.typeIcons}/>Início</ListItem>
-        </Link>
-        <Link to='/login' className={classes.link}>
-          <ListItem className={classes.icons}><LoginIcon className={classes.typeIcons}/>Entrar</ListItem>
         </Link>
         <Link to='/produtos' className={classes.link}>
           <ListItem className={classes.icons}><AddShoppingCartIcon className={classes.typeIcons}/>Produtos</ListItem>
@@ -102,9 +136,11 @@ export default function SDrawer() {
         <Link to='/sobre' className={classes.link}>
           <ListItem className={classes.icons}><InfoIcon className={classes.typeIcons}/>Sobre</ListItem>
         </Link>
-        <Link to='/'className={classes.link}>
-          <ListItem className={classes.icons}><ExitToAppIcon className={classes.typeIcons}/>Sair</ListItem>
-        </Link>
+        {(token != '') &&
+          <ListItem onClick={goLogout} className={classes.icons}>
+            <ExitToAppIcon className={classes.typeIcons}/>Sair
+          </ListItem>
+        }
       </List>
     </div>
   );

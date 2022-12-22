@@ -20,7 +20,7 @@ function DeletarCategoria() {
     useEffect(() => {
         if (token == "") {
             toast.error('Você precisa estar logado', {
-                position: "top-right",
+                position: "bottom-left",
                 autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -56,7 +56,7 @@ function DeletarCategoria() {
             }
         });
         toast.success('Categoria deletado com sucesso', {
-            position: "top-right",
+            position: "bottom-left",
             autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -81,17 +81,17 @@ function DeletarCategoria() {
                                 Deseja deletar o Categoria:
                             </Typography>
                             <Typography color="textSecondary">
-                                {categoria?.categoria}
+                                Nome: {categoria?.categoria}
                             </Typography>
                             <Typography color="textSecondary">
-                                {categoria?.localidade}
+                                Localidade: {categoria?.localidade}
                             </Typography>
                         </Box>
                     </CardContent>
                     <CardActions>
                         <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
                             <Box mx={2}>
-                                <button className="aacta">
+                                <button className="aacta" onClick={sim}>
                                 <span>sim</span>
                                     <svg viewBox="0 0 13 10" height="10px" width="15px">
                                         <path d="M1,5 L11,5"></path>
@@ -100,7 +100,7 @@ function DeletarCategoria() {
                                 </button>
                             </Box>
                             <Box mx={2}>
-                                <button  className="acta">
+                                <button  className="acta" onClick={nao}>
                                     <span>não</span>
                                      <svg viewBox="0 0 13 10" height="10px" width="15px">
                                         <path d="M1,5 L11,5"></path>
