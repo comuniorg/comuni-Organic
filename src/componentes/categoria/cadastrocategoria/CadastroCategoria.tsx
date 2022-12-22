@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, FormControl, makeStyles } from "@material-ui/core"
+import { Container, Typography, TextField, Button, FormControl, makeStyles, Grid } from "@material-ui/core"
 import { useNavigate, useParams } from 'react-router-dom';
 import { buscaId, post, put } from '../../../services/Service';
 import { useSelector } from 'react-redux';
@@ -7,16 +7,9 @@ import Categoria from '../../../models/Categoria';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 import './CadastroCategoria.css';
+import { useStyles } from './style';
+import loogo from '../../../assets/images/loogo.png'
 
-const useStyles = makeStyles({
-  div:{
-    backgroundColor: '#C6E5B1',
-    minHeight: '746px'
-  },
-  pdTop: {
-    paddingTop: '50px'
-  }
-})
 
 function CadastroCategoria() {
   const classes = useStyles();
@@ -116,16 +109,25 @@ function CadastroCategoria() {
   }
 
   return (
-    <div className={classes.div} style={{minHeight: 'calc(100vh - 148px)' }}>
-      <Container maxWidth="sm" className={classes.pdTop}>
-        <form onSubmit={onSubmit}>
-          <Typography variant="h3" color="textSecondary" component="h1" align="center" > {(id !== undefined)? 'alterar' : 'cadastrar'} categoria</Typography>
+    <Grid container direction='row' justifyContent='center' className={classes.Gridd} xs>
+    <div>
+      <Container maxWidth="sm">
+        <form onSubmit={onSubmit} className={classes.form} >
+        <Typography variant="h3" color="textSecondary" component="h1" align="center" > 
+        <img className={classes.imagemlogo} src={loogo} alt='Imagemlogo'/>
+  
+          </Typography>
+      
+          <Typography variant="h3" color="textSecondary" component="h1" align="center" > {(id !== undefined)? 'alterar ' : 'Cadastrar '}
+           categoria
+  
+          </Typography>
 
           <TextField value={categoria.categoria} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="categoria" label="categoria" name="categoria" variant="outlined" margin="normal" fullWidth required/>
 
           <TextField value={categoria.localidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="localidade" label="localidade" name="localidade" variant="outlined" margin="normal" fullWidth required/>
 
-          <FormControl >
+          <FormControl>
             <button  className="form">
               <span>{(id !== undefined)? 'alterar' : 'cadastrar'}</span>
               <svg viewBox="0 0 13 10" height="10px" width="15px">
@@ -137,6 +139,7 @@ function CadastroCategoria() {
         </form>
       </Container>
     </div>
+   </Grid>
   )
 }
 export default CadastroCategoria;
