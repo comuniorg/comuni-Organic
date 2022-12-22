@@ -158,7 +158,7 @@ export default function Navbar() {
       <AppBar className={classes.grow} position="static">
         <Toolbar className={classes.toolbar}>
           <Typography>
-            <img src='https://media.discordapp.net/attachments/1025004926046322759/1052920045413605466/20221214_211344_0000.png'
+            <img src='https://media.discordapp.net/attachments/1025004926046322759/1055145064462028891/20221221_122146_0000.png'
             className={classes.logo}/>
           </Typography>
           <SDrawer />
