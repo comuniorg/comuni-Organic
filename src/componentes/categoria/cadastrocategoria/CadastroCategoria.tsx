@@ -7,18 +7,7 @@ import Categoria from '../../../models/Categoria';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 import './CadastroCategoria.css';
-import { useStyles } from './style';
-import loogo from '../../../assets/images/loogo.png'
-
-const useStyles = makeStyles({
-  div:{
-    backgroundColor: '#C6E5B1',
-    minHeight: '746px'
-  },
-  pdTop: {
-    paddingTop: '50px'
-  }
-})
+import { useStyles } from '../cadastrocategoria/style'
 
 function CadastroCategoria() {
   const classes = useStyles();
