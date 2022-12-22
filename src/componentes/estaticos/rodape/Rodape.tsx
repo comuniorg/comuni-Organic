@@ -1,8 +1,7 @@
 import React from 'react';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import MailOutlineIcon from '@mui/icons-material/MailOutlineOutlined';
 import { Grid, makeStyles, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import './Rodape.css';
@@ -39,4 +38,4 @@ function Rodape() {
     )
 }
 
-export { Rodape };
+export { Rodape }

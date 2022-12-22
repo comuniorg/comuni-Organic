@@ -1,6 +1,7 @@
 .box1 {
     background-color: #fefae0;
-    height: 120px;
+    padding: 10px;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.7)
 }
 
 .box2 {
@@ -27,6 +28,7 @@
     font-family: 'Raleway-Regular';
 }
 
-.alignItems-center1{
-    align-items: center;
+.icons {
+    width: 225px;
+    margin: 0 auto;
 }
