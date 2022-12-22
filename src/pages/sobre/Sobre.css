@@ -2,6 +2,11 @@
     color:  #606c38 !important;
     font-weight: "bold";
 }
+
 .alignItems-center{
     align-items: center !important;
+}
+
+.width-photo{
+    width: 14%;
 }

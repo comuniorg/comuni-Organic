@@ -24,6 +24,13 @@ const useStyles = makeStyles({
         padding: '2rem',
         margin: '40px 32px',
     },
+    div:{
+      backgroundColor: '#C6E5B1',
+      minHeight: '746px'
+    },
+    pdTop: {
+      paddingTop: '50px'
+    }
   })
   
-  export {useStyles};
+  export { useStyles };
