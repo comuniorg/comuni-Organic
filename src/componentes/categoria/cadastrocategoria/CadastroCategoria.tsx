@@ -7,7 +7,8 @@ import Categoria from '../../../models/Categoria';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
 import './CadastroCategoria.css';
-import { useStyles } from '../cadastrocategoria/style'
+import { useStyles } from './style';
+import loogo from '../../../assets/images/loogo.png'
 
 function CadastroCategoria() {
   const classes = useStyles();
@@ -16,8 +17,8 @@ function CadastroCategoria() {
 
   const { id } = useParams<{ id: string }>();
   const token = useSelector<TokenState, TokenState['tokens']>(
-		(state) => state.tokens
-	)
+    (state) => state.tokens
+  )
 
   const [categoria, setCategoria] = useState<Categoria>({
     id: 0,
@@ -71,33 +72,33 @@ function CadastroCategoria() {
           Authorization: token
         }
       });
-      toast.success('Produto atualizado com sucesso', {
-				position: 'bottom-left', // position? baixo esquerda
-				autoClose: 2000, // Fechar automaticamente? após 2 segundos
-				hideProgressBar: false, // não mostrar o progresso? mostrar
-				closeOnClick: true, // fechar após o click? sim
-				pauseOnHover: false, // pausar quando o usuário mover o mouse? não
-				draggable: false, // permitir mover a notificação do local? não
-				theme: 'light', // tema? light
-				progress: undefined // 
-			});
+      toast.success('Categoria atualizado com sucesso', {
+        position: 'bottom-left', // position? baixo esquerda
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
     }
-    else{
+    else {
       post(`/categoria`, categoria, setCategoria, {
         headers: {
           Authorization: token
         }
       });
-      toast.success('Produto cadastrado com sucesso', {
-				position: 'bottom-left', // position? baixo esquerda
-				autoClose: 2000, // Fechar automaticamente? após 2 segundos
-				hideProgressBar: false, // não mostrar o progresso? mostrar
-				closeOnClick: true, // fechar após o click? sim
-				pauseOnHover: false, // pausar quando o usuário mover o mouse? não
-				draggable: false, // permitir mover a notificação do local? não
-				theme: 'light', // tema? light
-				progress: undefined // 
-			});
+      toast.success('Categoria cadastrado com sucesso', {
+        position: 'bottom-left', // position? baixo esquerda
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
     }
     back()
   }
@@ -107,28 +108,32 @@ function CadastroCategoria() {
   }
 
   return (
-    <div className={classes.div} style={{minHeight: 'calc(100vh - 148px)' }}>
-      <Container maxWidth="sm" className={classes.pdTop}>
-        <form onSubmit={onSubmit}>
-          <Typography variant="h3" color="textSecondary" component="h1" align="center" > {(id !== undefined)? 'alterar' : 'cadastrar'} categoria</Typography>
+    <Grid container direction='row' justifyContent='center' className={classes.Gridd}>
+      <div>
+        <Container maxWidth="sm">
+          <form onSubmit={onSubmit} className={classes.form} >
+            <Typography variant="h3" color="textSecondary" component="h1" align="center" >
+              <img className={classes.imagemlogo} src={loogo} alt='Imagemlogo' />
 
-          <TextField value={categoria.categoria} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="categoria" label="categoria" name="categoria" variant="outlined" margin="normal" fullWidth required/>
+            </Typography>
 
-          <TextField value={categoria.localidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="localidade" label="localidade" name="localidade" variant="outlined" margin="normal" fullWidth required/>
+            <TextField value={categoria.categoria} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="categoria" label="categoria" name="categoria" variant="outlined" margin="normal" fullWidth required />
 
-          <FormControl >
-            <button  className="form">
-              <span>{(id !== undefined)? 'alterar' : 'cadastrar'}</span>
-              <svg viewBox="0 0 13 10" height="10px" width="15px">
-                <path d="M1,5 L11,5"></path>
-                <polyline points="8 1 12 5 8 9"></polyline>
-              </svg>
-            </button>
-          </FormControl>
-        </form>
-      </Container>
-    </div>
-    
+            <TextField value={categoria.localidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="localidade" label="localidade" name="localidade" variant="outlined" margin="normal" fullWidth required />
+
+            <FormControl>
+              <button className="form">
+                <span>{(id !== undefined) ? 'alterar' : 'cadastrar'}</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                  <path d="M1,5 L11,5"></path>
+                  <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+              </button>
+            </FormControl>
+          </form>
+        </Container>
+      </div>
+    </Grid>
   )
 }
 export default CadastroCategoria;
