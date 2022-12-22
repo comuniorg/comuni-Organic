@@ -88,7 +88,7 @@ function Login() {
   return (
     <>
       <Grid container direction='row' justifyContent='center' className='alignItems-center1'>
-        <Grid item className='alignItems-center1 imagem' xs={12} >
+        <Grid item className='alignItems-center1 imagem' xs={12}>
           <Box className={classes.box}>
             <Grid container>
               <Grid item xs={12} sm={12} md={9} lg={4} xl={4}>
@@ -126,7 +126,7 @@ function Login() {
                       <Typography variant='subtitle1' gutterBottom align='center'>Não tem uma conta?</Typography>
                     </Box>
                     <Typography variant='subtitle1' gutterBottom align='center'>
-                      <Link to="/cadastrarusuario">
+                      <Link to="/cadastrarusuario" className='decorator-none'>
                         Cadastre-se
                       </Link>
                     </Typography>

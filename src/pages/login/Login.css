@@ -2,6 +2,11 @@
   align-items: center !important;
 }
 
+.decorator-none{
+  text-decoration: none;
+  color: white;
+}
+
 .logo{
   background-color: black;
   background: rgb(96, 108, 56)

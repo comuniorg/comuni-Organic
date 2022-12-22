@@ -84,7 +84,7 @@ function CadastrarUsuario() {
 
   return (
     <Grid container direction='row' justifyContent='flex-start' className={classes.Gridpai1}>
-      <Grid container item xs={12} sm={6} md={4}  >
+      <Grid container item xs={12} sm={6} md={4} style={{minHeight: 'calc(100vh - 148px)'}}>
         <Box  className={classes.box}>
           <form onSubmit={onSubmit} className={classes.form} >
 
