@@ -106,7 +106,7 @@ function ListaProdutos() {
       <Grid container className={classes.div} style={{minHeight: 'calc(100vh - 148px)' }}>
         {
           produtos.map(produto => (
-            <Grid key={produto.id} item xs={6} sm={4} md={3}>
+            <Grid key={produto.id} item xs={12} sm={6} md={4}>
               <Box m={2}>
                 <Card variant="outlined" className={classes.card}>
                   <CardMedia
