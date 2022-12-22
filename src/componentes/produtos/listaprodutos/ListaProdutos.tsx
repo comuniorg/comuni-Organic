@@ -102,12 +102,12 @@ function ListaProdutos() {
       <Grid container className={classes.div}>
         {
           produtos.map(produto => (
-            <Grid key={produto.id} item xs={12} sm={6} md={4}>
-              <Box m={2}>
+            <Grid key={produto.id} item xs={12} sm={5} md={4}>
+              <Box m={5}>
                 <Card variant="outlined">
                   <CardMedia
                     component="img"
-                    height="300"
+                    height="200"
                     image={produto.foto}
                     alt="green iguana"
                   />
