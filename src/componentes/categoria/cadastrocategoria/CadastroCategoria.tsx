@@ -108,7 +108,7 @@ function CadastroCategoria() {
   }
 
   return (
-    <Grid container direction='row' justifyContent='center' className={classes.Gridd}>
+    <Grid container direction='row' justifyContent='center' className={classes.Gridd} style={{minHeight: 'calc(100vh - 148px)'}}>
       <div>
         <Container maxWidth="sm">
           <form onSubmit={onSubmit} className={classes.form} >
