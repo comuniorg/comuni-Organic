@@ -20,7 +20,7 @@ function Rodape() {
     return (
         <>
             <Grid container direction="row" justifyContent="center">
-                <Grid item xs={12} className='box1' alignItems='center'>
+                <Grid item xs={12} className='box1 alignItems-center'>
                     <Box display="flex" className='icons' justifyContent="space-between">
                         <a href="https://www.instagram.com/comuni.organica/" target="_blank">
                             <InstagramIcon className='redes' />
