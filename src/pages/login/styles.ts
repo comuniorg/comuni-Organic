@@ -11,7 +11,7 @@ const styles = makeStyles({
     },
     form: {
         display: 'block',
-        padding: '4rem',
+        padding: '4rem 3rem',
         border: '1px solid rgba(96,108,56,0.7)',
         borderRadius: 40,
         backgroundColor: 'rgba(96, 108, 56, 0.7)',

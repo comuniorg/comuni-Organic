@@ -91,7 +91,7 @@ function Login() {
         <Grid item className='alignItems-center1 imagem' xs={12}>
           <Box className={classes.box}>
             <Grid container>
-              <Grid item xs={12} sm={12} md={9} lg={4} xl={4}>
+              <Grid item xs={12} sm={10} md={6} lg={5}>
                 <form onSubmit={onSubmit} className={classes.form} >
                   <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' >
                     <img className={classes.imagemLogo} src={comuLogo} alt="" />

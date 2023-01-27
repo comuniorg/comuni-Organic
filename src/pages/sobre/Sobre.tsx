@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Link, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Sobre.css';
 import Carol from './imagens/Carol.png';
 import Daniel from './imagens/Daniel.png';
@@ -8,10 +8,25 @@ import Nicole from './imagens/Nicole.png';
 import Maycon from './imagens/Maycon.png';
 import Hugo from './imagens/Hugo.png';
 import Jean from './imagens/Jean.png';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokens/tokensReducer';
+import useLocalStorage from 'react-use-localstorage';
 
-function Sobre(){
+function Sobre() {
+  const token = useSelector<TokenState, TokenState['tokens']>(
+    (state) => state.tokens
+  )
 
-  return(
+  const [email, setEmail] = useLocalStorage('email');
+
+  useEffect(() => {
+    if (token == "") {
+      setEmail('')
+    }
+  }, [token])
+
+
+  return (
     <>
       <Grid container justifyContent="center" className='alignItems-center'>
         <Grid item xs={10} md={8} lg={6} className='alignItems-center'>
@@ -34,7 +49,7 @@ function Sobre(){
           </a>
 
           <a href='https://www.linkedin.com/in/danielcorrea5/' target='_blank'>
-            <img src={Daniel} alt="photo" className='width-photo'/>
+            <img src={Daniel} alt="photo" className='width-photo' />
           </a>
 
           <a href='https://www.linkedin.com/in/maycon-silva-4673ba234/' target='_blank'>
@@ -46,15 +61,15 @@ function Sobre(){
           </a>
 
           <a href='https://www.linkedin.com/in/murilo-nascimento-0388b4249/' target='_blank'>
-            <img src={Murilo} alt="photo" className='width-photo'/>
+            <img src={Murilo} alt="photo" className='width-photo' />
           </a>
 
           <a href='https://www.linkedin.com/in/hugo-ramos-84a76924a/' target='_blank'>
-            <img src={Hugo} alt="" className='width-photo'/>
+            <img src={Hugo} alt="" className='width-photo' />
           </a>
-          
+
           <a href='https://www.linkedin.com/in/jeangs/' target='_blank'>
-            <img src={Jean} alt="" className='width-photo'/>
+            <img src={Jean} alt="" className='width-photo' />
           </a>
         </Grid>
       </Grid>

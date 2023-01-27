@@ -89,6 +89,7 @@ function CadastroProduto() {
 
   useEffect(() => {
     if (token == '') {
+      setEmail('')
       toast.error('Você precisa estar logado', {
         position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
@@ -197,7 +198,7 @@ function CadastroProduto() {
         <Grid item xs={12} >
           <Box className={classes.box}>
             <Grid container className='alignItems-center imagemCad' justifyContent='flex-end'>
-              <Grid item xs={12} sm={12} md={9} lg={5} xl={5}>
+              <Grid item xs={12} sm={8} md={6} lg={5} xl={5}>
                 <form onSubmit={onSubmit} className={classes.form}>
           
                   <Typography variant='h3' className='cadastro-produto' color='textPrimary' align='center' >

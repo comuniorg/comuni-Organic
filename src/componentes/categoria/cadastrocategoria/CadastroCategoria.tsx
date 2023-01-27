@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import './CadastroCategoria.css';
 import { useStyles } from './style';
 import loogo from '../../../assets/images/loogo.png'
+import useLocalStorage from 'react-use-localstorage';
 
 function CadastroCategoria() {
   const classes = useStyles();
@@ -24,10 +25,13 @@ function CadastroCategoria() {
     id: 0,
     categoria: '',
     localidade: ''
-  })
+  });
+
+  const [email, setEmail] = useLocalStorage('email');
 
   useEffect(() => {
     if (token == '') {
+      setEmail('')
       toast.error('Você precisa estar logado', {
         position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
@@ -38,6 +42,7 @@ function CadastroCategoria() {
         theme: 'light', // tema? light
         progress: undefined // 
       });
+      
       navigate('/login')
     }
   }, [token])

@@ -9,6 +9,7 @@ import { busca } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
+import useLocalStorage from 'react-use-localstorage';
 
 const useStyles = makeStyles({
   div: {
@@ -30,8 +31,11 @@ function ListaCategorias() {
     (state) => state.tokens
   );
 
+  const [email, setEmail] = useLocalStorage('email');
+
   useEffect(() => {
     if (token == '') {
+      setEmail('')
       toast.error('Você precisa estar logado', {
         position: "bottom-left",
         autoClose: 2000,
@@ -39,7 +43,7 @@ function ListaCategorias() {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: "colored",
+        theme: "light",
         progress: undefined,
       });
       navigate("/login")
