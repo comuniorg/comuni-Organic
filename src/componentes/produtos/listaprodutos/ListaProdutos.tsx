@@ -15,6 +15,10 @@ const useStyle = makeStyles({
   div: {
     backgroundColor: '#C6E5B1',
     minHeight: '746px'
+  },
+  bordercard: {
+    borderRadius: '20px',
+    backgroundColor: '#fefae0',
   }
 })
 
@@ -68,6 +72,7 @@ function ListaProdutos() {
 
   useEffect(() => {
     if (token == "") {
+      setEmail('')
       toast.error('Você precisa estar logado', {
         position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos
@@ -102,9 +107,9 @@ function ListaProdutos() {
       <Grid container className={classes.div} style={{minHeight: 'calc(100vh - 148px)'}}>
         {
           produtos.map(produto => (
-            <Grid key={produto.id} item xs={12} sm={5} md={4}>
-              <Box m={5}>
-                <Card variant="outlined">
+            <Grid key={produto.id} item xs={12} sm={6} md={4} lg={3}>
+              <Box m={2}>
+                <Card variant="outlined" className={classes.bordercard}>
                   <CardMedia
                     component="img"
                     height="200"

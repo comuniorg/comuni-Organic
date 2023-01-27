@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { TokenState } from '../../store/tokens/tokensReducer';
 import "./Home.css";
 import VerdeNovo from './imagens/verdeNovo.png'
+import useLocalStorage from 'react-use-localstorage';
 
 function Home() {
 
@@ -15,8 +16,11 @@ function Home() {
     (state) => state.tokens
   )
 
+  const [email, setEmail] = useLocalStorage('email');
+
   useEffect(() => {
     if (token == "") {
+      setEmail('')
       toast.error('Você precisa estar logado', {
         position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos

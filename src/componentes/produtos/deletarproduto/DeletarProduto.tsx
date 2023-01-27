@@ -33,8 +33,11 @@ function DeletarProduto() {
 
   const [produto, setProduto] = useState<Produto>()
 
+  const [email, setEmail] = useLocalStorage('email');
+
   useEffect(() => {
     if (token == '') {
+      setEmail('')
       toast.error('Você precisa estar logado', {
         position: 'bottom-left', // position? baixo esquerda
         autoClose: 2000, // Fechar automaticamente? após 2 segundos

@@ -11,7 +11,6 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LoginIcon from '@mui/icons-material/Login';
 import AddIcon from '@mui/icons-material/Add';
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import InfoIcon from '@mui/icons-material/Info';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -19,6 +18,7 @@ import { addToken } from '../../../store/tokens/actions';
 import useLocalStorage from 'react-use-localstorage';
 import { useDispatch, useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import ReorderIcon from '@mui/icons-material/Reorder';
 
 const useStyles = makeStyles({
   list: {
@@ -128,7 +128,7 @@ export default function SDrawer() {
           <ListItem className={classes.icons}><AddIcon className={classes.typeIcons}/>Cadastrar Produto</ListItem>
         </Link>
         <Link to='/categorias' className={classes.link}>
-          <ListItem className={classes.icons}><PlaylistAddIcon className={classes.typeIcons}/>Categoria</ListItem>
+          <ListItem className={classes.icons}><ReorderIcon className={classes.typeIcons}/>Categoria</ListItem>
         </Link>
         <Link to='/formulariocategoria' className={classes.link}>
           <ListItem className={classes.icons}><AddIcon className={classes.typeIcons}/>Cadastrar Categoria</ListItem>

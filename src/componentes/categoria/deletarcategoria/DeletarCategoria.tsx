@@ -8,6 +8,7 @@ import Categoria from '../../../models/Categoria';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify';
+import useLocalStorage from 'react-use-localstorage';
 
 const useStyles = makeStyles({
 	div: {
@@ -30,8 +31,11 @@ function DeletarCategoria() {
 	);
 	const [categoria, setCategoria] = useState<Categoria>()
 
+  const [email, setEmail] = useLocalStorage('email');
+
 	useEffect(() => {
 		if (token == "") {
+      setEmail('')
 			toast.error('Você precisa estar logado', {
 				position: "bottom-left",
 				autoClose: 2000,
