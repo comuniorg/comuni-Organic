@@ -9,7 +9,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import "./Navbar.css";
-import SearchIcon from '@material-ui/icons/Search';
 import SDrawer from '../drawer/Drawer';
 import { IconButton, InputBase, Typography } from '@material-ui/core';
 
