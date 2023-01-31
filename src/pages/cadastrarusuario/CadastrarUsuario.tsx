@@ -58,15 +58,16 @@ function CadastrarUsuario() {
       && usuarioCadastro.usuario.includes('@')){
       cadastroUsuario(`/usuarios/cadastrar`, usuarioCadastro, setUsuarioResult)
       toast.success('Usuário cadastrado com sucesso', {
-				position: 'bottom-left', // position? baixo esquerdausuario
-				autoClose: 2000, // Fechar automaticamente? após 2 segundos
-				hideProgressBar: false, // não mostrar o progresso? mostrar
-				closeOnClick: true, // fechar após o click? sim
-				pauseOnHover: false, // pausar quando o usuário mover o mouse? não
-				draggable: false, // permitir mover a notificação do local? não
-				theme: 'light', // tema? light
-				progress: undefined // 
-			});
+        position: 'bottom-left', // position? baixo esquerdausuario
+        autoClose: 2000, // Fechar automaticamente? após 2 segundos
+        hideProgressBar: false, // não mostrar o progresso? mostrar
+        closeOnClick: true, // fechar após o click? sim
+        pauseOnHover: false, // pausar quando o usuário mover o mouse? não
+        draggable: false, // permitir mover a notificação do local? não
+        theme: 'light', // tema? light
+        progress: undefined // 
+      });
+      navigate("/login");
     }
     else{
       toast.error('Dados inconsistentes. Favor verificar as informações de cadastro', {
@@ -83,10 +84,10 @@ function CadastrarUsuario() {
   }
 
   return (
-    <Grid container direction='row' justifyContent='flex-start' className={classes.Gridpai1}>
-      <Grid container item xs={12} sm={6} md={4} style={{minHeight: 'calc(100vh - 148px)'}}>
+    <Grid container direction='row' justifyContent='flex-start' className={classes.Gridpai1} style={{minHeight: 'calc(100vh - 148px)'}}>
+      <Grid container item xs={12} sm={8} md={6} lg={4} style={{height: "100px"}}>
         <Box  className={classes.box}>
-          <form onSubmit={onSubmit} className={classes.form} >
+          <form onSubmit={onSubmit} className={classes.form}>
 
             <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center'>
               <img className={classes.imagemlogo} src={loogo} alt='Imagemlogo' />
@@ -102,18 +103,18 @@ function CadastrarUsuario() {
             
             <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)} id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth required/>
 
-            <Box marginTop={2} textAlign='center'>
-              <Link to='/login' className='text-decorator-none'>
+            <Box marginTop={2} textAlign='center' display='flex' justifyContent='space-around' flexWrap='wrap'>
+              <Link to='/login'>
                 <button className="rata">
                   <span>Cancelar</span>
                     <svg viewBox="0 0 13 10" height="10px" width="15px">
                       <path d="M1,5 L11,5"></path>
                       <polyline points="8 1 12 5 8 9"></polyline>
                     </svg>
-                    </button>
+                </button>
               </Link>
 
-              <button className="cata">
+              <button className={`cata`} style={{margin: '0'}}>
                  <span>cadastrar</span>
                   <svg viewBox="0 0 13 10" height="10px" width="15px">
                     <path d="M1,5 L11,5"></path>
