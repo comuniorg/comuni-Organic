@@ -46,7 +46,7 @@ function Sobre() {
           <br />
         </Grid>
         <Grid item xs={12} className='m_centralize'>
-          <Box display='flex' flexWrap='wrap'>
+          <Box display='flex' flexWrap='wrap' justifyContent='center'>
             <a href='https://www.linkedin.com/in/caroline-barcelos-valente-42091a15a/' target='_blank'>
               <img src={Carol} alt="photo" className='width-photo' />
             </a>
