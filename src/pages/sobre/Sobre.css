@@ -28,7 +28,7 @@
 }
 
 .right{
-    margin: 5px 0;
+    padding: 10px 0;
 }
 
 @media(min-width: 960px){
@@ -37,6 +37,6 @@
     }
     
     .right{
-        margin: 50px 0;
+        padding: 50px 0;
     }
 }

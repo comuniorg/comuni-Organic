@@ -63,16 +63,16 @@ function Sobre() {
               <img src={Nicole} alt="photo" className='width-photo' />
             </a>
 
-            <a href='https://www.linkedin.com/in/murilo-nascimento-0388b4249/' target='_blank'>
-              <img src={Murilo} alt="photo" className='width-photo' />
+            <a href='https://www.linkedin.com/in/jeangs/' target='_blank'>
+              <img src={Jean} alt="photo" className='width-photo' />
             </a>
 
             <a href='https://www.linkedin.com/in/hugo-ramos-84a76924a/' target='_blank'>
-              <img src={Hugo} alt="" className='width-photo' />
+              <img src={Hugo} alt="photo" className='width-photo' />
             </a>
             
-            <a href='https://www.linkedin.com/in/jeangs/' target='_blank'>
-              <img src={Jean} alt="" className='width-photo' />
+            <a href='https://www.linkedin.com/in/murilo-nascimento-0388b4249/' target='_blank'>
+              <img src={Murilo} alt="photo" className='width-photo' />
             </a>
           </Box>
         </Grid>
